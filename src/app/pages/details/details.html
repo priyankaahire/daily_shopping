@@ -1,18 +1,24 @@
 <ion-header>
-
   <ion-toolbar class="toolbar-style" style="padding-top: 10px;">
-    <ion-row style="background-color: #ffc409;color: black; ">
-      <ion-col class="backtohome" size="6" style="padding-top: 8px;">
-        <ion-icon (click)="back()" style="font-weight: 700;" name="chevron-back-outline"></ion-icon>
-      </ion-col>
-      <ion-col size="6">
-
-        <div style="float: right;" class="icon-style">
-          <ion-icon style="padding: 5px;color: #000;" name="heart-outline"></ion-icon>
-        </div>
-
-      </ion-col>
-    </ion-row>
+        <ion-row>
+          <ion-col class="backtohome" size="8" style="padding-top: 15px;">
+            <ion-icon (click)="back()" style="padding-top:5px; font-size: 14px;"
+              name="chevron-back-outline"></ion-icon><span style="font-size: 12px;font-weight: 700;">Deal of the day</span>
+          </ion-col>
+          <ion-col size="4" style="padding-top: 15px;">
+            <div  style="width: 85%;float: right; margin-bottom: 12px;background-color: #ffc409; border-top-left-radius: 20px; border-bottom-left-radius: 20px;" class="">
+              <div  style="display: inline-flex;margin-left: 4px;">
+                <div class="icon-style">
+                  <ion-icon style="padding: 5px;color: #000;" name="search-outline"></ion-icon>
+                </div>
+                <div class="icon-style">
+                  <ion-icon style="padding: 5px;color: #000;" name="heart-outline"></ion-icon>
+                </div>
+              </div>
+            </div>
+            
+          </ion-col>
+        </ion-row>
   </ion-toolbar>
 </ion-header>
 
@@ -67,7 +73,7 @@
             <ion-slide class="first-slide">
             <ng-container >
               <div class="recent-div" style="margin:1px; border-radius: 10px; width: 100%; height: 75px;">
-                <ion-card id="like-card" class="like-card effect5 ">
+                <ion-card id="like-card" class="like-card shadow-effect ">
                   <ion-grid style="padding: 0px;">
                     <ion-row>
                       <ion-col>
@@ -78,7 +84,7 @@
                 </ion-card>
               </div>
               <div class="recent-div" style="margin:1px; border-radius: 10px; width: 100%; height: 75px;">
-                <ion-card id="like-card" class="like-card effect5 " >
+                <ion-card id="like-card" class="like-card shadow-effect " >
                   <ion-grid style="padding: 0px;">
                     <ion-row>
                       <ion-col >
@@ -89,7 +95,7 @@
                 </ion-card>
               </div>
               <div class="recent-div" style="margin:1px; border-radius: 10px; width: 100%; height: 75px;">
-                <ion-card id="like-card" class="like-card effect5 ">
+                <ion-card id="like-card" class="like-card shadow-effect ">
                   <ion-grid style="padding: 0px;">
                     <ion-row>
                       <ion-col>
@@ -100,7 +106,7 @@
                 </ion-card>
               </div>
               <div class="recent-div" style="margin:1px; border-radius: 10px; width: 100%; height: 75px;">
-                <ion-card id="like-card" class="like-card effect5 " >
+                <ion-card id="like-card" class="like-card shadow-effect " >
                   <ion-grid style="padding: 0px;">
                     <ion-row>
                       <ion-col >
@@ -123,7 +129,7 @@
         <ion-slides #mySlider (ionSlideWillChange)="onSlideChangeStart($event)"
           (ionSlideDidChange)="onSlideChanged($event)" pager="false">
           <ion-slide >
-            <ion-card class="effect5" style="height: 100px; border-radius: 15px; margin: 1px; background-color: white;" class="item">
+            <ion-card class="shadow-effect" style="height: 100px; border-radius: 15px; margin: 1px; background-color: white;" class="item">
               <ion-grid style="padding: 0px; ">
                 <ion-row>
                   <ion-col size="4">
@@ -155,7 +161,7 @@
             </ion-card>
             <!-- <ng-container> 
               <div class="recent-div" style="border-radius: 10px; width: 100%; height: 75px;">
-                <ion-card id="order-card" class="order-card effect5 ">
+                <ion-card id="order-card" class="order-card shadow-effect ">
                   <ion-grid style="padding: 0px;">
                     <ion-row>
                       <ion-col size="4">
@@ -182,7 +188,7 @@
                 </ion-card>
               </div>
               <div class="recent-div" style="border-radius: 10px; width: 100%; height: 75px;">
-                <ion-card id="order-card" class="order-card effect5 ">
+                <ion-card id="order-card" class="order-card shadow-effect ">
                   <ion-grid style="padding: 0px;">
                     <ion-row>
                       <ion-col size="4">
@@ -211,7 +217,7 @@
             </ng-container> -->
           </ion-slide>
           <ion-slide >
-            <ion-card class="effect5" style="height: 100px; border-radius: 15px; margin: 5px; background-color: white;" class="item">
+            <ion-card class="shadow-effect" style="height: 100px; border-radius: 15px; margin: 5px; background-color: white;" class="item">
               <ion-grid style="padding: 0px; ">
                 <ion-row>
                   <ion-col size="4">
@@ -248,9 +254,7 @@
   </div>
 </ion-content>
 <ion-footer class="footerbar-style">
-  <!-- <div class="d"> -->
   <ion-toolbar class="foottolbar" >
-   
       <ion-row class="footer-row-style">
         <ion-col size="12">
           <div class="itemAddDeatils" style="width:100%; margin-top: 11px;">
@@ -270,8 +274,8 @@
                 </div>
               </ion-row>
             </div>
-            <div class="opt-div border_primary"
-              style="background-color: #000; float:right; padding: 0px; border-radius: 20px; border-style: solid; border-width: 1px; width: 50% !important; height: 35px;">
+            <div (click)="addToCart()" class="opt-div border_primary"
+              style="cursor:pointer;background-color: #000; float:right; padding: 0px; border-radius: 20px; border-style: solid; border-width: 1px; width: 40% !important; height: 35px;">
               <ion-row>
                 <ion-col style="color:#fff;">
                   <div id="" style="float: left;">

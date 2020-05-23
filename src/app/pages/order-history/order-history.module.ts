@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { OrderHistoryPageRoutingModule } from './order-history-routing.module';
 
-import { OrderHistoryPage } from './order-history.page';
+import { OrderHistoryPage } from './order-history';
 
 @NgModule({
   imports: [

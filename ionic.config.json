@@ -1,7 +1,8 @@
 {
-  "name": "daily_shopping",
+  "name": "Daily Shopping",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

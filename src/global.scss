@@ -27,3 +27,36 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+.shadow-effect{
+    position: relative;
+  }
+  .shadow-effect:before, .shadow-effect:after
+  {
+    z-index: -1;
+    position: absolute;
+    content: "";
+    bottom: 25px;
+    left: 10px;
+    width: 50%;
+    top: 80%;
+    max-width:300px;
+    background: #ffffff;
+    -webkit-box-shadow: 0 35px 20px #777;
+    -moz-box-shadow: 0 35px 20px #777;
+    box-shadow: 0 0 5px 5px #777;
+    -webkit-transform: rotate(-8deg);
+    -moz-transform: rotate(-8deg);
+    -o-transform: rotate(-8deg);
+    -ms-transform: rotate(-8deg);
+    transform: rotate(-8deg);
+  }
+  .shadow-effect:after
+  {
+    -webkit-transform: rotate(8deg);
+    -moz-transform: rotate(8deg);
+    -o-transform: rotate(8deg);
+    -ms-transform: rotate(8deg);
+    transform: rotate(8deg);
+    right: 10px;
+    left: auto;
+  }

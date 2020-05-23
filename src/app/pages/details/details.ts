@@ -12,6 +12,9 @@ export class DetailsPage implements OnInit {
   }
   ngOnInit() {
   }
+  addToCart() {
+    this.router.navigate(['/mycart'])
+  }
   onSlideChanged(e) {
     console.log('On slide change event');
   }
