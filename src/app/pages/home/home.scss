@@ -1,0 +1,187 @@
+
+  @import '../../../theme/variables.scss';
+  
+    ::-webkit-scrollbar,
+    *::-webkit-scrollbar {
+    display: none;
+    }
+    .scroll-zoom-wrapper {
+        white-space: nowrap;
+    }
+
+    .img-card {
+        width: 250px !important;
+        height: 150px;
+        display: inline-block;
+    }
+
+    .img-scroll {
+        min-height: 170px; 
+        height: auto;
+
+        .scroll-content {
+            padding: 0px !important;
+        }    
+    }
+
+    .recent-div {
+        width: 100px !important;
+        height: 200px;
+        display: inline-block;
+    }
+
+    .recent-scroll {
+        min-height: 210px; 
+        height: auto;
+
+        .scroll-content {
+            padding: 0px !important;
+        }    
+    }
+
+    .opt-scroll {
+        min-height: 110px; 
+        height: auto;
+
+            .scroll-content {
+            padding: 0px !important;
+        }    
+    }
+
+    .opt-div {
+        display: inline-block;
+    }
+
+    .recom-item { /* recom-item container */
+        column-count: 1;
+        column-gap: 1em;
+      }
+      
+    // .item { 
+    // background-color: #eee;
+    // display: inline-block;
+    // margin: 0 0 1em;
+    // }
+
+    ion-slides {
+        height: 100%;
+    }
+    .swiper-slide {
+        display: block;
+    }
+    
+    .slide-image {
+        margin: auto;
+        width: 60%;
+        border: 3px solid #73AD21;
+        padding: 10px;
+    }
+    .btn {
+        background-color: DodgerBlue;
+        color: white;
+        padding: 12px 16px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 50%;
+      }
+      .icon-style {
+        box-shadow: -2px -1px 40px 7px #b8b8b8;
+        border-radius: 15px;
+        background: #fff;
+        width: 25px;
+        height: 25px;
+        margin: 2px;
+      }
+      .effect5{
+        position: relative;
+      }
+      .effect5:before, .effect5:after
+      {
+        z-index: -1;
+        position: absolute;
+        content: "";
+        bottom: 25px;
+        left: 10px;
+        width: 50%;
+        top: 80%;
+        max-width:300px;
+        background: #ffffff;
+        -webkit-box-shadow: 0 35px 20px #777;
+        -moz-box-shadow: 0 35px 20px #777;
+        box-shadow: 0 0 5px 5px #777;
+        -webkit-transform: rotate(-8deg);
+        -moz-transform: rotate(-8deg);
+        -o-transform: rotate(-8deg);
+        -ms-transform: rotate(-8deg);
+        transform: rotate(-8deg);
+      }
+      .effect5:after
+      {
+        -webkit-transform: rotate(8deg);
+        -moz-transform: rotate(8deg);
+        -o-transform: rotate(8deg);
+        -ms-transform: rotate(8deg);
+        transform: rotate(8deg);
+        right: 10px;
+        left: auto;
+      }
+      .recom-item img {
+        width: 100%;
+        height: 100% !important;
+        -webkit-box-shadow: 0 0 5px 5px #ccc;
+        -moz-box-shadow: 0 0 5px 5px #ccc;
+        // box-shadow: -2px -1px 40px 7px #fff;
+        box-shadow: 0 0 5px 5px #ccc;
+        border-radius: 15px;
+      }
+      #recom-card {
+        height: 70px;
+        border-radius: 10px;
+        margin: 1px;
+        background-color: #ffffff;
+        img {
+          height: 55px !important;
+          margin: 3px 0px;
+        }
+      }
+      .order-again img {
+        width: 100%;
+        height: 100%;
+        -webkit-box-shadow: 0 0 5px 5px #ccc;
+        -moz-box-shadow: 0 0 5px 5px #ccc;
+        box-shadow: 0 0 5px 5px #ccc;
+        border-radius: 5px;
+      }
+      #order-card {
+        height: 45px;
+        border-radius: 10px;
+        margin: 1px;
+        background-color: #ffffff;
+      }
+      #wrap-content {
+        width: 87%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+      }
+      .category-item{
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        /* background: #fff; */
+        box-shadow: 0 0 5px 5px #ccc;
+      } 
+      .additem {
+        box-shadow: -2px -1px 40px 7px #b8b8b8;
+        border-radius: 15px;
+        background: $yellow;
+        width: 25px;
+        height: 25px;
+        margin: 2px;
+        margin: 15px;
+    float: right;
+      }
+    
+     
+

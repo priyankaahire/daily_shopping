@@ -1,0 +1,118 @@
+
+    .list-container { /* list-container container */
+        column-count: 1;
+        column-gap: 0.1em;
+      }
+      
+    .item { /* list-container bricks or child elements */
+    background-color: #eee;
+    display: inline-block;
+    margin: 0 0 1em;
+    }
+  
+    .opt-scroll {
+      min-height: 35px !important; 
+      height: auto;
+  
+          .scroll-content {
+          padding: 0px !important;
+      }    
+    }
+  
+    .opt-div {
+        width: max-content !important;
+        height: 25px;
+        display: inline-block;
+    }
+  
+    .border_primary{
+    //   border-color: color($colors, primary);
+    }
+  
+    .bg_primary {
+    //   background-color: color($colors, primary);
+    }
+    #wrap-content {
+      width: 87%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: inline-block;
+    } 
+    .list-container img {
+      width: 100%;
+      height: 90%;
+      -webkit-box-shadow: 0 0 5px 5px #ccc;
+      -moz-box-shadow: 0 0 5px 5px #ccc;
+      // box-shadow: -2px -1px 40px 7px #fff;
+      box-shadow: 0 0 5px 5px #ccc;
+      border-radius: 15px;
+    }
+    .icon-style {
+      box-shadow: -2px -1px 40px 7px #b8b8b8;
+      border-radius: 15px;
+      background: #fff;
+      width: 25px;
+      height: 25px;
+      margin: 2px;
+    }
+    .addremove{
+      box-shadow: -2px -1px 40px 7px #b8b8b8;
+      border-radius: 15px;
+      background: #fff;
+      width: 18px;
+      height: 18px;
+      margin: 2px;
+    }
+    .ionicon, svg {
+      margin-top: 3px !important;
+
+    }
+    .icon-inner {
+      margin-top: 3px !important;
+    }
+   
+
+.effect5{
+  position: relative;
+}
+.effect5:before, .effect5:after
+{
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 25px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  background: #ffffff;
+  -webkit-box-shadow: 0 35px 20px #777;
+  -moz-box-shadow: 0 35px 20px #777;
+  box-shadow: 0 0 5px 5px #777;
+  -webkit-transform: rotate(-8deg);
+  -moz-transform: rotate(-8deg);
+  -o-transform: rotate(-8deg);
+  -ms-transform: rotate(-8deg);
+  transform: rotate(-8deg);
+}
+.effect5:after
+{
+  -webkit-transform: rotate(8deg);
+  -moz-transform: rotate(8deg);
+  -o-transform: rotate(8deg);
+  -ms-transform: rotate(8deg);
+  transform: rotate(8deg);
+  right: 10px;
+  left: auto;
+}
+.category-item {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  /* background: #fff; */
+  box-shadow: 0 0 5px 5px #ccc;
+}
+  
+  
+  

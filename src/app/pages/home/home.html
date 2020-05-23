@@ -1,0 +1,296 @@
+<ion-header>
+  <ion-toolbar class="toolbar-style">
+    <ion-row style="background-color: #ffc409;color: black; ">
+      <ion-col size="8">
+        <ion-input style="font-size: 12px;
+           " color="dark" placeholder="Search.."></ion-input>
+      </ion-col>
+      <ion-col size="4">
+        <div style="display: inline-flex;margin-left: 25px;">
+          <div class="icon-style">
+            <ion-icon style="padding: 5px;color: #000;" name="person-outline"></ion-icon>
+          </div>
+          <div class="icon-style">
+            <ion-icon style="padding: 5px;color: #000;" name="search-outline"></ion-icon>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+<ion-content no-padding>
+  <div class="imageslider" style="background-color: #ffc409;
+height: 200px;
+margin-top: -32px;
+">
+    <ion-slides #mySlider (ionSlideWillChange)="onSlideChangeStart($event)"
+      (ionSlideDidChange)="onSlideChanged($event)" pager="false">
+      <ion-slide class="first-slide" *ngFor="let item of dishes">
+        <div style="margin-top: 5px;">
+          <img [src]="item.imageUrl" width="100%" height="100%" style="border-radius: 25px;
+      width: 75%;
+      height: 100%;" /> 
+     
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <div class="category-container" style="width:100%;height: 80px;margin: 5px;">
+    <ion-slides #mySlider (ionSlideWillChange)="onSlideChangeStart($event)"
+      (ionSlideDidChange)="onSlideChanged($event)" pager="false">
+      <ion-slide class="first-slide">
+        <ng-container>
+          <div class="opt-div border-primary" style="margin: 4px 0px 4px 4px; width: 40px;
+      height: 40px; float:left" (click)='gotoItem(item)' class="">
+            <div class="category-item">
+              <ion-grid>
+                <ion-row style="justify-content: center; "><img src="assets/imgs/vegitables.png"
+                    style="border-radius: 50%;" height="100%" width="100%" /></ion-row>
+              </ion-grid>
+            </div>
+            <div style="
+        width: 100%;
+        height: 100%;text-align: center">
+              <font style="font-size: 7px;">vegitables</font>
+            </div>
+
+          </div>
+          <div class="opt-div border-primary" style="margin: 4px 0px 4px 4px; width: 40px;
+      height: 40px; float:left" (click)='gotoItem(item)' class="">
+            <div class="category-item">
+              <ion-grid>
+                <ion-row style="justify-content: center; "><img src="assets/imgs/home_care.jpg"
+                    style="border-radius: 50%;" height="100%" width="100%" /></ion-row>
+              </ion-grid>
+            </div>
+            <div style="
+        width: 100%;
+        height: 100%;text-align: center">
+              <font style="font-size: 7px;">Home Care</font>
+            </div>
+
+          </div>
+          <div class="opt-div border-primary" style="margin: 4px 0px 4px 4px; width: 40px;
+      height: 40px; float:left" (click)='gotoItem(item)' class="">
+            <div class="category-item">
+              <ion-grid>
+                <ion-row style="justify-content: center; "><img src="assets/imgs/personal_care.jpg"
+                    style="border-radius: 50%;" height="100%" width="100%" /></ion-row>
+              </ion-grid>
+            </div>
+            <div style="
+        width: 100%;
+        height: 100%;text-align: center">
+              <font style="font-size: 7px;">Body Care</font>
+            </div>
+
+          </div>
+          <div class="opt-div border-primary" style="margin: 4px 0px 4px 4px; width: 40px;
+      height: 40px; float:left" (click)='gotoItem(item)' class="">
+            <div class="category-item">
+              <ion-grid>
+                <ion-row style="justify-content: center; "><img src="assets/imgs/fruits.jpg" style="border-radius: 50%;"
+                    height="100%" width="100%" /></ion-row>
+              </ion-grid>
+            </div>
+            <div style="
+        width: 100%;
+        height: 100%;text-align: center">
+              <font style="font-size: 7px;">Fruits</font>
+            </div>
+
+          </div>
+        </ng-container>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div id="order-again" class="order-again" style="margin:5px">
+    <div class="">
+      <font style="margin-left: 10px; font-size: 12px; font-weight: 700;">Order Again</font>
+    </div>
+    <div>
+      <ion-slides #mySlider (ionSlideWillChange)="onSlideChangeStart($event)"
+        (ionSlideDidChange)="onSlideChanged($event)" pager="false">
+        <ion-slide class="first-slide" *ngFor="let item of dishes">
+          <ng-container>
+            <div class="recent-div" style="border-radius: 10px; width: 100%; height: 75px;">
+              <ion-card id="order-card" class="order-card effect5 ">
+                <ion-grid style="padding: 0px;">
+                  <ion-row>
+                    <ion-col size="4">
+                      <img src="assets/imgs/spices.jpg">
+                    </ion-col>
+                    <ion-col size="8">
+                      <font style="font-size: 8px; text-align: left">Indian fav Gram masala</font>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-card>
+            </div>
+            <div class="recent-div" style="border-radius: 10px; width: 100%; height: 75px;">
+              <ion-card id="order-card" class="order-card effect5 ">
+                <ion-grid style="padding: 0px;">
+                  <ion-row>
+                    <ion-col size="4">
+                      <img src="assets/imgs/spices.jpg">
+                    </ion-col>
+                    <ion-col size="8">
+                      <font style="font-size: 8px; text-align: left">Indian fav Gram masala</font>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-card>
+            </div>
+          </ng-container>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </div>
+
+
+  <div class="recom-item" style="margin: 5px;">
+    <div class="">
+      <font style="margin-left: 10px; font-size: 12px; font-weight: 700;">Recommended</font>
+    </div>
+    <ion-card id="recom-card" class="effect5 " class="item" (click)="gotoDetails(item)">
+      <ion-grid style="padding: 0px;">
+        <ion-row>
+          <ion-col size="8" style="display: inline-flex;">
+            <div style="width:40%;" class="">
+              <img src="assets/imgs/vegitables.png">
+            </div>
+            <div style="width:55%; margin-left: 5px;" class="iteminfo">
+              <div style="text-align:left;width:100%" >
+                <font id="wrap-content" style="color: black; font-size: 10px; font-weight: 700;">Palak 250g+Ladies
+                  Finger+Cucumber+Capsicum</font>
+              </div>
+              <div style="text-align:left;width:100% ; padding-top: 2px;" >
+                <div style="width:100%;" >
+                  <small style="font-size: 10px; color: gray; ">Combo - 5 Items</small>
+                </div>
+                <div style="width:100%;" >
+                  <font style="color:#000; font-size: 10px;">Rs 138</font>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+          <ion-col size="4">
+          <div class="additem">
+            <ion-icon name="add" style="padding:5px"></ion-icon>
+          </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+    <ion-card id="recom-card" class="effect5 " class="item" (click)="gotoDetails(item)">
+      <ion-grid style="padding: 0px;">
+        <ion-row>
+          <ion-col size="8" style="display: inline-flex;">
+            <div style="width:40%;" class="">
+              <img src="assets/imgs/dove.jpg">
+            </div>
+            <div style="width:55%; margin-left: 5px;" class="iteminfo">
+              <div style="text-align:left;width:100%" >
+                <font id="wrap-content" style="color: black; font-size: 10px; font-weight: 700;">Cream Beauty Btahing Bar</font>
+              </div>
+              <div style="text-align:left;width:100% ; padding-top: 2px;" >
+                <div style="width:100%;" >
+                  <small style="font-size: 10px; color: gray; ">3 Pack</small>
+                </div>
+                <div style="width:100%;" >
+                  <font style="color:#000; font-size: 10px;">Rs 400</font>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+          <ion-col size="4">
+          <div class="additem">
+            <ion-icon name="add" style="padding:5px"></ion-icon>
+          </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+    <ion-card id="recom-card" class="effect5 " class="item" (click)="gotoDetails(item)">
+      <ion-grid style="padding: 0px;">
+        <ion-row>
+          <ion-col size="8" style="display: inline-flex;">
+            <div style="width:40%;" class="">
+              <img src="assets/imgs/vegitables.png">
+            </div>
+            <div style="width:55%; margin-left: 5px;" class="iteminfo">
+              <div style="text-align:left;width:100%" >
+                <font id="wrap-content" style="color: black; font-size: 10px; font-weight: 700;">Palak 250g+Ladies
+                  Finger+Cucumber+Capsicum</font>
+              </div>
+              <div style="text-align:left;width:100% ; padding-top: 2px;" >
+                <div style="width:100%;" >
+                  <small style="font-size: 10px; color: gray; ">Combo - 5 Items</small>
+                </div>
+                <div style="width:100%;" >
+                  <font style="color:#000; font-size: 10px;">Rs 138</font>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+          <ion-col size="4">
+          <div class="additem">
+            <ion-icon name="add" style="padding:5px"></ion-icon>
+          </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+    <ion-card id="recom-card" class="effect5 " class="item" (click)="gotoDetails(item)">
+      <ion-grid style="padding: 0px;">
+        <ion-row>
+          <ion-col size="8" style="display: inline-flex;">
+            <div style="width:40%;" class="">
+              <img src="assets/imgs/vegitables.png">
+            </div>
+            <div style="width:55%; margin-left: 5px;" class="iteminfo">
+              <div style="text-align:left;width:100%" >
+                <font id="wrap-content" style="color: black; font-size: 10px; font-weight: 700;">Palak 250g+Ladies
+                  Finger+Cucumber+Capsicum</font>
+              </div>
+              <div style="text-align:left;width:100% ; padding-top: 2px;" >
+                <div style="width:100%;" >
+                  <small style="font-size: 10px; color: gray; ">Combo - 5 Items</small>
+                </div>
+                <div style="width:100%;" >
+                  <font style="color:#000; font-size: 10px;">Rs 138</font>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+          <ion-col size="4">
+          <div class="additem">
+            <ion-icon name="add" style="padding:5px"></ion-icon>
+          </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+    
+  </div>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size="2">
+        <ion-icon name="home"></ion-icon>
+      </ion-col>
+      <ion-col size="2" (click)="dealOfTheDay()" style="cursor: pointer;">
+        <ion-icon name="basket"></ion-icon>
+      </ion-col>
+      <ion-col size="2">
+        <ion-icon name="apps"></ion-icon>
+      </ion-col>
+      <ion-col size="2">
+        <ion-icon name="list"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

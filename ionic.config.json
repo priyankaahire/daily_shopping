@@ -1,0 +1,7 @@
+{
+  "name": "daily_shopping",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

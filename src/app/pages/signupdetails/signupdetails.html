@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon style="padding-top:3px" name="chevron-back-outline" (click)="back()"></ion-icon> Fill New More Details
+    <!-- <img src="assets/imgs/back.png" height="25px" width="25px" (click)="back()">Fill New More Details -->
+  </ion-toolbar>
+</ion-header>
+<ion-content padding style="background-color: #f8f8f8;">
+  <ion-item style="margin-top: 20px;">
+    <ion-label floating>Confirm Password</ion-label>
+    <ion-input type="password" [(ngModel)]="confirmpassword"></ion-input>
+  </ion-item>
+  <ion-item style="margin-top: 20px;">
+    <ion-label floating>Mobile Number</ion-label>
+    <ion-input type="number" [(ngModel)]="mobile"></ion-input>
+  </ion-item>
+  <ion-item style="margin-top: 20px;">
+    <ion-label floating>Password</ion-label>
+    <ion-input type="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+  <ion-item style="margin-top: 20px;">
+    <ion-label floating>Address</ion-label>
+    <ion-input [(ngModel)]="location"></ion-input>
+  </ion-item>
+  <ion-item style="margin-top: 20px;">
+    <ion-label floating>Zip code</ion-label>
+    <ion-input [(ngModel)]="zipcode"></ion-input>
+  </ion-item>
+  <ion-item style="margin-top: 20px;">
+    <ion-label floating>Country</ion-label>
+    <ion-input [(ngModel)]="country" ></ion-input>
+  </ion-item>
+</ion-content>
+<ion-footer>
+  <ion-toolbar >
+    <div (click)="save()" style="width: 100%;height: 20%; margin: 0 45%;">
+      <ion-icon name="checkmark-circle-outline"></ion-icon>
+    </div>
+  </ion-toolbar>
+</ion-footer>
+
+
