@@ -1,9 +1,157 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>order-history</ion-title>
+  <ion-toolbar class="toolbar-style" style="padding-top: 10px;">
+        <ion-row>
+          <ion-col class="backtohome" size="8" style="padding-top: 15px;">
+            
+            <ion-icon (click)="back()" style="padding-top:5px; font-size: 14px;"
+              name="chevron-back-outline"></ion-icon><span style="font-size: 12px;font-weight: 700;">Order History</span>
+          
+          </ion-col>
+          <ion-col size="4" style="padding-top: 15px;">
+            <div  style="width: 85%;float: right; margin-bottom: 12px;background-color: #ffc409; border-top-left-radius: 20px; border-bottom-left-radius: 20px;" class="">
+              <div  style="display: inline-flex;margin-left: 4px;">
+                <div class="icon-style">
+                  <ion-icon style="padding: 5px;color: #000;" name="person-outline"></ion-icon>
+                </div>
+              </div>
+            </div>
+            
+          </ion-col>
+        </ion-row>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content padding style="background-color: #f8f8f8;">
+  <div class="list-container">
+    <div class="">
+      <div class="" style="width:99%; height: 12px;">
+        <icon-row>
+          <icon-col sie="12">
+            <div style="width:100%; float: right;" >
+              <div class="time" style="padding: 2px;">
+                 <ion-icon name="time"></ion-icon>
+             </div>
+           </div>
+          </icon-col>
+        </icon-row>
+      
+      </div>
+      <div class="" style="width:94%;margin: -6px 3px;">
+        <icon-row>
+          <ion-card class="shadow-effect" style="height: 100px;border-radius: 15px; margin: 5px; background-color: #ffffff;" class="item">
+            <ion-grid style="">
+              <ion-row>
+                <ion-col size="4">
+                  <img style="width: 100%; height: 100%;" src="assets/imgs/dove.jpg" (click)="gotoDetails(item)">
+                </ion-col>
+                <ion-col size="8">
+                  <div class="iteminfo">
+                    <div class="" style="width:100%">
+                      <div style="width:80%;float: left;" >
+                        <font id="wrap-content" style="color: black; font-size: 12px; font-weight: 700;">Dove Bar Soap-Pack of 3
+                        </font>
+                      </div>
+                   
+                    </div>
+                    <div style="width:100%;padding-top: 2px;" >
+                      <div style="width:100%; float: left;" >
+                        <small style="color: gray; ">Cream Beauty Btahing Bar</small>
+                      </div>
+                    </div>
+                    <div style="width:100%;padding-top: 2px;" >
+                      <div style="width:100%; float: left;" >
+                        <font style="color:#000;font-size: 8px; font-weight: 700">3 pcs</font>
+                      </div>
+                    </div>
+                    <div style="width:100%;padding-top: 2px;" >
+                      <div style="width:50%; float: left;" >
+                        <font style="color:#000;font-size: 8px; font-weight: 700">Order Id:124589</font>
+                      </div>
+                      <div style="width:45%; float: left;" >
+                        <font style="color:#000;font-size: 8px; font-weight: 700">Date: 12-May-2019</font>
+                      </div>
+                    </div>
+                  </div>
+               
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card>
+        </icon-row>
+      </div>
+    </div>
+    <div class="">
+      <div class="" style="width:99%; height: 12px;">
+        <icon-row>
+          <icon-col sie="12">
+            <div style="width:100%; float: right;" >
+              <div class="time" style="padding: 2px;">
+                 <ion-icon name="time"></ion-icon>
+             </div>
+           </div>
+          </icon-col>
+        </icon-row>
+      
+      </div>
+      <div class="" style="width:94%;margin: -6px 3px;">
+        <icon-row>
+          <ion-card class="shadow-effect" style="height: 100px;border-radius: 15px; margin: 5px; background-color: #ffffff;" class="item">
+            <ion-grid style="">
+              <ion-row>
+                <ion-col size="4">
+                  <img style="width: 100%; height: 100%;" src="assets/imgs/vegitables.png" (click)="gotoDetails(item)">
+                </ion-col>
+                <ion-col size="8">
+                  <div class="iteminfo">
+                    <div class="" style="width:100%">
+                      <div style="width:80%;float: left;" >
+                        <font id="wrap-content" style="color: black; font-size: 12px; font-weight: 700;">Fresh Green Vegitable Palak + Cucumber + Methi
+                        </font>
+                      </div>
+                   
+                    </div>
+                 
+                    <div style="width:100%;padding-top: 2px;" >
+                      <div style="width:100%; float: left;" >
+                        <small style="color: gray; "> Combo-3  Items</small>
+                      </div>
+                    </div>
+                    <div style="width:100%;padding-top: 2px;" >
+                      <div style="width:50%; float: left;" >
+                        <font style="color:#000;font-size: 8px; font-weight: 700">Order Id:00124589</font>
+                      </div>
+                      <div style="width:45%; float: left;" >
+                        <font style="color:#000;font-size: 8px; font-weight: 700">Date: 12-May-2019</font>
+                      </div>
+                    </div>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card>
+        </icon-row>
+      </div>
+    </div>
+    
+   
+  </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col (click)="backtohome()" size="2">
+        <ion-icon name="home"></ion-icon>
+      </ion-col>
+      <ion-col size="2" (click)="dealOfTheDay()" style="cursor: pointer;">
+        <ion-icon name="basket"></ion-icon>
+      </ion-col>
+      <ion-col size="2">
+        <ion-icon name="apps"></ion-icon>
+      </ion-col>
+      <ion-col size="2">
+        <ion-icon name="list"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
