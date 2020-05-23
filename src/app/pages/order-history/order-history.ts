@@ -18,4 +18,7 @@ export class OrderHistoryPage implements OnInit {
   backtohome(){
     this.router.navigate(['/home'])
   }
+  back() {
+    this.router.navigate(['/checkout'])
+  }
 }
