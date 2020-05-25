@@ -1,0 +1,47 @@
+@import '../../../theme/variables.scss';
+.slider-container {
+    margin-top: 65px;
+}
+.slider-image {
+   text-align:center; 
+   margin: 20px;
+   .img {
+        height: 60%;
+        width: 100%;
+    img {
+        height:100%;
+        width:100%;
+        border-top-left-radius: 15px; 
+        border-top-right-radius: 15px;
+    }
+   
+   }
+   .title {
+        width: 100%;
+        margin-top: 45px;
+        font {
+            font-size: 15px;
+            font-weight: 700;
+        }   
+    }
+  
+}
+.slider-info {
+ margin:0px 15px 0px 15px; 
+ text-align: center;
+ font-size: 11px;
+ color:$gray;
+}
+
+    .start-btn {
+        width: 35%;
+        border-radius: 25px;
+        padding: 7px 20px 7px 20px;
+        background-color:$yellow;
+        margin: 30px 96px;
+        label {
+            color: $dark;
+            font-size: 12px;
+            cursor: pointer;
+        }
+    }

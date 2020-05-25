@@ -1,23 +1,22 @@
+
 <ion-content no-padding>
- 
-  <div style="height: 40%;">
-    <div style="text-align:center; margin: 20px;">
-      <div style="height: 60%; width: 100%;">
-        <img src='assets/imgs/food4.png' height="100%" width="100%" style="border-top-left-radius: 15px; border-top-right-radius: 15px;"/>
+  <div class="slider-container" id="slider-container" >
+    <div class="slider-image">
+      <div class="img">
+        <img src='assets/imgs/explore_grocery.jpg' />
       </div>
-      <font style="font-family: Poppins; font-size: 15px; font-weight: 700;">
-       Explore Grocery Products
+      <div class="title">
+      <font >
+        Explore Grocery Products
       </font>
+     </div>
     </div>
-    <div style="margin:0px 15px 0px 15px; text-align: center;">
-      <font style="font-size: 14px;">
+
+    <div class="slider-info">
+      <font >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
       </font>
     </div>
-
-    <button style="width: 45%;border-radius: 25px; padding: 7px 20px 7px 20px; background-color: #FC9D1A; margin: 30px 79px;" (click)='navigate()'>
-      <label style="color: white;">Start</label>
-    </button>
-
+      <button class="start-btn" (click)='navigate()'><label >Start</label></button>
   </div>
 </ion-content>
