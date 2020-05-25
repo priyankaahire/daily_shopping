@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Toast } from '@ionic-native/toast/ngx';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +9,7 @@ import { Router } from '@angular/router';
 export class SigninPage implements OnInit {
   mobile: string
   password: string
-  constructor(private toast: Toast, private router: Router) { }
+  constructor(private router: Router) { }
   ngOnInit() {
   }
   login() {
