@@ -60,3 +60,12 @@
     right: 10px;
     left: auto;
   }
+ .re-outline:active, .re-outline:focus {
+    outline: 0;
+    border: none;
+    -moz-outline-style: none;
+  }
+  ion-content div {
+    margin-left: 10px;
+    margin-right: 10px;
+  }

@@ -1,21 +1,25 @@
+
 <ion-content no-padding>
   <div class="slider-container" id="slider-container" >
-    <div class="slider-image">
+    <ion-row class="slider-image">
       <div class="img">
         <img src='assets/imgs/checkout.jpg' />
       </div>
+    </ion-row >
+    <ion-row class="slider-title">
       <div class="title">
       <font >
         Choose and Checkout
       </font>
-      </div>
-    </div>
-
-    <div class="slider-info">
+     </div>
+    </ion-row >
+    <ion-row  class="slider-info">
       <font >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
       </font>
-    </div>
-      <button class="next-btn" (click)='navigate()'><label >Next</label></button>
+    </ion-row >
+    <ion-row  class="slider-btn">
+      <button class="next-btn re-outline" (click)='navigate()'><label >Next</label></button>
+  </ion-row>
   </div>
 </ion-content>

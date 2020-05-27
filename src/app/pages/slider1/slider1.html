@@ -1,22 +1,25 @@
 
 <ion-content no-padding>
   <div class="slider-container" id="slider-container" >
-    <div class="slider-image">
+    <ion-row class="slider-image">
       <div class="img">
         <img src='assets/imgs/explore_grocery.jpg' />
       </div>
+    </ion-row >
+    <ion-row class="slider-title">
       <div class="title">
       <font >
         Explore Grocery Products
       </font>
      </div>
-    </div>
-
-    <div class="slider-info">
+    </ion-row >
+    <ion-row  class="slider-info">
       <font >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
       </font>
-    </div>
-      <button class="start-btn" (click)='navigate()'><label >Start</label></button>
+    </ion-row >
+    <ion-row  class="slider-btn">
+      <button class="start-btn re-outline" (click)='navigate()'><label >Start</label></button>
+    </ion-row >
   </div>
 </ion-content>

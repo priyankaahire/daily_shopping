@@ -4,7 +4,7 @@
 }
 .slider-image {
    text-align:center; 
-   margin: 20px;
+   margin-bottom: 30px;
    .img {
         height: 60%;
         width: 100%;
@@ -16,9 +16,15 @@
     }
    
    }
-   .title {
+  
+}
+.slider-title{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 10px;
+    .title {
         width: 100%;
-        margin-top: 45px;
         font {
             font-size: 15px;
             font-weight: 700;
@@ -27,21 +33,26 @@
   
 }
 .slider-info {
- margin:0px 15px 0px 15px; 
+ margin-bottom: 30px;
  text-align: center;
  font-size: 11px;
  color:$gray;
 }
-
+.slider-btn {
+    display: flex;
+    justify-content: center;
+   
     .start-btn {
         width: 35%;
         border-radius: 25px;
         padding: 7px 20px 7px 20px;
         background-color:$yellow;
-        margin: 30px 96px;
         label {
             color: $dark;
             font-size: 12px;
             cursor: pointer;
         }
     }
+  
+}
+

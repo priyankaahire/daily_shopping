@@ -1,5 +1,63 @@
-// page-login {
-//     .btn_orange {
-//         background-color: color($colors, primary);
-//     }
-// }
+@import '../../../theme/variables.scss';
+
+.login-container {
+    margin-top: 65px;
+}
+.login-image {
+    margin-bottom: 30px;
+
+}
+.login-title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    #left-text {
+      font-size: 12px; 
+      font-weight: 100; 
+      color: $gray;
+    }
+    #right-text {
+        font-size: 12px; 
+        font-weight: 900;
+    }
+}
+.login-btn {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    .sign-btn {
+        width: 90%;
+        border-radius: 25px; 
+        padding: 7px 20px 7px 20px; 
+        background-color:$white;
+        border:1px solid $dark;
+        label {
+            color:$dark;
+            font-weight: 900;
+            font-size: 12px;
+        }
+    }
+    .signup-btn {
+        width: 90%;
+        border-radius: 25px; 
+        padding: 7px 20px 7px 20px; 
+        background-color:$yellow;
+        label {
+            color:$dark;
+            font-weight: 900;
+            font-size: 12px;
+
+        }
+    }
+}
+.login-termcond {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    font {
+        font-size: 9px;
+        font-weight: 100;
+        color: gray;
+    }
+}
+

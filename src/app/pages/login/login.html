@@ -1,30 +1,57 @@
 <ion-content no-padding>
-  <div style="height: 40%;">
-    <div style="text-align:center; margin: 20px;">
-      <div style="height: 60%; width: 100%;">
-        <img src='assets/imgs/shopping-cart.jpg' height="100%" width="100%" style="border-top-left-radius: 25px; border-top-right-radius: 25px;"/>
+  <div class="login-container">
+    <ion-row class="login-image">
+      <div class="img">
+        <img src='assets/imgs/shopping-cart.jpg' height="100%" width="100%"
+          style="border-top-left-radius: 25px; border-top-right-radius: 25px;" />
+
       </div>
-    </div>
-    <div style="margin: 1px 60px;">
-      <font style="font-family: Poppins; font-size: 12px; font-weight: 100; color:#9e9e9e">Login or </font>
-      <font style="font-family: Poppins; font-size: 12px; font-weight: 700;">Becomes Member</font>
-    </div>
-    <div style="margin: 20px;" class="" id="">
-      <div style="margin: 9px 50px;" class="">
-        <button style="width: 90%;border-radius: 25px; padding: 7px 20px 7px 20px; background-color: #9e9e9e;" (click)='signin()'>
-          <label style="color: white;">Sign in</label>
-        </button>
+    </ion-row>
+    <ion-row class="login-title">
+      <div class="title">
+        <font id="left-text">Login or </font>
+        <font id="right-text">Becomes Member</font>
       </div>
-      <div style="margin: 9px 50px;">
-        <button style="width: 90%;border-radius: 25px; padding: 7px 20px 7px 20px; background-color: #FC9D1A;" (click)='signup()'>
-          <label style="color: white;">Sign Up</label>
-        </button>
-      </div>
-      <div style="margin: 5px 80px;">
-        <font style="font-family: Poppins; font-size: 8px; font-weight: 100; color:#9e9e9e">
+    </ion-row>
+    <ion-row class="login-btn">
+      <button class="sign-btn"
+        (click)='signin()'>
+        <label >Sign in</label>
+      </button>
+    </ion-row>
+    <ion-row class="login-btn">
+      <button class="signup-btn"
+        (click)='signup()'>
+        <label >Sign Up</label>
+      </button>
+    </ion-row>
+    <ion-row class="login-termcond">
+      <div class="term-cond">
+        <font>
           Teram of conditions
         </font>
       </div>
-    </div>
+
+    </ion-row>
   </div>
+ 
+    <!-- <div style="text-align:center; margin: 20px;">
+      <div style="height: 60%; width: 100%;">
+      </div>
+    </div>
+    <div style="margin: 1px 60px;">
+     
+    </div>
+    <div style="margin: 20px;" class="" id="">
+      <div style="margin: 9px 50px;" class="">
+     
+      </div>
+      <div style="margin: 9px 50px;">
+      
+      </div>
+      <div style="margin: 5px 80px;">
+       
+      </div>
+    </div> -->
+  
 </ion-content>
