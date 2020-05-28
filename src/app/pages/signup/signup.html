@@ -1,42 +1,47 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-icon style="padding-top:3px" name="chevron-back-outline" (click)="back()"></ion-icon> signup
+  <ion-toolbar class="toolbar-style">
+    <div class="header-title">
+      <ion-icon name="chevron-back-outline" (click)="back()"></ion-icon> 
+      <span>signup</span>
+    </div>
   </ion-toolbar>
 </ion-header>
-<ion-content padding style="background-color: #f8f8f8;">
-  <!-- <div style="width: 100%; height:60px; margin-top: 15px; margin-left: 10px;">
+<ion-content>
+  <div class="signup-container">
     <ion-row>
-      <ion-col col-10>
-        <img src="assets/imgs/back.png" height="25px" width="25px" (click)="back()">signup
-      </ion-col>
+      <ion-item >
+        <ion-label position="floating">First Name</ion-label>
+        <ion-input [(ngModel)]="fname"></ion-input>
+      </ion-item>
     </ion-row>
-  </div> -->
-  <ion-item style="margin-top: 20px;">
-    <ion-label floating>First Name</ion-label>
-    <ion-input [(ngModel)]="fname"></ion-input>
-  </ion-item>
-  <ion-item style="margin-top: 20px;">
-    <ion-label floating>Last Name</ion-label>
-    <ion-input [(ngModel)]="lname"></ion-input>
-  </ion-item>
-  <ion-item style="margin-top: 20px;">
-    <ion-label floating>Date of birth</ion-label>
-    <ion-input [(ngModel)]="dob" readonly enabled="false" (click)='selectDate()'></ion-input>
-  </ion-item>
-  <ion-item style="margin-top: 20px;">
-    <ion-label floating>Email</ion-label>
-    <ion-input [(ngModel)]="email"></ion-input>
-  </ion-item>
-  <ion-item style="margin-top: 20px;">
-    <ion-label floating>Password</ion-label>
-    <ion-input type="password" [(ngModel)]="password"></ion-input>
-  </ion-item>
-  <ion-item style="width: 20%;height: 20%; margin: 0 37%;">
-    <ion-icon (click)="next()" name="chevron-forward-circle-outline"></ion-icon>
-    
-    <!-- <ion-icon (click)="next()" name="chevron-forward-outline"></ion-icon> -->
-    <!-- <i class="icon ion-md-heart"></i> -->
-    <!-- <ion-icon (click)="next()"  name="arrow-dropright-circle"></ion-icon> -->
-    <!-- <img (click)="next()" src='assets/imgs/tick.png' height="" width="" style="border-top-left-radius: 25px; border-top-right-radius: 25px;"/> -->
-  </ion-item>
+    <ion-row>
+      <ion-item >
+        <ion-label position="floating">Last Name</ion-label>
+        <ion-input [(ngModel)]="lname"></ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item >
+        <ion-label position="floating">Date of birth</ion-label>
+        <ion-input [(ngModel)]="dob" readonly enabled="false" (click)='selectDate()'></ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item >
+        <ion-label position="floating">Email</ion-label>
+        <ion-input [(ngModel)]="email"></ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item >
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row class="next-btn">
+      <div>
+        <ion-icon (click)="next()" name="chevron-forward-circle-outline"></ion-icon>
+      </div>
+    </ion-row>
+  </div>
 </ion-content>
