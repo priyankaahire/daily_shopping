@@ -23,9 +23,9 @@
 height: 200px;
 margin-top: -32px;
 ">
-    <ion-slides #mySlider (ionSlideWillChange)="onSlideChangeStart($event)"
-      (ionSlideDidChange)="onSlideChanged($event)" pager="false">
-      <ion-slide class="first-slide" *ngFor="let item of dishes">
+    <ion-slides pager #mySlider (ionSlideWillChange)="onSlideChangeStart($event)"
+      (ionSlideDidChange)="onSlideChanged($event)">
+      <ion-slide class="" *ngFor="let item of dishes">
         <div style="margin-top: 5px;">
           <img [src]="item.imageUrl" width="100%" height="100%" style="border-radius: 25px;
       width: 75%;
@@ -36,10 +36,10 @@ margin-top: -32px;
     </ion-slides>
   </div>
   <div class="category-container" style="width:100%;height: 80px;margin: 5px;">
-    <ion-slides #mySlider (ionSlideWillChange)="onSlideChangeStart($event)"
-      (ionSlideDidChange)="onSlideChanged($event)" pager="false">
-      <ion-slide class="first-slide">
-        <ng-container>
+    <ion-slides slidesPerView="3" spaceBetween="1"  pager="false"  #mySlider (ionSlideWillChange)="onSlideChangeStart($event)"
+      (ionSlideDidChange)="onSlideChanged($event)" >
+      <ion-slide class="">
+     
           <div class="opt-div border-primary" style="margin: 4px 0px 4px 4px; width: 40px;
       height: 40px; float:left" (click)='gotoItem(item)' class="">
             <div class="category-item">
@@ -55,6 +55,11 @@ margin-top: -32px;
             </div>
 
           </div>
+     
+      </ion-slide>
+      <ion-slide class="">
+      
+       
           <div class="opt-div border-primary" style="margin: 4px 0px 4px 4px; width: 40px;
       height: 40px; float:left" (click)='gotoItem(item)' class="">
             <div class="category-item">
@@ -70,6 +75,10 @@ margin-top: -32px;
             </div>
 
           </div>
+      
+      </ion-slide>
+      <ion-slide class="">
+       
           <div class="opt-div border-primary" style="margin: 4px 0px 4px 4px; width: 40px;
       height: 40px; float:left" (click)='gotoItem(item)' class="">
             <div class="category-item">
@@ -85,22 +94,7 @@ margin-top: -32px;
             </div>
 
           </div>
-          <div class="opt-div border-primary" style="margin: 4px 0px 4px 4px; width: 40px;
-      height: 40px; float:left" (click)='gotoItem(item)' class="">
-            <div class="category-item">
-              <ion-grid>
-                <ion-row style="justify-content: center; "><img src="assets/imgs/fruits.jpg" style="border-radius: 50%;"
-                    height="100%" width="100%" /></ion-row>
-              </ion-grid>
-            </div>
-            <div style="
-        width: 100%;
-        height: 100%;text-align: center">
-              <font style="font-size: 7px;">Fruits</font>
-            </div>
-
-          </div>
-        </ng-container>
+      
       </ion-slide>
     </ion-slides>
   </div>
@@ -110,10 +104,9 @@ margin-top: -32px;
       <font style="margin-left: 10px; font-size: 12px; font-weight: 700;">Order Again</font>
     </div>
     <div>
-      <ion-slides #mySlider (ionSlideWillChange)="onSlideChangeStart($event)"
+      <ion-slides slidesPerView="3" spaceBetween="1" #mySlider (ionSlideWillChange)="onSlideChangeStart($event)"
         (ionSlideDidChange)="onSlideChanged($event)" pager="false">
-        <ion-slide class="first-slide" *ngFor="let item of dishes">
-          <ng-container>
+        <ion-slide class="" >
             <div class="recent-div" style="border-radius: 10px; width: 100%; height: 75px;">
               <ion-card id="order-card" class="order-card shadow-effect ">
                 <ion-grid style="padding: 0px;">
@@ -128,6 +121,9 @@ margin-top: -32px;
                 </ion-grid>
               </ion-card>
             </div>
+        </ion-slide>
+        <ion-slide class="">
+          <ng-container>
             <div class="recent-div" style="border-radius: 10px; width: 100%; height: 75px;">
               <ion-card id="order-card" class="order-card shadow-effect ">
                 <ion-grid style="padding: 0px;">
