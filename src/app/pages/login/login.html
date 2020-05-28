@@ -1,37 +1,28 @@
 <ion-content no-padding>
-  <div class="login-container">
-    <ion-row class="login-image">
-      <div class="img">
-        <img src='assets/imgs/shopping-cart.jpg' height="100%" width="100%"
-          style="border-top-left-radius: 25px; border-top-right-radius: 25px;" />
-
-      </div>
-    </ion-row>
-    <ion-row class="login-title">
-      <div class="title">
-        <font id="left-text">Login or </font>
-        <font id="right-text">Becomes Member</font>
-      </div>
-    </ion-row>
-    <ion-row class="login-btn">
-      <button class="sign-btn re-outline"
-        (click)='signin()'>
-        <label >Sign in</label>
+  <div style="text-align:center; margin: 20px;">
+    <div style="height: 60%; width: 100%;">
+      <img src='assets/imgs/shopping-cart.jpg' height="100%" width="100%" style="border-top-left-radius: 25px; border-top-right-radius: 25px;"/>
+    </div>
+  </div>
+  <div style="margin: 1px 60px;">
+    <font style="font-family: Poppins; font-weight: 100; color:#9e9e9e">Login or </font>
+    <font style="font-family: Poppins; font-weight: 700;">Become Member</font>
+  </div>
+  <div style="justify-content: center; text-align: -webkit-center">
+    <div style="width: 60%; margin-top: 15px;">
+      <button class="signin-btn" (click)='signin()'>
+        <label>Sign in</label>
       </button>
-    </ion-row>
-    <ion-row class="login-btn">
-      <button class="signup-btn re-outline"
-        (click)='signup()'>
-        <label >Sign Up</label>
+    </div>
+    <div style="width: 60%; margin-top: 15px;">
+      <button class='signup-btn' (click)='signup()'>
+        <label>Sign Up</label>
       </button>
-    </ion-row>
-    <ion-row class="login-termcond">
-      <div class="term-cond">
-        <font>
-          Teram of conditions
-        </font>
-      </div>
-
-    </ion-row>
+    </div>
+    <div style="width: 60%; margin-top: 15px;">
+      <font style="font-family: Poppins; font-size: 12px; font-weight: 700; color:#9e9e9e">
+        Terms of conditions
+      </font>
+    </div>
   </div>
 </ion-content>

@@ -38,21 +38,16 @@
  font-size: 11px;
  color:$gray;
 }
-.slider-btn {
-    display: flex;
-    justify-content: center;
-   
-    .start-btn {
-        width: 35%;
-        border-radius: 25px;
-        padding: 7px 20px 7px 20px;
-        background-color:$yellow;
-        label {
-            color: $dark;
-            font-size: 12px;
-            cursor: pointer;
-        }
-    }
-  
-}
 
+.start-btn {
+    width: 35%;
+    border-radius: 25px;
+    padding: 7px 20px 7px 20px;
+    background-color: $yellow;
+    outline: none;
+    label {
+        color: $dark;
+        font-size: 12px;
+        cursor: pointer;
+    }
+}

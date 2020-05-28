@@ -1,62 +1,24 @@
 @import '../../../theme/variables.scss';
 
-.login-container {
-    margin-top: 65px;
-}
-.login-image {
-    margin-bottom: 30px;
-
-}
-.login-title {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    #left-text {
-      font-size: 12px; 
-      font-weight: 100; 
-      color: $gray;
-    }
-    #right-text {
-        font-size: 12px; 
-    }
-}
-.login-btn {
-    margin-bottom: 5px;
-    display: flex;
-    justify-content: center;
-    .sign-btn {
-        width: 90%;
-        border-radius: 25px; 
-        padding: 7px 20px 7px 20px; 
-        background-color:$white;
-        border:1px solid $dark;
-        label {
-            color:$dark;
-            font-size: 12px;
-            cursor: pointer;
-        }
-    }
-    .signup-btn {
-        width: 90%;
-        border-radius: 25px; 
-        padding: 7px 20px 7px 20px; 
-        background-color:$yellow;
-        label {
-            color:$dark;
-            font-size: 12px;
-            cursor: pointer;
-
-        }
-    }
-}
-.login-termcond {
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: center;
-    font {
-        font-size: 9px;
-        font-weight: 100;
-        color: gray;
+.signup-btn {
+    width: 100%;
+    border-radius: 25px;
+    padding: 7px 20px 7px 20px;
+    outline: none;
+    background-color: $yellow;
+    label {
+        color: $dark;
     }
 }
 
+.signin-btn {
+    width: 100%;
+    outline: none;
+    border-radius: 25px;
+    border: $dark 1px solid;
+    padding: 7px 20px 7px 20px;
+    background-color: white;
+    label {
+        color: $dark;
+    }
+}
