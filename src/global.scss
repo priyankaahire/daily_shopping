@@ -69,7 +69,20 @@ body {
     -moz-outline-style: none;
     
   }
-  ion-content div {
+  ion-content > div {
     margin-left: 10px;
     margin-right: 10px;
   }
+      #wrap-content {
+        width: 87%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+      }
+      #wrap-text{
+        max-width: 300px;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        hyphens: auto;
+      }

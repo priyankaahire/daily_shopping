@@ -11,28 +11,16 @@ export class HomePage implements OnInit {
   options
   items
   recent
-  ItemsListPage: any = [];
-  dishes: any = [
-    {
-      firstname: "ONION",
-      lastname: "",
-      imageUrl: "assets/imgs/Onion.jpg"
-    },
-    {
-      firstname: "ONION",
-      lastname: "",
-      imageUrl: "assets/imgs/Onion.jpg"
-    },
-    {
-      firstname: "FRUITS",
-      lastname: "",
-      imageUrl: "assets/imgs/fruits.jpg"
-    }
-  ]
+  categories: any = [];
+  imageSlider: any = []
+  recentOrders: any = [];
+  recommItems: any = [];
   constructor(private router: Router) {
       this.goToTabWithId();
       this.getCategories();
       this.getRecentOrders();
+      this.getImageSlider();
+      this.getRecommItem();
   }
 
   goToTabWithId() {
@@ -41,14 +29,140 @@ export class HomePage implements OnInit {
  
   ngOnInit() {
   }
+  getImageSlider() {
+      this.imageSlider = [
+        {
+          firstname: "ONION",
+          lastname: "",
+          imageUrl: "assets/imgs/Onion.jpg"
+        },
+        {
+          firstname: "ONION",
+          lastname: "",
+          imageUrl: "assets/imgs/Onion.jpg"
+        },
+        {
+          firstname: "FRUITS",
+          lastname: "",
+          imageUrl: "assets/imgs/fruits.jpg"
+        },
+      ]
+  }
   gotoItem(category) {
     // this.app.getRootNav().push(ItemsListPage, {category: category})
   }
-
-  async getRecentOrders() {
+  getRecommItem() {
+    this.recommItems = [
+      {
+        title: "Palak 250g+Ladies Finger+Cucumber+Capsicum",
+        imageUrl: "assets/imgs/vegitables.png",
+        price:123.44,
+        desc:"3 combo pack fresh vegitables"
+      },
+      {
+        title: "Palak 250g+Ladies Finger+Cucumber+Capsicum",
+        imageUrl: "assets/imgs/vegitables.png",
+        price:123.44,
+        desc:"3 combo pack fresh vegitables"
+      },
+      {
+        title: "Dove Bar Soap-Pack of 3",
+        imageUrl: "assets/imgs/home_care.jpg",
+        price:400,
+        desc:"Cream Beauty Btahing Bar"
+      },
+      {
+        title: "Body Care",
+        imageUrl: "assets/imgs/personal_care.jpg",
+        price:123.44,
+        desc:"3 combo pack fresh vegitables"
+      },
+      {
+        title: "Fruits",
+        imageUrl: "assets/imgs/fruits.jpg",
+        price:123.44,
+        desc:"3 combo pack fresh vegitables"
+      }
+    ]
+  }
+  getRecentOrders() {
+    this.recentOrders = [
+      {
+        title: "Palak 250g+Ladies Finger+Cucumber+Capsicum",
+        imageUrl: "assets/imgs/vegitables.png",
+        price:123.44,
+        desc:"3 combo pack fresh vegitables"
+      },
+      {
+        title: "Palak 250g+Ladies Finger+Cucumber+Capsicum",
+        imageUrl: "assets/imgs/vegitables.png",
+        price:123.44,
+        desc:"3 combo pack fresh vegitables"
+      },
+    {
+      title: "Dove Bar Soap-Pack of 3",
+      imageUrl: "assets/imgs/home_care.jpg",
+      price:400,
+      desc:"Cream Beauty Btahing Bar"
+    },
+    {
+      title: "Body Care",
+      imageUrl: "assets/imgs/personal_care.jpg",
+      price:123.44,
+      desc:"3 combo pack fresh vegitables"
+    },
+    {
+      title: "Fruits",
+      imageUrl: "assets/imgs/fruits.jpg",
+      price:123.44,
+      desc:"3 combo pack fresh vegitables"
+    }
+  ]
   }
 
   getCategories() {
+    this.categories = [
+      {
+        name: "vegitables",
+        imageUrl: "assets/imgs/vegitables.png"
+      },
+      {
+        name: "Home Care",
+        imageUrl: "assets/imgs/home_care.jpg"
+      },
+      {
+        name: "Body Care",
+        imageUrl: "assets/imgs/personal_care.jpg"
+      },
+      {
+        name: "vegitables",
+        imageUrl: "assets/imgs/Onion.jpg"
+      },
+      {
+        name: "Fruits",
+        imageUrl: "assets/imgs/fruits.jpg"
+      },
+      {
+        name: "vegitables",
+        imageUrl: "assets/imgs/vegitables.png"
+      },
+      {
+        name: "Home Care",
+        imageUrl: "assets/imgs/home_care.jpg"
+      },
+      {
+        name: "Body Care",
+        imageUrl: "assets/imgs/personal_care.jpg"
+      },
+      {
+        name: "vegitables",
+        imageUrl: "assets/imgs/Onion.jpg"
+      },
+      {
+        name: "Fruits",
+        imageUrl: "assets/imgs/fruits.jpg"
+      }
+    ]
   }
 
   dealOfTheDay() {
