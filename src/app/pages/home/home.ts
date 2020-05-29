@@ -40,12 +40,8 @@ export class HomePage implements OnInit {
           firstname: "ONION",
           lastname: "",
           imageUrl: "assets/imgs/Onion.jpg"
-        },
-        {
-          firstname: "FRUITS",
-          lastname: "",
-          imageUrl: "assets/imgs/fruits.jpg"
-        },
+        }
+       
       ]
   }
   gotoItem(category) {
