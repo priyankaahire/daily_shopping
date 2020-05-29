@@ -165,13 +165,11 @@ export class HomePage implements OnInit {
     this.router.navigate(['/deal-of-day']);
   }
   onSlideChanged(e) {
-    console.log('On slide change event');
   }
 
   onSlideChangeStart(event) {
     /** isEnd true when slides reach at end slide */
     event.target.isEnd().then(isEnd => {
-      console.log('End of slide', isEnd);
     });
   }
   gotoDetails() {

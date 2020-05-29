@@ -1,37 +1,76 @@
 
-    .list-container { /* list-container container */
-        column-count: 1;
-        column-gap: 0.1em;
+@import '../../../theme/variables.scss';
+.toolbar-style {
+  .left-col{
+    display: inline-flex;
+    padding-top: 12px;
+    ion-icon, span {
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 14px;
+    }
+  }
+  .right-col{
+   .header-icon {
+    display: inline-flex;
+    margin-left: 4px;
+    width: 85%;
+    float: right; 
+    margin-bottom: 12px;
+    background-color: $yellow !important;
+    border-top-left-radius: 20px; 
+    border-bottom-left-radius: 20px;
+    .icon-style {
+      box-shadow: -2px -1px 40px 7px #b8b8b8;
+      border-radius: 15px;
+      background: $white;
+      width: 25px;
+      height: 25px;
+      margin: 2px;
+      ion-icon {
+        padding: 5px;
+        color: $dark;
       }
-      
+    }
+  }
+  }
+  
+}
+.dealday-container {
+  margin-top: 15px;
+  .category-container {
+    ion-slide.swiper-slide {
+      border-radius: 50%;
+      width: 65px !important;
+      height: auto;
+    }
+    .cat-img {
+      padding: 10px;
+      border-radius: 50%;
+      width: 50px !important;
+      height: 50px;
+      box-shadow: 0 0 2px 2px #ccc;
+    
+    }
+    .cat-text {
+      font-size: 7px;
+    }
+  
+  }
+  .list-container {
+    column-gap: 0.1em;
+
+  }
+ 
+}
+   
     .item { /* list-container bricks or child elements */
     background-color: #eee;
     display: inline-block;
     margin: 0 0 1em;
     }
   
-    .opt-scroll {
-      min-height: 35px !important; 
-      height: auto;
-  
-          .scroll-content {
-          padding: 0px !important;
-      }    
-    }
-  
-    .opt-div {
-        width: max-content !important;
-        height: 25px;
-        display: inline-block;
-    }
-  
-    .border_primary{
-    //   border-color: color($colors, primary);
-    }
-  
-    .bg_primary {
-    //   background-color: color($colors, primary);
-    }
+    
     #wrap-content {
       width: 87%;
       white-space: nowrap;
@@ -42,20 +81,10 @@
     .list-container img {
       width: 100%;
       height: 90%;
-      -webkit-box-shadow: 0 0 5px 5px #ccc;
-      -moz-box-shadow: 0 0 5px 5px #ccc;
-      // box-shadow: -2px -1px 40px 7px #fff;
       box-shadow: 0 0 5px 5px #ccc;
       border-radius: 15px;
     }
-    .icon-style {
-      box-shadow: -2px -1px 40px 7px #b8b8b8;
-      border-radius: 15px;
-      background: #fff;
-      width: 25px;
-      height: 25px;
-      margin: 2px;
-    }
+   
     .addremove{
       box-shadow: -2px -1px 40px 7px #b8b8b8;
       border-radius: 15px;
@@ -78,9 +107,15 @@
   border-radius: 50%;
   width: 100%;
   height: 100%;
-  /* background: #fff; */
   box-shadow: 0 0 5px 5px #ccc;
 }
-  
+
+
+.footer-icon {
+  justify-content: space-evenly;
+    ion-icon{
+    font-size: 20px;
+    }
+}
   
   
