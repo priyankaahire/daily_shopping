@@ -1,31 +1,124 @@
 import { Component, OnInit } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-details',
   templateUrl: './details.html',
   styleUrls: ['./details.scss'],
 })
 export class DetailsPage implements OnInit {
-  constructor(private router: Router) { 
-    
+  sub:any;
+  item:any;
+  orderAgain: any = [];
+  recommItems: any = [];
+  constructor(private activeRoute: ActivatedRoute,private router: Router ) { 
+    this.activeRoute.queryParams.subscribe(params => {
+      if (params && params.special) {
+        this.item = JSON.parse(params.special);
+      }
+    });
   }
   ngOnInit() {
+    this.getorderAgain();
+    this.getRecommItem();
   }
-  addToCart() {
-    this.router.navigate(['/mycart'])
+  addToCart(item) {
+    event.stopPropagation();
+    let navigationExtras = {
+      queryParams: {
+        special: JSON.stringify(item)
+      }
+    };
+      this.router.navigate(['mycart'],navigationExtras)
   }
   onSlideChanged(e) {
     console.log('On slide change event');
   }
 
   onSlideChangeStart(event) {
-    /** isEnd true when slides reach at end slide */
     event.target.isEnd().then(isEnd => {
-      console.log('End of slide', isEnd);
     });
   }
   back() {
     this.router.navigate(['/deal-of-day'])
+  }
+  plus(event:Event) {
+    if(this.item.count != 10) {
+      this.item.count += 1;
+    }
+  }
+
+  minus(event:Event) {
+    if(this.item.count != 0) {
+      this.item.count -= 1;
+    }
+  }
+  getorderAgain() {
+    this.orderAgain = [
+      {
+        title: "Palak 250g+Ladies Finger+Cucumber+Capsicum",
+        imageUrl: "assets/imgs/vegitables.png",
+        price:123.44,
+        desc:"3 combo pack fresh vegitables"
+      },
+      {
+        title: "Palak 250g+Ladies Finger+Cucumber+Capsicum",
+        imageUrl: "assets/imgs/vegitables.png",
+        price:123.44,
+        desc:"3 combo pack fresh vegitables"
+      },
+    {
+      title: "Dove Bar Soap-Pack of 3",
+      imageUrl: "assets/imgs/home_care.jpg",
+      price:400,
+      desc:"Cream Beauty Btahing Bar"
+    },
+    {
+      title: "Body Care",
+      imageUrl: "assets/imgs/personal_care.jpg",
+      price:123.44,
+      desc:"3 combo pack fresh vegitables"
+    },
+    {
+      title: "Fruits",
+      imageUrl: "assets/imgs/fruits.jpg",
+      price:123.44,
+      desc:"3 combo pack fresh vegitables"
+    }
+  ]
+  }
+  getRecommItem() {
+    this.recommItems = [
+      {
+        title: "Palak 250g+Ladies Finger+Cucumber+Capsicum",
+        imageUrl: "assets/imgs/vegitables.png",
+        price:123.44,
+        desc:"3 combo pack fresh vegitables"
+      },
+      {
+        title: "Palak 250g+Ladies Finger+Cucumber+Capsicum",
+        imageUrl: "assets/imgs/vegitables.png",
+        price:123.44,
+        desc:"3 combo pack fresh vegitables"
+      },
+      {
+        title: "Dove Bar Soap-Pack of 3",
+        imageUrl: "assets/imgs/home_care.jpg",
+        price:400,
+        desc:"Cream Beauty Btahing Bar"
+      },
+      {
+        title: "Body Care",
+        imageUrl: "assets/imgs/personal_care.jpg",
+        price:123.44,
+        desc:"3 combo pack fresh vegitables"
+      },
+      {
+        title: "Fruits",
+        imageUrl: "assets/imgs/fruits.jpg",
+        price:123.44,
+        desc:"3 combo pack fresh vegitables"
+      }
+    ]
   }
 }

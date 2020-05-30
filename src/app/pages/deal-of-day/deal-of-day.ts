@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { IonSlide } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
+import { ApiService } from '../../services/api.service';
+import { NavController, NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-deal-of-day',
@@ -11,7 +14,9 @@ export class DealOfDayPage implements OnInit {
   categories:any = [];
   items:any = [];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private activeRoute: ActivatedRoute,
+    private storage: Storage,
+    private apiService: ApiService) {
     this.getCategories();
     this.getItems();
   }
@@ -21,8 +26,22 @@ export class DealOfDayPage implements OnInit {
   back() {
     this.router.navigate(['/home']);
   }
+  addToCart(item, event:Event) {
+    event.stopPropagation();
+    let navigationExtras2 = {
+      queryParams: {
+        special: JSON.stringify(item)
+      }
+    };
+      this.router.navigate(['mycart'],navigationExtras2)
+  }
   gotoDetails(item, event) {
-    this.router.navigate(['/details']);
+   let navigationExtras = {
+    queryParams: {
+      special: JSON.stringify(item)
+    }
+  };
+    this.router.navigate(['details'],navigationExtras)
   }
   onSlideChangeStart(event) {
     /** isEnd true when slides reach at end slide */
@@ -112,6 +131,7 @@ export class DealOfDayPage implements OnInit {
     event.stopPropagation();
     if(this.items[idx].count != 10) {
       this.items[idx].count += 1;
+     // this.updateCart(this.items[idx])
     }
   }
 
@@ -119,8 +139,7 @@ export class DealOfDayPage implements OnInit {
     event.stopPropagation();
     if(this.items[idx].count != 0) {
       this.items[idx].count -= 1;
+      //this.updateCart(this.items[idx])
     }
   }
-
-
 }
