@@ -68,10 +68,10 @@
             <ion-card id="order-card" class="order-card shadow-effect ">
               <ion-grid style="padding: 0px;">
                 <ion-row>
-                  <ion-col size="4">
+                  <ion-col size="3">
                     <img style="width: 100%; height: 100%;" [src]=[order.imageUrl]>
                   </ion-col>
-                  <ion-col size="8">
+                  <ion-col size="9">
                     <div class="iteminfo" style="text-align:left">
                       <div style="width:100%" class="d">
                         <font id="wrap-content" style="color: black; font-size: 12px;">{{order.title}}
@@ -104,7 +104,7 @@
           (click)="gotoDetails(item)">
           <ion-grid style="padding: 0px;">
             <ion-row>
-              <ion-col size="8" style="display: inline-flex;">
+              <ion-col size="10" style="display: inline-flex;">
                 <div style="width:40%;" class="">
                   <img [src]="[recommItem.imageUrl]">
                 </div>
@@ -121,7 +121,7 @@
                   </div>
                 </div>
               </ion-col>
-              <ion-col size="4">
+              <ion-col size="2">
                 <div class="additem">
                   <ion-icon name="add" style="padding:5px"></ion-icon>
                 </div>

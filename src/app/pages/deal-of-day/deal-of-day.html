@@ -22,81 +22,73 @@
 <ion-content padding style="background-color: #f8f8f8;">
   <div class="dealday-container">
     <div class="category-container">
-        <ion-slides class="category-slider" slidesPerView="2" pager="false" #mySlider
-          (ionSlideWillChange)="onSlideChangeStart($event)" (ionSlideDidChange)="onSlideChanged($event)">
-          <ion-slide *ngFor="let category of categories">
-            <ion-grid>
-              <ion-row style="justify-content: center; ">
-                <div>
-                  <img class="cat-img" [src]=[category.imageUrl] />
-                </div>
-                <div>
-                  <font class="cat-text">{{category.name}}</font>
-                </div>
-              </ion-row>
-            </ion-grid>
-          </ion-slide>
-        </ion-slides>
+      <ion-slides class="category-slider" slidesPerView="2" pager="false" #mySlider
+        (ionSlideWillChange)="onSlideChangeStart($event)" (ionSlideDidChange)="onSlideChanged($event)">
+        <ion-slide *ngFor="let category of categories">
+          <ion-grid>
+            <ion-row style="justify-content: center; ">
+              <div>
+                <img class="cat-img" [src]=[category.imageUrl] />
+              </div>
+              <div>
+                <font class="cat-text">{{category.name}}</font>
+              </div>
+            </ion-row>
+          </ion-grid>
+        </ion-slide>
+      </ion-slides>
     </div>
     <div class="list-container">
-      <ion-card *ngFor="let item of items" class="shadow-effect" style="height: 100%;border-radius: 15px; margin: 5px; background-color: #ffffff;"
-        class="item">
-        <ion-grid >
+      <ion-card (click)="gotoDetails(item)" *ngFor="let item of items; let i = index" class="shadow-effect list-card">
+        <ion-grid>
           <ion-row>
-            <ion-col size="4">
-              <img style="width: 100%; height: 100%;" [src]="[item.imageUrl]" (click)="gotoDetails(item)">
+            <ion-col class="left-info" size="4">
+              <img [src]="[item.imageUrl]">
             </ion-col>
-            <ion-col size="8">
-              <div class="iteminfo" style="">
-                <div style="width:100%" >
-                  <font id="wrap-content" style="color: black; font-size: 12px; font-weight: 700;">{{item.title}}
+            <ion-col class="right-info" size="8">
+              <div class="iteminfo">
+                <div style="width:100%">
+                  <font class="title" id="wrap-content">{{item.title}}
                   </font>
                 </div>
-                <div style="width:100%;" >
-                    <small id="wrap-content" style="color: gray; ">{{item.desc}}</small>
+                <div style="width:100%;">
+                  <small class="desc" id="wrap-content">{{item.desc}}</small>
                 </div>
-                <div style="width:100%;" >
-                  <font style="color:#ffc409; font-size: 10px;">Rs {{item.price}}</font>
+                <div style="width:100%;">
+                  <font class="price">Rs {{item.price}}</font>
                 </div>
-               
               </div>
-              <div class="itemAddDeatils" style="width:100%; display: inline-flex;">
-                <div class="" style="width: 40% !important;">
-                  <div>
-                    <div style="display: inline-flex;">
-                      <div class="addremove">
-                        <ion-icon style="padding: 2px;color: #000;" name="remove-outline"></ion-icon>
-                      </div>
-                      <div>
-                        <font style="color:#000;font-size: 8px;">3 pcs</font>
-                      </div>
+              <div class="itemAddDeatils">
+                <div class="details-left">
+                  <div id="counter-info">
+                    <div (click)="minus(i, $event)" class="addremove">
+                      <ion-icon name="remove-outline"></ion-icon>
+                    </div>
+                    <div>
+                      <font>{{item.count}}</font>
+                    </div>
 
-                      <div class="addremove">
-                        <ion-icon style="padding: 2px;color: #000;" name="add-outline"></ion-icon>
-                      </div>
+                    <div (click)="plus(i, $event)" class="addremove">
+                      <ion-icon name="add-outline"></ion-icon>
                     </div>
                   </div>
                 </div>
-                <div class="opt-div border_primary"
-                  style="background-color: #000; float:right; padding: 0px; border-radius: 20px; border-style: solid; border-width: 1px; width: 50% !important; height: 35px;">
+                <div class="details-right">
                   <ion-row>
-                    <ion-col style="color:#fff;">
-                      <div id="" style="float: left;">
-                        <ion-icon style="font-size: 18px;" name="basket"></ion-icon>
+                    <ion-col>
+                      <div id="basket-icon">
+                        <ion-icon name="basket"></ion-icon>
                       </div>
-                      <div>
-                        <font style="font-size:10px">Add to Cart</font>
+                      <div id="basket-title">
+                        <font>Add to Cart</font>
                       </div>
                     </ion-col>
                   </ion-row>
                 </div>
               </div>
-
             </ion-col>
           </ion-row>
-          <ion-row style="justify-content: center;">
 
-          </ion-row>
         </ion-grid>
       </ion-card>
     </div>
@@ -108,7 +100,7 @@
 <ion-footer>
   <ion-toolbar>
     <ion-row class="footer-icon">
-      <ion-col (click)="back()"   size="2">
+      <ion-col (click)="back()" size="2">
         <ion-icon name="home"></ion-icon>
       </ion-col>
       <ion-col size="2" style="cursor: pointer;">
