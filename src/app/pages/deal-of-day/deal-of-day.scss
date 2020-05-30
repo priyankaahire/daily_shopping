@@ -100,8 +100,17 @@
           .details-left {
             width: 40% !important;
             #counter-info {
-              display: inline-flex;position: absolute;
+                    display: inline-flex;
+                    position: absolute;
                     bottom: 2px;
+                     .addremove{
+                        box-shadow: -2px -1px 40px 7px #b8b8b8;
+                        border-radius: 15px;
+                        background: $white;
+                        width: 18px;
+                        height: 18px;
+                        margin: 2px;
+                      }
                     ion-icon {
                       cursor:pointer; 
                       padding: 2px;
@@ -145,49 +154,6 @@
   }
  
 }
-   
-  
-    
-    #wrap-content {
-      width: 87%;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: inline-block;
-    } 
-    .list-container img {
-      width: 100%;
-      height: 90%;
-      box-shadow: 0 0 5px 5px #ccc;
-      border-radius: 15px;
-    }
-   
-    .addremove{
-      box-shadow: -2px -1px 40px 7px #b8b8b8;
-      border-radius: 15px;
-      background: $white;
-      width: 18px;
-      height: 18px;
-      margin: 2px;
-    }
-    .ionicon, svg {
-      margin-top: 3px !important;
-
-    }
-    .icon-inner {
-      margin-top: 3px !important;
-    }
-   
-
-
-.category-item {
-  border-radius: 50%;
-  width: 100%;
-  height: 100%;
-  box-shadow: 0 0 5px 5px #ccc;
-}
-
-
 .footer-icon {
   justify-content: space-evenly;
     ion-icon{
@@ -195,4 +161,7 @@
     }
 }
   
+
+
+
   
