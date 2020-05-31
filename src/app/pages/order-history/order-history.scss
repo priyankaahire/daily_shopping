@@ -1,5 +1,44 @@
 @import '../../../theme/variables.scss';
 
+
+.toolbar-style {
+  .left-col{
+    display: inline-flex;
+    padding-top: 12px;
+    ion-icon, span {
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 14px;
+    }
+  }
+
+  .right-col {
+   .header-icon {
+    display: inline-flex;
+    margin-left: 4px;
+    width: 85%;
+    float: right; 
+    margin-bottom: 12px;
+    background-color: $yellow !important;
+    border-top-left-radius: 20px; 
+    border-bottom-left-radius: 20px;
+    .icon-style {
+      box-shadow: -2px -1px 40px 7px #b8b8b8;
+      border-radius: 15px;
+      background: $white;
+      width: 25px;
+      height: 25px;
+      margin: 2px;
+      ion-icon {
+        padding: 4px;
+        color: $dark;
+      }
+    }
+  }
+  }
+  
+}
+
   #wrap-content {
     width: 87%;
     white-space: nowrap;

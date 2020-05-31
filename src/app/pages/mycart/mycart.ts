@@ -15,7 +15,6 @@ export class MycartPage implements OnInit {
       if (params && params.item) {
         this.cart_items.push(JSON.parse(params.item));
         this.itemsChanged();
-        console.log(this.cart_items);
       }
     });
   }
@@ -23,13 +22,13 @@ export class MycartPage implements OnInit {
   ngOnInit() {
   }
   payNow() {
+
     let navigationExtras = {
       queryParams: {
         item: JSON.stringify(this.cart_items),
-        total: this.total
       }
     };
-      this.router.navigate(['checkout'],navigationExtras)
+      this.router.navigate(['checkout'],navigationExtras);
  //   this.router.navigate(['/checkout'])
   }
   back() {
@@ -37,13 +36,29 @@ export class MycartPage implements OnInit {
   }
   itemsChanged() {
     this.total = 0
-    this.cart_items.forEach(elt => {
+    this.cart_items.forEach((elt, index) => {
       this.total += elt['count'] * parseInt(elt['price'])
+      this.cart_items[index].total = this.total;
     });
   }
 
   deleteFromCart(idx) {
     this.cart_items.splice(idx, 1)
     this.itemsChanged();
+  }
+  plus(idx, event:Event) {
+    event.stopPropagation();
+    if(this.cart_items[idx].count != 10) {
+      this.cart_items[idx].count += 1;
+      this.itemsChanged();
+    }
+  }
+
+  minus(idx,event:Event) {
+    event.stopPropagation();
+    if(this.cart_items[idx].count != 0) {
+      this.cart_items[idx].count -= 1;
+      this.itemsChanged();
+    }
   }
 }

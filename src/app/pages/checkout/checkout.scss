@@ -1,4 +1,50 @@
 @import '../../../theme/variables.scss';
+
+.checkout-container {
+    .delivery-status, .deliver-to, .delivery-method {
+        margin-bottom: 12px ;
+        // border: 1px solid red;
+    }
+}
+
+.toolbar-style {
+    .left-col{
+      display: inline-flex;
+      padding-top: 12px;
+      ion-icon, span {
+          font-weight: bold;
+          cursor: pointer;
+          font-size: 14px;
+      }
+    }
+  
+    .right-col {
+     .header-icon {
+      display: inline-flex;
+      margin-left: 4px;
+      width: 85%;
+      float: right; 
+      margin-bottom: 12px;
+      background-color: $yellow !important;
+      border-top-left-radius: 20px; 
+      border-bottom-left-radius: 20px;
+      .icon-style {
+     
+        ion-icon {
+          padding: 5px;
+          color: $dark;
+        }
+        small {
+      font-size: 10px;
+    position: absolute;
+    top: 13px;
+
+        }
+      }
+    }
+    }
+    
+  }
 .delivery-status {
     width:100%;
 }
@@ -101,4 +147,21 @@ display: inline-block;
     height: 80px;
     background-color: #fff !important;
     border-radius: 8px;
+    .btn {
+        .btn-conform {
+        cursor: pointer;
+        text-align: center;
+        background-color: #222;
+        float: right;
+        color: #fff;
+        padding: 0px;
+        border-radius: 20px;
+        border-style: solid;
+        border-width: 1px;
+        width: 100% !important;
+        height: 34px;
+        border: 1px solid #000;
+        font-size: 12px;
+        }
+    }
 }

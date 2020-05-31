@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-order-history',
@@ -8,7 +8,14 @@ import { Router } from '@angular/router';
 })
 export class OrderHistoryPage implements OnInit {
 
-  constructor(private router: Router) { }
+  items: any = [];
+  constructor(private activeRoute: ActivatedRoute,private router: Router ) { 
+    this.activeRoute.queryParams.subscribe(params => {
+      if (params && params.item) {
+        this.items = JSON.parse(params.item);
+      }
+    });
+  }
 
   ngOnInit() {
   }
