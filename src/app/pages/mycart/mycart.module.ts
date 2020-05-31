@@ -11,6 +11,7 @@ import { MycartPage } from './mycart';
     FormsModule,
     IonicModule,
     MycartPageRoutingModule
+    
   ],
   declarations: [MycartPage]
 })

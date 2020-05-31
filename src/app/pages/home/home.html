@@ -101,7 +101,7 @@
       </div>
       <div class="">
         <ion-card *ngFor="let recommItem of recommItems" id="recom-card" class="shadow-effect " class="item"
-          (click)="gotoDetails(item)">
+         >
           <ion-grid style="padding: 0px;">
             <ion-row>
               <ion-col size="10" style="display: inline-flex;">
@@ -123,7 +123,7 @@
               </ion-col>
               <ion-col size="2">
                 <div class="additem">
-                  <ion-icon name="add" style="padding:5px"></ion-icon>
+                  <ion-icon (click)="gotoDetails(recommItem)" name="add" style="padding:5px"></ion-icon>
                 </div>
               </ion-col>
             </ion-row>

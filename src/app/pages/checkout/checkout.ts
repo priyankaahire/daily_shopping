@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -7,8 +7,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./checkout.scss'],
 })
 export class CheckoutPage implements OnInit {
-
-  constructor(private router: Router) { }
+  items: any = []
+  total = 0
+  constructor(private activeRoute: ActivatedRoute,private router: Router ) { 
+    this.activeRoute.queryParams.subscribe(params => {
+      if (params && params.item) {
+        this.items.push(JSON.parse(params.item));
+        this.total = params.total;
+        console.log(this.items);
+      }
+    });
+  }
 
   ngOnInit() {
   }

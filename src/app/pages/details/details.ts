@@ -13,8 +13,8 @@ export class DetailsPage implements OnInit {
   recommItems: any = [];
   constructor(private activeRoute: ActivatedRoute,private router: Router ) { 
     this.activeRoute.queryParams.subscribe(params => {
-      if (params && params.special) {
-        this.item = JSON.parse(params.special);
+      if (params && params.item) {
+        this.item = JSON.parse(params.item);
       }
     });
   }
@@ -26,7 +26,7 @@ export class DetailsPage implements OnInit {
     event.stopPropagation();
     let navigationExtras = {
       queryParams: {
-        special: JSON.stringify(item)
+        item: JSON.stringify(item)
       }
     };
       this.router.navigate(['mycart'],navigationExtras)

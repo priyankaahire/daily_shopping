@@ -30,7 +30,7 @@ export class DealOfDayPage implements OnInit {
     event.stopPropagation();
     let navigationExtras2 = {
       queryParams: {
-        special: JSON.stringify(item)
+        item: JSON.stringify(item)
       }
     };
       this.router.navigate(['mycart'],navigationExtras2)
@@ -38,7 +38,7 @@ export class DealOfDayPage implements OnInit {
   gotoDetails(item, event) {
    let navigationExtras = {
     queryParams: {
-      special: JSON.stringify(item)
+      item: JSON.stringify(item)
     }
   };
     this.router.navigate(['details'],navigationExtras)

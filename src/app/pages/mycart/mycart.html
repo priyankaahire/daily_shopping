@@ -26,13 +26,13 @@
 
 <ion-content padding style="background-color: #f8f8f8;">
   <div class="list-container">
-    <div class="" *ngFor="let cartitem of cart_items">
+    <div class="" *ngFor="let item of cart_items; let i = index;">
       <div class="" style="width:99%; height: 12px;">
         <icon-row>
           <icon-col sie="12">
             <div style="width:100%; float: right;" >
-              <div class="add" style="padding: 2px;">
-                 <ion-icon name="add"></ion-icon>
+              <div class="add" style="padding: 2px;" (click)="deleteFromCart()">
+                 <ion-icon name="close"></ion-icon>
              </div>
            </div>
           </icon-col>
@@ -44,13 +44,13 @@
             <ion-grid style="">
               <ion-row>
                 <ion-col size="4">
-                  <img style="width: 100%; height: 100%;" [src]="[cartitem.imageUrl]" (click)="gotoDetails(cartitem)">
+                  <img style="width: 100%; height: 100%;" [src]="[item.imageUrl]" (click)="gotoDetails(item)">
                 </ion-col>
                 <ion-col size="8">
                   <div class="iteminfo">
                     <div class="" style="width:100%">
                       <div style="width:80%;float: left;" >
-                        <font id="wrap-content" style="color: black; font-size: 12px; font-weight: 700;">{{cartitem.title}}
+                        <font id="wrap-content" style="color: black; font-size: 12px; font-weight: 700;">{{item.title}}
                         </font>
                       </div>
                    
@@ -58,7 +58,7 @@
                  
                     <div style="width:100%;padding-top: 2px;" >
                       <div style="width:100%; float: left;" >
-                        <small style="color: gray; ">{{cartitem.desc}}</small>
+                        <small style="color: gray; ">{{item.desc}}</small>
                       </div>
                     </div>
                   </div>
@@ -72,14 +72,14 @@
                             </div>
                             <div>
                               <font style="  margin-left: 3px;
-                              margin-right: 3px;color:#000;font-size: 8px; font-weight: 700">{{cartitem.count}}</font>
+                              margin-right: 3px;color:#000;font-size: 8px; font-weight: 700">{{item.count}}</font>
                             </div>
                             <div class="addremove">
                               <ion-icon style="padding: 2px;color: #000;" name="add-outline"></ion-icon>
                             </div>
                           </div>
                           <div style="float:right;padding-top: 3px;">
-                            <font style="color:#ffc409; font-size: 12px;">Rs {{cartitem.price}}</font>
+                            <font style="color:#ffc409; font-size: 12px;">Rs {{item.price}}</font>
                           </div>
                         </div>
                     
@@ -111,7 +111,7 @@
               <ion-row>
                 <div>
                   <div>
-                    <font style="color:#000;font-size: 15px; font-weight: 700">Total R338</font>
+                    <font style="color:#000;font-size: 15px; font-weight: 700">Total R{{total}}</font>
                   </div>
                 </div>
               </ion-row>

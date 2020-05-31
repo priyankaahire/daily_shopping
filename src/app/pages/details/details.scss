@@ -6,55 +6,28 @@ display: none;
 .scroll-zoom-wrapper {
     white-space: nowrap;
 }
-
-.img-card {
-    width: 250px !important;
-    height: 150px;
-    display: inline-block;
+.toolbar-style {
+  padding-top: 10px;
+  ion-col {
+    padding-top: 15px;
+  }
 }
-
-// .img-scroll {
-//     min-height: 170px; 
-//     height: auto;
-
-//     .scroll-content {
-//         padding: 0px !important;
-//     }    
-// }
-
-// .recent-scroll {
-//     min-height: 210px; 
-//     height: auto;
-
-//     .scroll-content {
-//         padding: 0px !important;
-//     }    
-// }
-
-// .opt-scroll {
-//     min-height: 110px; 
-//     height: auto;
-
-//         .scroll-content {
-//         padding: 0px !important;
-//     }    
-// }
-
-// .opt-div {
-//     display: inline-block;
-// }
-
-
 .icon-style {
     box-shadow: -2px -1px 40px 7px #b8b8b8;
     border-radius: 15px;
-    background: #fff;
+    background: $white;
     width: 25px;
     height: 25px;
     margin: 2px;
     float: right;
+    color:#d04456;
+     padding: 5px;
   }
-
+.details-container {
+  .item-image, .item-detail , .mightlike-container, .ordergain-conatiner {
+    margin: 5px;
+  }
+}
   .item-image {
     width: 100%;
     height: 200px;
@@ -62,9 +35,6 @@ display: none;
         width: 100%;
         border-radius: 30px;
         height: 100%;
-        // -webkit-box-shadow: 0 0 5px 5px #ccc;
-        // -moz-box-shadow: 0 0 5px 5px #ccc;
-        // box-shadow: 0 0 5px 5px #ccc;
     img {
         width:100%;
         height: 100%;
@@ -72,29 +42,50 @@ display: none;
     }
    
   }
-  .pricetag {
+    .item-detail {
+    .pricetag {
   
-    background-color: $yellow;
-    color: black;
-    float: left;
-    padding: 15px;
-    font-size: 14px;
-    font-weight: 700;
-    font-style: bold;
-    float: right !important;
-    width: auto;
-    border-radius: 50%;
-    height: auto;
-    box-shadow: 0 0 5px 5px #ccc;
-
+      background-color: $yellow;
+      color: $dark;
+      padding: 15px;
+      font-weight: 700;
+      font-style: bold;
+      float: right !important;
+      width: auto;
+      border-radius: 50%;
+      height: auto;
+      font-size:8px ;
+      background-color: $yellow;
+  
+    }
+    .item-title {
+      font {
+        font-size:12px; 
+        font-weight: 700;
+      }
+    }
+    .rating {
+      float:right; 
+      font-size:10px;
+      ion-icon {
+        fill:#ffc409;
+      }
+      font {
+        font-size:10px; 
+        font-weight: 700; 
+        float:right;
+       }
+     }
+    .item-info  {
+    font-size:10px;
+    }
   }
-  .recent-div {
-    width: 100px;
-    height: 200px;
-    display: inline-block;
-}
-
 .mightlike-container {
+  .title {
+    font {
+      font-size:12px;
+    }
+  }
  img {
     width: 100%;
     height: 100%;
@@ -113,12 +104,18 @@ display: none;
     border-radius: 10px;
     margin: 1px;
     width:50px;
-    background-color: #ffffff;
+    background-color:$white;
   }
 }
 
   
 .ordergain-conatiner {
+  .title {
+    font {
+      font-size: 12px; 
+      font-weight: 700;
+    }
+  }
   ion-slide.swiper-slide  {
     border-radius: 50%;
     width: 90% !important;
@@ -132,11 +129,27 @@ display: none;
     }
 
 }
-
+.recentorder-slider {
+  img {
+    width: 100%; height: 100%;
+  }
+  .iteminfo {
+    text-align:left;
+    .price {
+      font-size: 12px;
+    }
+    .desc {
+      color: $gray; 
+    }
+    .title {
+      color: $dark; font-size: 12px;
+    }
+  }
+}
 .countinfo {
   margin-left: 3px;
     margin-right: 3px;
-    color:#000;font-size: 8px; font-weight: 700
+    color:$dark;font-size: 8px; font-weight: 700
 }
   .footerbar-style {
     max-height: var(--footerbar-max-height);
@@ -152,10 +165,32 @@ display: none;
       .addremove{
         box-shadow: -2px -1px 40px 7px #b8b8b8;
         border-radius: 15px;
-        background: #fff;
+        background: $white;
         width: 18px;
         height: 18px;
         margin: 2px;
+      }
+      .itemAddDeatils {
+        .btn-cart {
+          border-color: $dark;
+          color:$white;
+          cursor:pointer;
+          background-color: $dark; 
+          float:right; 
+          padding: 5px; 
+          border-radius: 20px; 
+          border-style: solid; 
+          border-width: 1px; 
+          width: 45% !important; 
+          height: 35px;
+
+          ion-icon {
+            font-size: 18px;
+          }
+          font {
+            font-size:10px
+          }
+        }
       }
       }
     }

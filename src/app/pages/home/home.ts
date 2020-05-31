@@ -172,8 +172,13 @@ export class HomePage implements OnInit {
     event.target.isEnd().then(isEnd => {
     });
   }
-  gotoDetails() {
-    this.router.navigate(['/details'])
+  gotoDetails(item) {
+    let navigationExtras = {
+      queryParams: {
+        item: JSON.stringify(item)
+      }
+    };
+    this.router.navigate(['details'],navigationExtras)
   }
 
 }

@@ -176,22 +176,10 @@
             <ion-col style="text-align:left; font-weight: 700;" size="8">Order Details</ion-col>
             <ion-col style="text-align:right;" size="4">Quantity</ion-col>
           </ion-row>
-            <ion-row class="" style="border-bottom:1px solid #000" >
-              <ion-col calss="left-align"  size="6">Dove </ion-col>
-              <ion-col calss="right-align" size="4">3 pack</ion-col>
-              <ion-col calss="left-align" size="2">457</ion-col>
-            </ion-row>
-
-            <ion-row class="" style="border-bottom:1px solid #000">
-              <ion-col calss="left-align"  size="6">Dove </ion-col>
-              <ion-col calss="right-align" size="4">3 pack</ion-col>
-              <ion-col calss="left-align" size="2">457</ion-col>
-            </ion-row>
-
-            <ion-row class="">
-              <ion-col calss="left-align"  size="6">Dove </ion-col>
-              <ion-col calss="right-align" size="4">3 pack</ion-col>
-              <ion-col calss="left-align" size="2">457</ion-col>
+            <ion-row class="" *ngFor = "let item of items">
+              <ion-col calss="left-align"  size="6">{{item.title}} </ion-col>
+              <ion-col calss="right-align" size="4">{{item.count}}</ion-col>
+              <ion-col calss="left-align" size="2">{{item.price}}</ion-col>
             </ion-row>
 
          </div>
