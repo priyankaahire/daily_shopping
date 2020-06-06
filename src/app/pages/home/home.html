@@ -1,157 +1,118 @@
-<ion-header>
-  <ion-toolbar style="padding-top: 13px;" class="toolbar-style">
-    <ion-row class="toolbar-row">
-      <ion-col class="toolbar-search" size="8">
-        <ion-input style="font-size: 12px;
-           " color="dark" placeholder="Search.."></ion-input>
-      </ion-col>
-      <ion-col class="toolbar-icon" size="4">
-        <div style="display: inline-flex;">
-          <div class="icon-style">
-            <ion-icon name="person-outline"></ion-icon>
-          </div>
-          <div class="icon-style">
-            <ion-icon name="search-outline"></ion-icon>
-          </div>
+<ion-content no-padding>
+  <ion-row style="background-color: #FFDF10; padding-left: 10px;">
+    <ion-col size="8">
+      <ion-row>
+        <font style="font-size: 12px; color: gainsboro;">Deliver Here</font>
+      </ion-row>
+      <ion-row>
+        <font style="font-size: 14px; color: black;">Nsp, New Delhi</font>
+      </ion-row>
+    </ion-col>
+    <ion-col size="4">
+      <div style="display: inline-flex;margin-left: 25px;">
+        <div style="height: 30px; width: 30px; background-color: white; border-radius: 50%; text-align: center; padding-top: 2px;">
+          <ion-icon style="padding: 5px;color: #000;" name="person-outline"></ion-icon>
         </div>
-      </ion-col>
-    </ion-row>
-  </ion-toolbar>
-</ion-header>
-<ion-content>
-  <div class="home-container">
-    <div class="slider-container">
-      <ion-grid>
-        <ion-row>
-          <div class="imageslider">
-            <ion-slides pager #mySlider (ionSlideWillChange)="onSlideChangeStart($event)"
-              (ionSlideDidChange)="onSlideChanged($event)">
-              <ion-slide class="" *ngFor="let item of imageSlider">
-                <div class="img-slide" style="margin-top: 5px;">
-                  <img [src]="item.imageUrl" width="100%" height="100%" style="border-radius: 25px;
-                width: 75%;
-                height: 100%;" />
-
-                </div>
-              </ion-slide>
-            </ion-slides>
-          </div>
-        </ion-row>
-      </ion-grid>
-
-    </div>
-    <div class="category-container">
-      <ion-slides class="category-slider" slidesPerView="2" pager="false" #mySlider
-        (ionSlideWillChange)="onSlideChangeStart($event)" (ionSlideDidChange)="onSlideChanged($event)">
-        <ion-slide *ngFor="let category of categories">
-          <ion-grid>
-            <ion-row style="justify-content: center; ">
-              <div>
-                <img class="cat-img" [src]=[category.imageUrl] />
-              </div>
-              <div>
-                <font class="cat-text">{{category.name}}</font>
-              </div>
-            </ion-row>
-          </ion-grid>
-        </ion-slide>
-      </ion-slides>
-    </div>
-    <div class="recentorder-container">
-      <div class="recentorder-title">
-        <font style="margin-left: 10px; font-size: 12px; font-weight: 700;">Order Again</font>
+        <div style="margin-left: 10px; height: 30px; width: 30px; background-color: white; border-radius: 50%; text-align: center; padding-top: 2px;">
+          <ion-icon style="padding: 5px;color: #000;" name="search-outline"></ion-icon>
+        </div>
       </div>
-      <div class="recentorder-item">
-        <ion-slides class="recentorder-slider" spaceBetween="1" slidesPerView="2" pager="false" #mySlider
-          (ionSlideWillChange)="onSlideChangeStart($event)" (ionSlideDidChange)="onSlideChanged($event)">
-          <ion-slide *ngFor="let order of recentOrders">
-            <ion-card id="order-card" class="order-card shadow-effect ">
-              <ion-grid style="padding: 0px;">
-                <ion-row>
-                  <ion-col size="3">
-                    <img style="width: 100%; height: 100%;" [src]=[order.imageUrl]>
-                  </ion-col>
-                  <ion-col size="9">
-                    <div class="iteminfo" style="text-align:left">
-                      <div style="width:100%" class="d">
-                        <font id="wrap-content" style="color: black; font-size: 12px;">{{order.title}}
-                        </font>
-                      </div>
-                      <div style="width:100%;padding-top: 2px;" class="d">
-                        <small id="wrap-content" style="color: gray; ">{{order.desc}}</small>
-                      </div>
-                      <div style="width:100%;padding-top: 2px;" class="d">
-                        <font style=" font-size: 12px;">{{order.price}}</font>
-                      </div>
-                    </div>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-card>
-          </ion-slide>
-        </ion-slides>
-      </div>
-
-
-
-    </div>
-    <div class="recomm-container">
-      <div class="">
-        <font style="margin-left: 10px; font-size: 12px; font-weight: 700;">Recommended</font>
-      </div>
-      <div class="">
-        <ion-card *ngFor="let recommItem of recommItems" id="recom-card" class="shadow-effect " class="item"
-         >
-          <ion-grid style="padding: 0px;">
-            <ion-row>
-              <ion-col size="10" style="display: inline-flex;">
-                <div style="width:40%;" class="">
-                  <img [src]="[recommItem.imageUrl]">
-                </div>
-                <div style="width:60%; margin-left: 0px;" class="iteminfo">
-                  <div style="text-align:left;width:100%">
-                    <font title="{{recommItem.title}}" id="wrap-content"
-                      style="color: black; font-size: 10px; font-weight: 700;">{{recommItem.title}}</font>
-                  </div>
-                  <div style="text-align:left;width:100% ; padding-top: 2px;">
-                    <div style="width:100%;">
-                      <small style="font-size: 10px; color: gray; ">{{recommItem.desc}}</small>
-                    </div>
-
-                  </div>
-                </div>
-              </ion-col>
-              <ion-col size="2">
-                <div class="additem">
-                  <ion-icon (click)="gotoDetails(recommItem)" name="add" style="padding:5px"></ion-icon>
-                </div>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
+    </ion-col>
+  </ion-row>
+  <div style="height: 170px; background-color: #FFDF10; margin: 0px;"></div>
+  <div class="container" style="margin: 0px; margin-top: -170px;">
+    <div class="scroll" scrollY="true">
+      <ion-card class="img-card" *ngFor="let item of imageSlider" style="border-radius: 20px; background: url('../../assets/imgs/Onion.jpg'); background-size: cover">
+        <ion-card style=" padding: 10px; height: 100px; width: 100%; margin-left: 40px; margin-right: 40px; border-radius: 15px; margin-top: 100px;">
+          <ion-row>
+            <font style="color: black;">Onions and Shallots</font>
+          </ion-row>
+          <ion-row>
+            <font style="margin-top: 10px;">Natural Farm Product</font>
+          </ion-row>
+          <div style="height: 1px; background-color: gray; margin-top: 10px; margin-bottom: 10px;"></div>
+          <ion-row>
+            <img src="assets/icon/star.svg" style="height: 12px; width: 12px;"><font style="font-size: 12px; font-weight: 700; color: black;">4.6</font><font style="font-size: 12px; color: gray;">(768)</font>
+            <img src="assets/icon/history.svg" style="height: 12px; width: 12px; margin-left: 10px;"><font style="font-size: 12px; font-weight: 700; color: black; margin-left: 3px;">15-20 mins</font>
+            <font style="font-size: 12px; margin-left: 10px;">&#8377;7</font>
+          </ion-row>
         </ion-card>
-
-      </div>
+      </ion-card>
     </div>
   </div>
 
+  <div class="container-category" style="margin: 0px;">
+    <div class="scroll" scrollY="true">
+      <ion-row *ngFor="let category of categories" class="img-card">
+        <ion-row>
+          <ion-card style="margin: 0px; height: 50px; width: 50px; border-radius: 50%; background: url('../../assets/imgs/Onion.jpg'); background-size: cover">
+            <img [src]="category.imageUrl" />
+          </ion-card>
+        </ion-row>
+        <ion-row style="justify-content: center; width: 100%;">
+          <font style="font-size: 12px;">{{category.name}}</font>
+        </ion-row>
+      </ion-row>
+    </div>
+  </div>
 
+  <div class="recentorder-title">
+    <font style="margin-left: 10px; margin-top: 10px; font-size: 14px; font-weight: 700;">Order Again</font>
+  </div>
+
+  <div class="container-recent" style="margin: 0px;">
+    <div class="scroll" scrollY="true">
+      <ion-container *ngFor="let item of recentOrders">
+        <ion-row class="img-card">
+          <ion-col>
+            <ion-card style="margin: 0px; height: 80px; border-radius: 10px; width: 120px; background: url('../../assets/imgs/Onion.jpg'); background-size: cover"></ion-card>
+          </ion-col>
+          <ion-col>
+            <ion-row style="margin-top: 10px;">
+              <font style="font-weight: 700; color: black;">Milk</font>
+            </ion-row>
+            <ion-row>
+              <font style="margin-top: 5px; font-size: 14px;">Pieces 5-7</font>
+            </ion-row>
+            <ion-row style="margin-top: 5px;">
+              <font style="color: black;">&#8377;40</font>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-container>
+    </div>
+  </div>
+
+  <div class="recentorder-title">
+    <font style="margin-left: 10px; margin-top: 10px; font-size: 14px; font-weight: 700;">Recommended</font>
+  </div>
+
+  <div class="container-recommended" style="margin: 0px;">
+    <div class="scroll" scrollY="true">
+      <ion-container *ngFor="let item of recentOrders">
+        <ion-row class="img-card">
+          <ion-col>
+            <ion-card style="margin: 0px; height: 80px; border-radius: 10px; width: 120px; background: url('../../assets/imgs/Onion.jpg'); background-size: cover"></ion-card>
+          </ion-col>
+          <ion-col>
+            <ion-row style="margin-top: 10px;">
+              <font style="font-weight: 700; color: black;">Milk</font>
+            </ion-row>
+            <ion-row>
+              <font style="margin-top: 5px; font-size: 14px;">Pieces 5-7</font>
+            </ion-row>
+            <ion-row style="margin-top: 5px;">
+              <font style="color: black;">&#8377;40</font>
+            </ion-row>
+          </ion-col>
+          <ion-col style="text-align: -webkit-center;">
+            <div style="height: 40px; width: 40px; border-radius: 10px; background-color: gainsboro; margin-top: 20px;">
+              <ion-icon name="add" style="padding:5px" style="color: #FFDF10; margin-top: 5px;"></ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-container>
+    </div>
+  </div>
 
 </ion-content>
-<ion-footer>
-  <ion-toolbar>
-    <ion-row class="footer-icon">
-      <ion-col size="2">
-        <ion-icon name="home"></ion-icon>
-      </ion-col>
-      <ion-col size="2" (click)="dealOfTheDay()" style="cursor: pointer;">
-        <ion-icon name="basket"></ion-icon>
-      </ion-col>
-      <ion-col size="2">
-        <ion-icon name="apps"></ion-icon>
-      </ion-col>
-      <ion-col size="2">
-        <ion-icon name="list"></ion-icon>
-      </ion-col>
-    </ion-row>
-  </ion-toolbar>
-</ion-footer>

@@ -13,7 +13,7 @@ export class SigninPage implements OnInit {
   ngOnInit() {
   }
   login() {
-    this.router.navigate(['/home'])
+    this.router.navigate(['/tabs/home'])
     // if(this.mobile === '') {
     //   this.toast.show('Mobile number is required', '5000', 'bottom').subscribe()
     //   return

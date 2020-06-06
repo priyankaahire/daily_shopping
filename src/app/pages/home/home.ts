@@ -40,6 +40,16 @@ export class HomePage implements OnInit {
           firstname: "ONION",
           lastname: "",
           imageUrl: "assets/imgs/Onion.jpg"
+        },
+        {
+          firstname: "ONION",
+          lastname: "",
+          imageUrl: "assets/imgs/Onion.jpg"
+        },
+        {
+          firstname: "ONION",
+          lastname: "",
+          imageUrl: "assets/imgs/Onion.jpg"
         }
        
       ]
