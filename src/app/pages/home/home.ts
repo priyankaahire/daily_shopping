@@ -127,6 +127,7 @@ export class HomePage implements OnInit {
   }
 
   getCategories() {
+    
     this.categories = [
       {
         name: "vegitables",
@@ -182,7 +183,7 @@ export class HomePage implements OnInit {
     event.target.isEnd().then(isEnd => {
     });
   }
-  gotoDetails(item) {
+  goToDetails(item) {
     let navigationExtras = {
       queryParams: {
         item: JSON.stringify(item)

@@ -8,13 +8,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class DetailsPage implements OnInit {
   sub:any;
-  item:any;
+  item:any = {};
   orderAgain: any = [];
   recommItems: any = [];
+  count = 0
   constructor(private activeRoute: ActivatedRoute,private router: Router ) { 
     this.activeRoute.queryParams.subscribe(params => {
       if (params && params.item) {
         this.item = JSON.parse(params.item);
+        this.item = {}
+        this.item['imageUrl'] =  "assets/imgs/vegitables.png"
+        this.item['price'] = '50'
       }
     });
   }
@@ -40,17 +44,17 @@ export class DetailsPage implements OnInit {
     });
   }
   back() {
-    this.router.navigate(['/deal-of-day'])
+    // this.router.navigate(['/deal-of-day'])
   }
   plus(event:Event) {
-    if(this.item.count != 10) {
-      this.item.count += 1;
+    if(this.count != 10) {
+      this.count += 1;
     }
   }
 
   minus(event:Event) {
-    if(this.item.count != 0) {
-      this.item.count -= 1;
+    if(this.count != 0) {
+      this.count -= 1;
     }
   }
   getorderAgain() {

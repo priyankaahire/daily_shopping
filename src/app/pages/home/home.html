@@ -43,7 +43,7 @@
 
   <div class="container-category" style="margin: 0px;">
     <div class="scroll" scrollY="true">
-      <ion-row *ngFor="let category of categories" class="img-card">
+      <ion-row *ngFor="let category of categories" class="img-card" (click)="dealOfTheDay()">
         <ion-row>
           <ion-card style="margin: 0px; height: 50px; width: 50px; border-radius: 50%; background: url('../../assets/imgs/Onion.jpg'); background-size: cover">
             <img [src]="category.imageUrl" />
@@ -63,7 +63,7 @@
   <div class="container-recent" style="margin: 0px;">
     <div class="scroll" scrollY="true">
       <ion-container *ngFor="let item of recentOrders">
-        <ion-row class="img-card">
+        <ion-row class="img-card" (click)='goToDetails()'>
           <ion-col>
             <ion-card style="margin: 0px; height: 80px; border-radius: 10px; width: 120px; background: url('../../assets/imgs/Onion.jpg'); background-size: cover"></ion-card>
           </ion-col>
@@ -90,7 +90,7 @@
   <div class="container-recommended" style="margin: 0px;">
     <div class="scroll" scrollY="true">
       <ion-container *ngFor="let item of recentOrders">
-        <ion-row class="img-card">
+        <ion-row class="img-card" (click)='goToDetails()'>
           <ion-col>
             <ion-card style="margin: 0px; height: 80px; border-radius: 10px; width: 120px; background: url('../../assets/imgs/Onion.jpg'); background-size: cover"></ion-card>
           </ion-col>

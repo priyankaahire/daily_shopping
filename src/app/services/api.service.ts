@@ -5,7 +5,7 @@ import { AppGlobalService } from './app-global.service';
 @Injectable()
 export class ApiService {
 
-  BASE_URL = "http://fybonachi.com/foodapp/index.php/api"
+  BASE_URL = "https://deepmindssolutions.com/grocery_adit/api/index.php/api/"
 
   constructor(
     private http: HTTP,

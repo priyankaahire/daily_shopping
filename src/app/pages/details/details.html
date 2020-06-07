@@ -1,14 +1,13 @@
-<ion-header>
-  <ion-toolbar class="toolbar-style" >
+<ion-header class='ion-no-border'>
+  <ion-toolbar>
     <ion-row>
-      <ion-col class="backtohome" size="8" >
+      <ion-col class="backtohome" size="2" >
         <ion-icon (click)="back()" style="padding-top:5px; font-size: 14px;" name="chevron-back-outline"></ion-icon>
       </ion-col>
-      <ion-col size="4">
-        <div style="width: 85%;float: right;">
-            <div class="icon-style">
-              <ion-icon  name="heart-outline"></ion-icon>
-            </div>
+      <ion-title size="6">Details</ion-title>
+      <ion-col size="4" class="right-col" no-padding style="text-align: -webkit-right;">
+        <div style="margin-left: 10px; height: 30px; width: 30px; background-color: white; border-radius: 50%; text-align: center; padding-top: 2px;">
+          <ion-icon style="padding: 5px;color: #000;" name="heart-outline"></ion-icon>
         </div>
       </ion-col>
     </ion-row>
@@ -18,7 +17,7 @@
   <div class="details-container">
     <div class="item-image " id="item-image"  >
       <div>
-        <img [src]="[item.imageUrl]">
+        <img src="assets/imgs/vegitables.png">
       </div>
     </div>
     <div class="item-detail " id="item-detail" >
@@ -26,7 +25,7 @@
         <ion-col size="12">
           <div style="margin-top: -32px;">
             <div class="pricetag">
-              R {{item.price}}
+              R 25
             </div>
           </div>
         </ion-col>
@@ -56,8 +55,8 @@
       </ion-row>
     </div>
     <div class="mightlike-container " id="mightlike-container" >
-      <div class="title" id="">
-        <font >You Might Also Like</font>
+      <div class="title">
+        <font style="font-size: 12px; font-weight: 700;">You Might Also Like</font>
       </div>
       <div class="" id="">
         <ion-slides spaceBetween="1" slidesPerView="2" pager="false" #mySlider
@@ -78,35 +77,27 @@
       <div class="title">
         <font>Order Again</font>
       </div>
-      <div>
-        <ion-slides class="recentorder-slider" spaceBetween="1" slidesPerView="2" pager="false" #mySlider
-          (ionSlideWillChange)="onSlideChangeStart($event)" (ionSlideDidChange)="onSlideChanged($event)">
-          <ion-slide *ngFor="let order of orderAgain">
-            <ion-card id="order-card" class="order-card shadow-effect ">
-              <ion-grid style="padding: 0px;">
-                <ion-row>
-                  <ion-col size="3" class="img" >
-                    <img  [src]=[order.imageUrl]>
-                  </ion-col>
-                  <ion-col size="9" class="info">
-                    <div class="iteminfo" >
-                      <div style="width:100%" class="d">
-                        <font id="wrap-content" class="title" >{{order.title}}
-                        </font>
-                      </div>
-                      <div style="width:100%;padding-top: 2px;" class="d">
-                        <small id="wrap-content" class="desc" >{{order.desc}}</small>
-                      </div>
-                      <div style="width:100%;padding-top: 2px;" class="d">
-                        <font style=" " class="price" >{{order.price}}</font>
-                      </div>
-                    </div>
-                  </ion-col>
+      <div class="container-recent" style="margin: 0px;">
+        <div class="scroll" scrollY="true">
+          <ion-container *ngFor="let item of orderAgain">
+            <ion-row class="img-card" (click)='goToDetails()'>
+              <ion-col>
+                <ion-card style="margin: 0px; height: 80px; border-radius: 10px; width: 120px; background: url('../../assets/imgs/Onion.jpg'); background-size: cover"></ion-card>
+              </ion-col>
+              <ion-col>
+                <ion-row style="margin-top: 10px;">
+                  <font style="font-weight: 700; color: black;">Milk</font>
                 </ion-row>
-              </ion-grid>
-            </ion-card>
-          </ion-slide>
-        </ion-slides>
+                <ion-row>
+                  <font style="margin-top: 5px; font-size: 14px;">Pieces 5-7</font>
+                </ion-row>
+                <ion-row style="margin-top: 5px;">
+                  <font style="color: black;">&#8377;40</font>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-container>
+        </div>
       </div>
 
     </div>
@@ -120,14 +111,14 @@
               <ion-col size="4">
                 <div style="display: inline-flex;">
                   <div (click)="minus($event)" class="addremove">
-                    <ion-icon style="padding: 1px;color: #000;" name="remove-outline"></ion-icon>
+                    <ion-icon style="padding: 4px;color: #000;" name="remove-outline"></ion-icon>
                   </div>
-                  <div>
-                    <font class="countinfo">{{item.count}}</font>
+                  <div style="padding-top: 5px;">
+                    <font class="countinfo">{{count}}</font>
                   </div>
   
                   <div (click)="plus($event)" class="addremove">
-                    <ion-icon style="padding: 1px;color: #000;" name="add-outline"></ion-icon>
+                    <ion-icon style="padding: 4px;color: #000;" name="add-outline"></ion-icon>
                   </div>
                 </div>
               </ion-col>
