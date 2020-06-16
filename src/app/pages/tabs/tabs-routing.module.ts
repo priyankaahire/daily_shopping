@@ -15,6 +15,10 @@ const routes: Routes = [
       {
         path: 'cart',
         loadChildren: () => import('../mycart/mycart-routing.module').then(m => m.MycartPageRoutingModule)
+      },
+      {
+        path: 'history',
+        loadChildren: () => import('../order-history/order-history-routing.module').then(m => m.OrderHistoryPageRoutingModule)
       }
     ]
   }

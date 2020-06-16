@@ -8,8 +8,9 @@ export class AppGlobalService {
     readonly FIRST_TIME_LOGIN_KEY = "first_time_login"
     readonly USER_DATA_KEY = "user_data"
 
-    readonly BASE_URL_CAT_IMG = "http://fybonachi.com/foodapp/images/categories/"
+    readonly BASE_URL_CAT_IMG = "https://deepmindssolutions.com/grocery_admin/images/categories/"
     readonly BASE_URL_SUB_CAT_IMG = "http://fybonachi.com/foodapp/images/subcategories/"
+    readonly BASE_URL_ITEM_IMAGE = "https://deepmindssolutions.com/grocery_admin/images/items/"
 
     user_id: string = ""
 

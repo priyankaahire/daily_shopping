@@ -16,20 +16,32 @@ export class ApiService {
     return this._callGetAPI('/login', data)
   }
 
+  send_otp(data) {
+    return this._callPostApi('/send_otp', data)
+  }
+
   signup(data) {
-    return this._callGetAPI('/register', data)
+    return this._callGetAPI('/register_user_by_number', data)
   }
 
   getCategories() {
     return this._callGetAPI('/get_categories', {})
   }
 
+  getFeaturedProducts() {
+    return this._callGetAPI('/get_featured_products', {})
+  }
+
+  getProductsByCategoryId(data) {
+    return this._callGetAPI('/get_products_by_category_id', data)
+  }
+
   getItems() {
     return this._callGetAPI('/get_items', {})
   }
 
-  getAddresses() {
-    return this._callGetAPI('/get_address', {'user_id': this._global.user_id})
+  getAddresses(data) {
+    return this._callGetAPI('/get_address', data)
   }
 
   forgotPassword(data) {
@@ -91,10 +103,9 @@ export class ApiService {
     return this._callPostApi('/create_order', data)
   }
 
-  getOrderHistory() {
-    console.log('user_id', this._global.user_id);
+  getOrderHistory(data) {
     
-    return this._callGetAPI('/get_order_history', { 'user_id': this._global.user_id})
+    return this._callGetAPI('/get_order_history', data)
   }
 
   getDeliveryBoyLocation(data) {

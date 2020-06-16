@@ -1,25 +1,17 @@
-
-<ion-header>
+<ion-header class='ion-no-border'>
   <ion-toolbar class="toolbar-style">
     <ion-row>
-      <ion-col class="left-col" size="8">
-        <ion-icon (click)="back()" name="chevron-back-outline"></ion-icon>
-        <span>Checkout</span>
+      <ion-col class="backtohome" size="2" >
+        <ion-icon (click)="back()" style="padding-top:5px; font-size: 22px;;" name="chevron-back-outline"></ion-icon>
       </ion-col>
-      <ion-col class="right-col" size="4">
-        <div class="header-icon">
-          <div class="icon-style">
-            <ion-icon name="pin"></ion-icon><small>12345</small>
-          </div>
-        </div>
-      </ion-col>
+      <ion-title size="6">Checkout</ion-title>
     </ion-row>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding style="background-color: #f8f8f8;">
   <div class="checkout-container" id="checkout-container">
-    <div class="delivery-status">
+    <div class="delivery-status" *ngIf="false">
       <div class="" id="">
         <ion-card id="" class="shadow-effect ">
           <ion-grid>
@@ -42,57 +34,39 @@
       <ion-row style="margin: 0px 5px;">
         <ion-col size="6">
           <font style="font-size: 12px;
-            font-weight: 600;color:#000;float:left">Deliverd To</font>
+            font-weight: 600;color:#000;float:left">Deliver To</font>
         </ion-col>
         <ion-col size="6">
-          <font style="font-size:12px; color:gray;float: right;">Add/message</font>
+          <font style="font-size:12px; color:gray;float: right;" (click)="goToAddresses()">Add/manage Address</font>
         </ion-col>
       </ion-row>
       <ion-row style="margin: -12px 0px;">
-        <div class="deliver-content" id="">
-          <ion-slides #mySlider (ionSlideWillChange)="onSlideChangeStart($event)"
-            (ionSlideDidChange)="onSlideChanged($event)" pager="false">
-            <ion-slide>
-              <ng-container>
-                <div class="deliver-info" style="border-radius: 10px; width: 100%;">
-                  <ion-card id="" class="shadow-effect " style="width:200px">
-                    <ion-grid>
-                      <div class="" style="padding:5px">
-                        <div style="font-size:12px; color:#000; text-align: left;font-weight: 700;" class="">Home</div>
-                        <div class="address-details" style="width:100%;">
-                          <span class="address-text" id="address">5-division road dabhadi malegaon nashik 423201</span>
-                          <span class="address-text" id="pincode">Dabhadi-423201</span>
-                          <span class="address-text" id="country">India</span>
-                        </div>
-                        <div class="" style="width:100%; text-align: left;padding-top: 5px;">
-                          <ion-radio value="defaultaddress" checked></ion-radio>
-                        </div>
-                      </div>
+        <div class="container" style="margin: 0px;">
+          <div class="scroll" scrollY="true">
+            <div class="img-card" style="border-radius: 10px; width: 250px;" *ngFor="let item of addresses; let i=index" (click)='selectAddress(item.address_id)'>
+              <ion-card id="" class="shadow-effect " style="width:100%">
+                <ion-grid>
+                  <div class="" style="padding:5px">
+                    <ion-row>
+                      <ion-col size='10'><div style="font-size:14px; color:#000; text-align: left;font-weight: 700;" class="">{{item.title}}</div></ion-col>
+                      <ion-col size='2' style="text-align: end"><ion-icon name='pencil'></ion-icon></ion-col>
+                    </ion-row>
+                    <div class="address-details" style="width:100%;">
+                      <span class="address-text" id="address">{{item.address}}</span>
+                      <span class="address-text" id="locality">{{item.locality}}</span>
+                      <span class="address-text" id="city">{{item.city_name}}</span>
+                      <span class="address-text" id="pincode">{{item.state_name}}-{{item.pincode}}</span>
+                    </div>
+                    <div class="" style="width:100%; text-align: left;padding-top: 5px;">
+                      <img src='assets/imgs/checked.png' *ngIf='item.checked' style="height: 20px; width: 20px;">
+                      <img src='assets/imgs/unchecked.png' *ngIf='!item.checked' style="height: 20px; width: 20px;">
+                    </div>
+                  </div>
 
-                    </ion-grid>
-                  </ion-card>
-                </div>
-                <div class="deliver-info" style="border-radius: 10px; width: 100%; ">
-                  <ion-card style="width:200px" id="" class="shadow-effect ">
-                    <ion-grid>
-                      <div class="" style="padding:5px">
-                        <div style="font-size:12px; color:#000;text-align: left;font-weight: 700;" class="">Office</div>
-                        <div class="address-details" style="width:100%; ">
-                          <span class="address-text" id="address">Pentagoan 4 near Jasmine society, Magrapatta</span>
-                          <span class="address-text" id="pincode">Hadpasar-411013</span>
-                          <span class="address-text" id="country">India</span>
-                        </div>
-                        <div class="" style="width:100%; text-align: left;padding-top: 5px;">
-                          <ion-radio class="" value="officeaddress"></ion-radio>
-                        </div>
-                      </div>
-                    </ion-grid>
-                  </ion-card>
-                </div>
-
-              </ng-container>
-            </ion-slide>
-          </ion-slides>
+                </ion-grid>
+              </ion-card>
+            </div>
+          </div>
         </div>
       </ion-row>
     </div>
@@ -109,21 +83,22 @@
             (ionSlideDidChange)="onSlideChanged($event)" pager="false">
             <ion-slide>
               <ng-container>
-                <div class="deliver-info" style="border-radius: 10px; width: 100%;">
+                <div class="deliver-info" style="border-radius: 10px; width: 100%;" (click)="selectDeliveryType('1')">
                   <ion-card id="" class="shadow-effect " style="width:200px">
                     <ion-grid>
                       <div class="" style="padding:5px">
 
                         <div class="deliverymet-details" style="width:100%; ">
-                          <span class="deliverymet-text">ddd-mm-yyy hdfc netbaking / debit card paymnet</span>
+                          <span class="deliverymet-text">4-5 days Monday to Friday including Sunday</span>
                         </div>
                         <div class="" style="width:100%; text-align: left;padding-top: 5px;">
                           <ion-row>
                             <ion-col size="6">
-                              <ion-radio style="float:left" class="" value=""></ion-radio>
+                              <img src='assets/imgs/checked.png' *ngIf="delivery_type==='1'" style="height: 20px; width: 20px;">
+                              <img src='assets/imgs/unchecked.png' *ngIf="delivery_type!=='1'" style="height: 20px; width: 20px;">
                             </ion-col>
-                            <ion-col size="6">
-                              <ion-radio style="float: right;" class="" value=""></ion-radio>
+                            <ion-col size="6" style="text-align: end;">
+                              <font>Free</font>
                             </ion-col>
                           </ion-row>
                         </div>
@@ -132,21 +107,22 @@
                     </ion-grid>
                   </ion-card>
                 </div>
-                <div class="deliver-info" style="border-radius: 10px; width: 100%; ">
+                <div class="deliver-info" style="border-radius: 10px; width: 100%; " (click)="selectDeliveryType('2')">
                   <ion-card style="width:200px" id="" class="shadow-effect ">
                     <ion-grid>
                       <div class="" style="padding:5px">
 
                         <div class="deliverymet-details" style="width:100%; ">
-                          <span class="deliverymet-text">Cash on Delivery</span>
+                          <span class="deliverymet-text">In 1 day delivery</span>
                         </div>
                         <div class="" style="width:100%; text-align: left;padding-top: 5px;">
                           <ion-row>
                             <ion-col size="6">
-                              <ion-radio style="float:left" class="" value=""></ion-radio>
+                              <img src='assets/imgs/checked.png' *ngIf="delivery_type==='2'" style="height: 20px; width: 20px;">
+                              <img src='assets/imgs/unchecked.png' *ngIf="delivery_type!=='2'" style="height: 20px; width: 20px;">
                             </ion-col>
-                            <ion-col size="6">
-                              <ion-radio style="float: right;" class="" value=""></ion-radio>
+                            <ion-col size="6" style="text-align: end;">
+                              <font>Rs 20</font>
                             </ion-col>
                           </ion-row>
 
@@ -162,32 +138,37 @@
         </div>
       </ion-row>
     </div>
+    <ion-row style="margin: 0px 5px;">
+      <ion-col size="6">
+        <font style="font-size: 12px;
+       font-weight: 600;color:#000;float:left">Payment Method</font>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-font style="color: red; font-size: 12px;">Only Cash On Delivery (COD) is applicable</ion-font>
+    </ion-row>
   </div>
 </ion-content>
 
-<ion-footer class="footerbar-style">
+<ion-footer class="footerbar-style ion-no-border">
   <ion-toolbar class="foottolbar">
     <div class="footer-row-style" >
-         <div class="" style="width:100%">
-          <ion-row class="">
-            <ion-col style="text-align:left; font-weight: 700;" size="4">Review Order</ion-col>
-            <ion-col style="text-align:right;" size="4"></ion-col>
-            <ion-col style="text-align:right;" size="4">Modify</ion-col>
-          </ion-row>
-            <ion-row class="" *ngFor="let item of items">
-              <ion-col id="wrap-content" class="left-align"  size="4">{{item.title}} </ion-col>
-              <ion-col class="right-align" size="4">Qty {{item.count}}</ion-col>
-              <ion-col class="right-align" size="4">Rs {{item.total}}</ion-col>
-            </ion-row>
-
-         </div>
          <div class="footer-total" >
               <div class="">
-                <ion-row>
-                  <ion-col size="8"></ion-col>
+                <ion-row style="padding-top: 3px">
+                  <ion-col size="8" style="padding-top: 10px">
+                    <ion-row>
+                      <ion-col>
+                        <font style="font-size: 12px; font-weight: 700;">Total</font>
+                      </ion-col>
+                      <ion-col>
+                        <font style="font-size: 12px; font-weight: 700;">{{total}}</font>
+                      </ion-col>
+                    </ion-row>
+                  </ion-col>
                   <ion-col size="4">
                     <div class="btn">
-                      <button (click)="conform()" class="btn-conform" >Conform</button>
+                      <button (click)="confirm()" class="btn-conform" >Confirm</button>
                     </div>
                   </ion-col>
                 </ion-row>

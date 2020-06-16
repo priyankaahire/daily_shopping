@@ -51,11 +51,20 @@ const routes: Routes = [
     loadChildren: () => import('./pages/checkout/checkout.module').then( m => m.CheckoutPageModule)
   },
   {
-    path: 'order-history',
+    path: 'history',
     loadChildren: () => import('./pages/order-history/order-history.module').then( m => m.OrderHistoryPageModule)
-  },  {
+  },
+  {
     path: 'tabs',
     loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'add-edit-address',
+    loadChildren: () => import('./pages/add-edit-address/add-edit-address.module').then( m => m.AddEditAddressPageModule)
+  },
+  {
+    path: 'verify-otp',
+    loadChildren: () => import('./pages/verify-otp/verify-otp.module').then( m => m.VerifyOtpPageModule)
   }
 
 ];

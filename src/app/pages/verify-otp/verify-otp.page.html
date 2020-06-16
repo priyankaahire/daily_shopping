@@ -1,0 +1,17 @@
+<ion-header class='ion-no-border'>
+</ion-header>
+<ion-content padding style="background-color: #f8f8f8;">
+  <div style="margin: 20px;">
+    <div style="margin: 20px; text-align: center;">
+      <font style="font-size: 22px;">Verify Mobile</font>
+    </div>
+    <ion-item style="margin-top: 50px;">
+      <ion-label floating>OTP</ion-label>
+      <ion-input type="number" [(ngModel)]="otp"></ion-input>
+    </ion-item>
+     
+    <button class="btn_orange" style="outline: none; background-color: #FFDF10;width:100%; height: 35px; border-radius: 25px; padding-top: 7px; padding-bottom: 7px; margin-top: 20px" (click)='verify()'>
+      <label style="color: black;">Verify and continue</label>
+    </button>
+  </div>
+</ion-content>

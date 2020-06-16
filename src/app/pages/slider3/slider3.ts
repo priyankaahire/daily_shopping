@@ -14,7 +14,7 @@ export class Slider3Page implements OnInit {
   }
 
   navigate() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/signin']);
   }
 
 }

@@ -1,8 +1,8 @@
 <ion-content no-padding>
-  <ion-row style="background-color: #FFDF10; padding-left: 10px;">
+  <ion-row style="background-color: #FFDF10; padding-left: 10px; padding-top: 10px;">
     <ion-col size="8">
       <ion-row>
-        <font style="font-size: 12px; color: gainsboro;">Deliver Here</font>
+        <font style="font-size: 12px; color: gray;">Deliver Here</font>
       </ion-row>
       <ion-row>
         <font style="font-size: 14px; color: black;">Nsp, New Delhi</font>
@@ -43,14 +43,16 @@
 
   <div class="container-category" style="margin: 0px;">
     <div class="scroll" scrollY="true">
-      <ion-row *ngFor="let category of categories" class="img-card" (click)="dealOfTheDay()">
+      <ion-row *ngFor="let category of categories" class="img-card" (click)="dealOfTheDay(category)">
         <ion-row>
-          <ion-card style="margin: 0px; height: 50px; width: 50px; border-radius: 50%; background: url('../../assets/imgs/Onion.jpg'); background-size: cover">
-            <img [src]="category.imageUrl" />
+          <ion-card style="margin: 0px; height: 50px; width: 50px; border-radius: 50%;">
+            <img [src]="_global.BASE_URL_CAT_IMG + category.image" style="height: 100%; width: 100%;" />
           </ion-card>
         </ion-row>
         <ion-row style="justify-content: center; width: 100%;">
-          <font style="font-size: 12px;">{{category.name}}</font>
+          <ion-label class="ion-text-wrap" style="font-size: 12px; line-height: 1;text-align: center;">
+            {{category.category_name}}
+          </ion-label>
         </ion-row>
       </ion-row>
     </div>
@@ -63,19 +65,27 @@
   <div class="container-recent" style="margin: 0px;">
     <div class="scroll" scrollY="true">
       <ion-container *ngFor="let item of recentOrders">
-        <ion-row class="img-card" (click)='goToDetails()'>
+        <ion-row class="img-card" (click)='goToDetails(item)'>
           <ion-col>
-            <ion-card style="margin: 0px; height: 80px; border-radius: 10px; width: 120px; background: url('../../assets/imgs/Onion.jpg'); background-size: cover"></ion-card>
+            <ion-card style="margin: 0px; height: 80px; border-radius: 10px; width: 120px;">
+              <img [src]="_global.BASE_URL_ITEM_IMAGE + item.item_image" style="height: 100%; width: 100%;">
+            </ion-card>
           </ion-col>
           <ion-col>
             <ion-row style="margin-top: 10px;">
-              <font style="font-weight: 700; color: black;">Milk</font>
+              <ion-label class="ion-text-wrap" style="font-weight: 700; color: black; line-height: 1;">
+                {{item.item_name}}
+              </ion-label>
             </ion-row>
             <ion-row>
-              <font style="margin-top: 5px; font-size: 14px;">Pieces 5-7</font>
+              <ion-label class="ion-text-wrap" style="margin-top: 5px; font-size: 14px; color: black; line-height: 1;">
+                {{item.description}}
+              </ion-label>
             </ion-row>
             <ion-row style="margin-top: 5px;">
-              <font style="color: black;">&#8377;40</font>
+              <ion-label class="ion-text-wrap" style="color: black; line-height: 1;">
+                &#8377;{{item.price}}
+              </ion-label>
             </ion-row>
           </ion-col>
         </ion-row>
@@ -89,20 +99,22 @@
 
   <div class="container-recommended" style="margin: 0px;">
     <div class="scroll" scrollY="true">
-      <ion-container *ngFor="let item of recentOrders">
-        <ion-row class="img-card" (click)='goToDetails()'>
+      <ion-container *ngFor="let item of recommItems">
+        <ion-row class="img-card" (click)='goToDetails(item)'>
           <ion-col>
-            <ion-card style="margin: 0px; height: 80px; border-radius: 10px; width: 120px; background: url('../../assets/imgs/Onion.jpg'); background-size: cover"></ion-card>
+            <ion-card style="margin: 0px; height: 80px; border-radius: 10px; width: 120px;">
+              <img [src]="_global.BASE_URL_ITEM_IMAGE + item.item_image" style="height: 100%; width: 100%;">
+            </ion-card>
           </ion-col>
           <ion-col>
             <ion-row style="margin-top: 10px;">
-              <font style="font-weight: 700; color: black;">Milk</font>
+              <font style="font-weight: 700; color: black;">{{item.item_name}}</font>
             </ion-row>
             <ion-row>
-              <font style="margin-top: 5px; font-size: 14px;">Pieces 5-7</font>
+              <font style="margin-top: 5px; font-size: 14px;">{{item.description}}</font>
             </ion-row>
             <ion-row style="margin-top: 5px;">
-              <font style="color: black;">&#8377;40</font>
+              <font style="color: black;">&#8377;{{item.price}}</font>
             </ion-row>
           </ion-col>
           <ion-col style="text-align: -webkit-center;">

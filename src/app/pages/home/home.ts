@@ -1,6 +1,8 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
+import { ApiService } from 'src/app/services/api.service';
+import { AppGlobalService } from 'src/app/services/app-global.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.html',
@@ -15,12 +17,13 @@ export class HomePage implements OnInit {
   imageSlider: any = []
   recentOrders: any = [];
   recommItems: any = [];
-  constructor(private router: Router) {
+  constructor(private router: Router,
+    private apiService: ApiService,
+    public _global: AppGlobalService) {
       this.goToTabWithId();
       this.getCategories();
       this.getRecentOrders();
       this.getImageSlider();
-      this.getRecommItem();
   }
 
   goToTabWithId() {
@@ -57,123 +60,33 @@ export class HomePage implements OnInit {
   gotoItem(category) {
     // this.app.getRootNav().push(ItemsListPage, {category: category})
   }
-  getRecommItem() {
-    this.recommItems = [
-      {
-        title: "Palak 250g+Ladies Finger+Cucumber+Capsicum",
-        imageUrl: "assets/imgs/vegitables.png",
-        price:123.44,
-        desc:"3 combo pack fresh vegitables"
-      },
-      {
-        title: "Palak 250g+Ladies Finger+Cucumber+Capsicum",
-        imageUrl: "assets/imgs/vegitables.png",
-        price:123.44,
-        desc:"3 combo pack fresh vegitables"
-      },
-      {
-        title: "Dove Bar Soap-Pack of 3",
-        imageUrl: "assets/imgs/home_care.jpg",
-        price:400,
-        desc:"Cream Beauty Btahing Bar"
-      },
-      {
-        title: "Body Care",
-        imageUrl: "assets/imgs/personal_care.jpg",
-        price:123.44,
-        desc:"3 combo pack fresh vegitables"
-      },
-      {
-        title: "Fruits",
-        imageUrl: "assets/imgs/fruits.jpg",
-        price:123.44,
-        desc:"3 combo pack fresh vegitables"
-      }
-    ]
-  }
+
   getRecentOrders() {
-    this.recentOrders = [
-      {
-        title: "Palak 250g+Ladies Finger+Cucumber+Capsicum",
-        imageUrl: "assets/imgs/vegitables.png",
-        price:123.44,
-        desc:"3 combo pack fresh vegitables"
-      },
-      {
-        title: "Palak 250g+Ladies Finger+Cucumber+Capsicum",
-        imageUrl: "assets/imgs/vegitables.png",
-        price:123.44,
-        desc:"3 combo pack fresh vegitables"
-      },
-    {
-      title: "Dove Bar Soap-Pack of 3",
-      imageUrl: "assets/imgs/home_care.jpg",
-      price:400,
-      desc:"Cream Beauty Btahing Bar"
-    },
-    {
-      title: "Body Care",
-      imageUrl: "assets/imgs/personal_care.jpg",
-      price:123.44,
-      desc:"3 combo pack fresh vegitables"
-    },
-    {
-      title: "Fruits",
-      imageUrl: "assets/imgs/fruits.jpg",
-      price:123.44,
-      desc:"3 combo pack fresh vegitables"
-    }
-  ]
+    this.apiService.getFeaturedProducts().then(res => {
+      this.recentOrders = res
+      this.recommItems = res
+    }).catch(err => {
+      this._global.presentNetworkToast(err)
+    })
   }
 
   getCategories() {
-    
-    this.categories = [
-      {
-        name: "vegitables",
-        imageUrl: "assets/imgs/vegitables.png"
-      },
-      {
-        name: "Home Care",
-        imageUrl: "assets/imgs/home_care.jpg"
-      },
-      {
-        name: "Body Care",
-        imageUrl: "assets/imgs/personal_care.jpg"
-      },
-      {
-        name: "vegitables",
-        imageUrl: "assets/imgs/Onion.jpg"
-      },
-      {
-        name: "Fruits",
-        imageUrl: "assets/imgs/fruits.jpg"
-      },
-      {
-        name: "vegitables",
-        imageUrl: "assets/imgs/vegitables.png"
-      },
-      {
-        name: "Home Care",
-        imageUrl: "assets/imgs/home_care.jpg"
-      },
-      {
-        name: "Body Care",
-        imageUrl: "assets/imgs/personal_care.jpg"
-      },
-      {
-        name: "vegitables",
-        imageUrl: "assets/imgs/Onion.jpg"
-      },
-      {
-        name: "Fruits",
-        imageUrl: "assets/imgs/fruits.jpg"
-      }
-    ]
+    this.apiService.getCategories().then(res=> {
+      this.categories = res
+    }).catch(err=> {
+      this._global.presentNetworkToast(err)
+    })
   }
 
-  dealOfTheDay() {
-    this.router.navigate(['/deal-of-day']);
+  dealOfTheDay(category) {
+    console.log('cat_id home', category._id);
+    
+    let navigationExtras = {
+      queryParams: {
+        cat_id: category._id
+      }
+    };
+    this.router.navigate(['deal-of-day'], navigationExtras)
   }
   onSlideChanged(e) {
   }

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AppGlobalService } from 'src/app/services/app-global.service';
+import { ApiService } from 'src/app/services/api.service';
+import { Storage } from '@ionic/storage';
 @Component({
   selector: 'app-details',
   templateUrl: './details.html',
@@ -12,28 +15,44 @@ export class DetailsPage implements OnInit {
   orderAgain: any = [];
   recommItems: any = [];
   count = 0
-  constructor(private activeRoute: ActivatedRoute,private router: Router ) { 
+  constructor(private activeRoute: ActivatedRoute,private router: Router,
+    public _global: AppGlobalService,
+    private apiService: ApiService,
+    private storage: Storage) { 
     this.activeRoute.queryParams.subscribe(params => {
       if (params && params.item) {
         this.item = JSON.parse(params.item);
-        this.item = {}
-        this.item['imageUrl'] =  "assets/imgs/vegitables.png"
-        this.item['price'] = '50'
       }
     });
   }
   ngOnInit() {
     this.getorderAgain();
-    this.getRecommItem();
   }
   addToCart(item) {
     event.stopPropagation();
-    let navigationExtras = {
-      queryParams: {
-        item: JSON.stringify(item)
-      }
-    };
-      this.router.navigate(['mycart'],navigationExtras)
+      this.storage.get('cart').then(res => {
+      
+        if(res == null) {
+          this.storage.set('cart', JSON.stringify([this.item])).then(() => {
+            this.router.navigate(['mycart'])
+          })
+        } else {
+          let cart = JSON.parse(res)
+          let exists = false
+          cart.forEach(elt => {
+            if(elt['_id'] === item['_id']) {
+              exists = true
+              elt['count'] = item['count']
+            }
+          });
+          if(!exists) {
+            cart.push(item)
+          }
+          this.storage.set('cart', JSON.stringify(cart)).then(()=> {
+            this.router.navigate(['mycart'])
+          })
+        }
+      })
   }
   onSlideChanged(e) {
     console.log('On slide change event');
@@ -58,71 +77,20 @@ export class DetailsPage implements OnInit {
     }
   }
   getorderAgain() {
-    this.orderAgain = [
-      {
-        title: "Palak 250g+Ladies Finger+Cucumber+Capsicum",
-        imageUrl: "assets/imgs/vegitables.png",
-        price:123.44,
-        desc:"3 combo pack fresh vegitables"
-      },
-      {
-        title: "Palak 250g+Ladies Finger+Cucumber+Capsicum",
-        imageUrl: "assets/imgs/vegitables.png",
-        price:123.44,
-        desc:"3 combo pack fresh vegitables"
-      },
-    {
-      title: "Dove Bar Soap-Pack of 3",
-      imageUrl: "assets/imgs/home_care.jpg",
-      price:400,
-      desc:"Cream Beauty Btahing Bar"
-    },
-    {
-      title: "Body Care",
-      imageUrl: "assets/imgs/personal_care.jpg",
-      price:123.44,
-      desc:"3 combo pack fresh vegitables"
-    },
-    {
-      title: "Fruits",
-      imageUrl: "assets/imgs/fruits.jpg",
-      price:123.44,
-      desc:"3 combo pack fresh vegitables"
-    }
-  ]
+    this.apiService.getFeaturedProducts().then(res => {
+      this.recommItems = res
+      this.orderAgain = res
+    }).catch(err => {
+      this._global.presentNetworkToast(err)
+    })
   }
-  getRecommItem() {
-    this.recommItems = [
-      {
-        title: "Palak 250g+Ladies Finger+Cucumber+Capsicum",
-        imageUrl: "assets/imgs/vegitables.png",
-        price:123.44,
-        desc:"3 combo pack fresh vegitables"
-      },
-      {
-        title: "Palak 250g+Ladies Finger+Cucumber+Capsicum",
-        imageUrl: "assets/imgs/vegitables.png",
-        price:123.44,
-        desc:"3 combo pack fresh vegitables"
-      },
-      {
-        title: "Dove Bar Soap-Pack of 3",
-        imageUrl: "assets/imgs/home_care.jpg",
-        price:400,
-        desc:"Cream Beauty Btahing Bar"
-      },
-      {
-        title: "Body Care",
-        imageUrl: "assets/imgs/personal_care.jpg",
-        price:123.44,
-        desc:"3 combo pack fresh vegitables"
-      },
-      {
-        title: "Fruits",
-        imageUrl: "assets/imgs/fruits.jpg",
-        price:123.44,
-        desc:"3 combo pack fresh vegitables"
+
+  goToDetails(item) {
+    let navigationExtras = {
+      queryParams: {
+        item: JSON.stringify(item)
       }
-    ]
+    };
+    this.router.navigate(['details'],navigationExtras)
   }
 }

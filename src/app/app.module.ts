@@ -11,7 +11,6 @@ import { AppGlobalService } from './services/app-global.service'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ApiService } from './services/api.service';
-import { Toast } from '@ionic-native/toast';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,8 +24,7 @@ import { Toast } from '@ionic-native/toast';
     ApiService,
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })

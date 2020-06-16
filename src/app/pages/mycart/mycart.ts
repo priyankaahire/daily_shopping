@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { Storage } from '@ionic/storage';
-import { Toast } from '@ionic-native/toast';
+import { Router } from '@angular/router';
+import { AppGlobalService } from 'src/app/services/app-global.service';
 @Component({
   selector: 'app-mycart',
   templateUrl: './mycart.html',
@@ -10,29 +10,34 @@ import { Toast } from '@ionic-native/toast';
 export class MycartPage implements OnInit {
   cart_items: any = []
   total = 0
-  constructor(private activeRoute: ActivatedRoute,private router: Router ) { 
-    this.activeRoute.queryParams.subscribe(params => {
-      if (params && params.item) {
-        this.cart_items.push(JSON.parse(params.item));
-        this.itemsChanged();
-      }
-    });
+  constructor(private storage: Storage,
+    private router: Router,
+    private _global: AppGlobalService) { 
+  }
+
+  ionViewDidEnter() {
+    this.storage.get('cart').then(res => {
+      this.cart_items = JSON.parse(res)
+      console.log('my cart', this.cart_items);
+      
+      this.itemsChanged()
+    })
   }
 
   ngOnInit() {
   }
   payNow() {
+    if(this.cart_items == null || this.cart_items.length == 0) {
+      this._global.presentNetworkToast('Cart is empty')
+      return
+    }
+    this.storage.set('cart', JSON.stringify(this.cart_items)).then(res => {
 
-    let navigationExtras = {
-      queryParams: {
-        item: JSON.stringify(this.cart_items),
-      }
-    };
-      this.router.navigate(['checkout'],navigationExtras);
- //   this.router.navigate(['/checkout'])
+      this.router.navigate(['checkout'])
+    })
   }
   back() {
-    this.router.navigate(['/deal-of-day'])
+    // this.router.navigate(['/deal-of-day'])
   }
   itemsChanged() {
     this.total = 0
@@ -40,6 +45,8 @@ export class MycartPage implements OnInit {
       this.total += elt['count'] * parseInt(elt['price'])
       this.cart_items[index].total = this.total;
     });
+    this.storage.set('cart', JSON.stringify(this.cart_items)).then(res => {
+    })
   }
 
   deleteFromCart(idx) {
