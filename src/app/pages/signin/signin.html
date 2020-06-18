@@ -1,31 +1,41 @@
-<ion-header class='ion-no-border'>
-</ion-header>
-<ion-content padding style="background-color: #f8f8f8;">
-  <div style="margin: 20px;">
-    <div style="margin: 20px; text-align: center;">
-      <font style="font-size: 22px;">Login</font>
-    </div>
-    <ion-item>
-      <ion-label floating>Mobile Number</ion-label>
-      <ion-input type="number" [(ngModel)]="mobile"></ion-input>
-    </ion-item>
-    <ion-item style="margin-top: 20px;">
-      <ion-label floating>Name</ion-label>
-      <ion-input [(ngModel)]="name"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Email</ion-label>
-      <ion-input [(ngModel)]="email"></ion-input>
-    </ion-item>
-     
-    <button class="btn_orange" style="outline: none; background-color: #FFDF10;width:100%; height: 35px; border-radius: 25px; padding-top: 7px; padding-bottom: 7px; margin-top: 20px" (click)='login()'>
-      <label style="color: black;">Login</label>
-    </button>
-    <!-- <button style="outline: none; width:100%; height: 35px; border-radius: 25px; border:1px solid gray; padding-top: 7px; padding-bottom: 7px; background-color: #f8f8f8; margin-top: 20px" (click)="forgotPwd()">
-      <label style="color: black;">Forgot Password</label>
-    </button> -->
-    <!-- <div style="text-align: center; margin-top: 50px;">
-      <font>Don't have an account?</font><font style="font-weight: 700; margin-left: 5px;" (click)='signup()'>Signup here</font>
-    </div> -->
-  </div>
-</ion-content>
+<ion-content>
+  <ion-row class="ion-justify-content-center">
+    <img src="assets/imgs/shopping-cart.jpg" style="height: 280px; width: 100%;">
+  </ion-row>
+  <ion-card class="card">
+   <ion-grid class="ion-padding">
+    <ion-row class="ion-margin-top">
+      <ion-col>
+        <ion-item lines="full" class="input-item">
+          <ion-label position="floating"><b>Mobile number</b></ion-label>
+          <ion-input type="number" [(ngModel)]="mobile">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="full" class="input-item">
+          <ion-label position="floating"><b>Name</b></ion-label>
+          <ion-input [(ngModel)]="name">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="full" class="input-item">
+          <ion-label position="floating"><b>Email</b></ion-label>
+          <ion-input [(ngModel)]="email" type="email">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-margin-top">
+      <ion-col class="ion-text-center">
+        <ion-button (click)="login()" class="login-btn" mode="ios" shape="round" fill="outline">Sign in</ion-button>
+      </ion-col>
+    </ion-row>
+   </ion-grid>
+  </ion-card>
+</ion-content>  

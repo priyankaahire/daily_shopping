@@ -1,17 +1,56 @@
 <ion-header class='ion-no-border'>
 </ion-header>
-<ion-content padding style="background-color: #f8f8f8;">
+<ion-content padding style="--background: #FAFAFA;">
+  <ion-row class="slider-image" style="justify-content: center;">
+    <div class="img">
+      <img src='assets/imgs/verify.png' style="height: 250px;" />
+    </div>
+  </ion-row >
   <div style="margin: 20px;">
     <div style="margin: 20px; text-align: center;">
-      <font style="font-size: 22px;">Verify Mobile</font>
+      <font style="font-size: 18px; font-weight: 700;">Verify Mobile Number</font>
     </div>
-    <ion-item style="margin-top: 50px;">
-      <ion-label floating>OTP</ion-label>
-      <ion-input type="number" [(ngModel)]="otp"></ion-input>
-    </ion-item>
-     
-    <button class="btn_orange" style="outline: none; background-color: #FFDF10;width:100%; height: 35px; border-radius: 25px; padding-top: 7px; padding-bottom: 7px; margin-top: 20px" (click)='verify()'>
-      <label style="color: black;">Verify and continue</label>
-    </button>
+    <ion-row  class="slider-info">
+      <font style="font-size: 14px; margin-left: 20px; margin-right: 20px;">
+        Please enter 6 digit verification code sent on your mobile number
+      </font>
+    </ion-row>
+    <ion-row>
+      <ion-col size="2">
+        <div class="otp">
+          <ion-input #one type='number' [(ngModel)]="otp1" maxlength="1" (ionInput)="inputChanged('1')"></ion-input>
+        </div>
+      </ion-col>
+      <ion-col size="2">
+        <div class="otp">
+          <ion-input #two type='number' [(ngModel)]="otp2" maxlength="1" (ionInput)="inputChanged('2')"></ion-input>
+        </div>
+      </ion-col>
+      <ion-col size="2">
+        <div class="otp">
+          <ion-input #three type='number' [(ngModel)]="otp3" maxlength="1" (ionInput)="inputChanged('3')"></ion-input>
+        </div>
+      </ion-col>
+      <ion-col size="2">
+        <div class="otp">
+          <ion-input #four type='number' [(ngModel)]="otp4" maxlength="1" (ionInput)="inputChanged('4')"></ion-input>
+        </div>
+      </ion-col>
+      <ion-col size="2">
+        <div class="otp">
+          <ion-input #five type='number' [(ngModel)]="otp5" maxlength="1" (ionInput)="inputChanged('5')"></ion-input>
+        </div>
+      </ion-col>
+      <ion-col size="2">
+        <div class="otp">
+          <ion-input #six type='number' [(ngModel)]="otp6" maxlength="1" (ionInput)="inputChanged('6')"></ion-input>
+        </div>
+      </ion-col>
+    </ion-row>
+     <ion-row style="justify-content: center;">
+      <button class="btn_orange" style="outline: none; background-color: #FFDF10;width:80%; height: 35px; border-radius: 25px; padding-top: 7px; padding-bottom: 7px; margin-top: 20px" (click)='verify()'>
+        <label style="color: black;">Verify and continue</label>
+      </button>
+     </ion-row>
   </div>
 </ion-content>

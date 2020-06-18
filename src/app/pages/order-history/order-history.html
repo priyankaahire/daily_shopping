@@ -4,7 +4,7 @@
       <ion-col class="backtohome" size="2" >
         <ion-icon (click)="back()" style="padding-top:5px; font-size: 22px;;" name="chevron-back-outline"></ion-icon>
       </ion-col>
-      <ion-title size="6">Order History</ion-title>
+      <ion-title size="6" style="font-weight: 700;">Order History</ion-title>
     </ion-row>
   </ion-toolbar>
 </ion-header>
@@ -12,53 +12,58 @@
 <ion-content padding style="background-color: #f8f8f8;">
   <div class="list-container" style="margin-top: 10px;" style="margin-top: 10px;">
     <div *ngFor="let item of items; let i = index">
-      <div class="btn-delete">
-        <icon-row>
-          <icon-col sie="12">
-            <div style="width:100%; float: right;" >
-              <div class="close" style="padding: 2px;">
-                 <ion-icon name="refresh"></ion-icon>
-             </div>
-           </div>
-          </icon-col>
-        </icon-row>
-      </div>
       <ion-card class="shadow-effect list-card">
         <ion-grid>
           <ion-row>
-            <ion-col class="left-info" size="4">
-              <img src="assets/imgs/abc.png">
-            </ion-col>
-            <ion-col class="right-info" size="8">
+            <ion-col class="right-info">
               <div class="iteminfo">
-                <div style="width:100%">
-                  <font class="title" id="wrap-content">{{item.city_name}}
-                  </font>
-                </div>
                 <div style="width:100%;">
-                  <small class="desc" id="wrap-content">{{item.address}}</small>
+                  <font style="font-weight: 700; font-size: 12px; color: black;">#{{item.order_id}}</font>
                 </div>
-                <div style="width:100%;">
-                  <font class="price">Rs {{item.billing_amount}}</font>
-                </div>
-                <div style="width:100%;">
-                  <font><font style="font-weight: 700; font-size: 14px;">Order id: </font>{{item.order_id}}</font>
-                </div>
-                <div style="width:100%;">
-                  <font><font style="font-weight: 700; font-size: 14px;">Order status: </font>
-                  <font *ngIf="item.status ==='0'" style="color: #0080ff;">Pending</font>
-                  <font *ngIf="item.status ==='1'" style="color: #0080ff;">Confirmed</font>
-                  <font *ngIf="item.status ==='2'" style="color: #0080ff;">Out for delivery</font>
-                  <font *ngIf="item.status ==='3'" style="color: #60b546;">Delivered</font>
-                  <font *ngIf="item.status ==='4'" style="color: #fb2d18;">Cancelled</font>
-                </font>
-                </div>
-              </div>
-              <div class="itemAddDeatils" style="margin-top: 10px;">
-                <div class="details-left">
-                  <ion-col>
-                    
+                <ion-row>
+                  <font style="font-size: 12px;">Item count</font>
+                </ion-row>
+                <ion-row>
+                  <font style="font-weight: 700; font-size: 12px; color: black;">{{item.total_items}}</font>
+                </ion-row>
+                <ion-row>
+                  <ion-col style="padding: 0px">
+                    <font style="font-size: 12px;">Ordered on:</font>
                   </ion-col>
+                  <ion-col style="padding: 0px; text-align: end">
+                    <font class="price" style="margin-right: 20px;">&#8377;{{item.billing_amount}}</font>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <font style="font-weight: 700; font-size: 12px; color: black;">{{item.created_at}}</font>
+                </ion-row>
+                <ion-row>
+                  <font style="font-size: 12px;">Order status: </font>
+                </ion-row>
+                <div style="width:100%;">
+                  <ion-row>
+                    <ion-col>
+                      <font *ngIf="item.status ==='0'" style="color: #0080ff;">Pending</font>
+                      <font *ngIf="item.status ==='1'" style="color: #0080ff;">Confirmed</font>
+                      <font *ngIf="item.status ==='2'" style="color: #0080ff;">Out for delivery</font>
+                      <font *ngIf="item.status ==='3'" style="color: #60b546;">Delivered</font>
+                      <font *ngIf="item.status ==='4'" style="color: #fb2d18;">Cancelled</font>
+                    </ion-col>
+                    <ion-col style="padding: 0px">
+                      <ion-row>
+                        <ion-col>
+                          <div style="background-color: #60b546; border-radius: 15px; text-align: center;">
+                            <font style="color: white;">View</font>
+                          </div>
+                        </ion-col>
+                        <ion-col>
+                          <div style="background-color: #ec9188; border-radius: 15px; text-align: center;">
+                            <font style="color: white;">Cancel</font>
+                          </div>
+                        </ion-col>
+                      </ion-row>
+                    </ion-col>
+                  </ion-row>
                 </div>
               </div>
             </ion-col>

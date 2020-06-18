@@ -1,6 +1,6 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, LoadingController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
 import { AppGlobalService } from 'src/app/services/app-global.service';
 @Component({
@@ -17,13 +17,38 @@ export class HomePage implements OnInit {
   imageSlider: any = []
   recentOrders: any = [];
   recommItems: any = [];
+  loading
+  loaded_cat = false
+  loaded_orders = false
   constructor(private router: Router,
     private apiService: ApiService,
-    public _global: AppGlobalService) {
+    public _global: AppGlobalService,
+    private loadingCtrl: LoadingController) {
+      
       this.goToTabWithId();
-      this.getCategories();
-      this.getRecentOrders();
+      // this.getCategories();
+      // this.getRecentOrders();
       this.getImageSlider();
+      this.getData()
+  }
+
+  async getData() {
+    this.loading = await this.loadingCtrl.create({
+      message: 'Please wait...',
+      duration: 2000
+    });
+    await this.loading.present();
+    setInterval(function() {
+        if(this.loaded_cat && this.loaded_orders) {
+          this.dismissLoading()
+        }
+    }, 1000)
+    this.getCategories();
+    this.getRecentOrders();
+  }
+
+  async dismissLoading() {
+    await this.loading.dismiss()
   }
 
   goToTabWithId() {
@@ -65,16 +90,20 @@ export class HomePage implements OnInit {
     this.apiService.getFeaturedProducts().then(res => {
       this.recentOrders = res
       this.recommItems = res
+      this.loaded_orders = true
     }).catch(err => {
+      this.loaded_orders = true
       this._global.presentNetworkToast(err)
     })
   }
 
   getCategories() {
     this.apiService.getCategories().then(res=> {
+      this.loaded_cat = true
       this.categories = res
     }).catch(err=> {
       this._global.presentNetworkToast(err)
+      this.loaded_cat = true
     })
   }
 

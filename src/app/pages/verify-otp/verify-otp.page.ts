@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppGlobalService } from 'src/app/services/app-global.service';
 import { ApiService } from 'src/app/services/api.service';
@@ -12,9 +12,21 @@ import { LoadingController } from '@ionic/angular';
 })
 export class VerifyOtpPage implements OnInit {
 
+  @ViewChild('one') inputOne;
+  @ViewChild('two') inputTwo;
+  @ViewChild('three') inputThree;
+  @ViewChild('four') inputFour;
+  @ViewChild('five') inputFive;
+  @ViewChild('six') inputSix;
+
   detail
-  otp: string = ''
   loading
+  otp1: string = ''
+  otp2: string = ''
+  otp3: string = ''
+  otp4: string = ''
+  otp5: string = ''
+  otp6: string = ''
 
   constructor(private activeRoute: ActivatedRoute,
     private _global: AppGlobalService,
@@ -25,6 +37,8 @@ export class VerifyOtpPage implements OnInit {
     this.activeRoute.queryParams.subscribe(params => {
       if (params && params.item) {
         this.detail = JSON.parse(params.item);
+        console.log('detail', this.detail);
+        
       }
     });
   }
@@ -33,11 +47,14 @@ export class VerifyOtpPage implements OnInit {
   }
 
   async verify() {
-    if(this.otp === '') {
+    let enteredOtp = this.otp1.toString() + this.otp2.toString() + this.otp3.toString()
+                       + this.otp4.toString() + this.otp5.toString() + this.otp6.toString();
+    
+    if(enteredOtp === '') {
       this._global.presentNetworkToast('Please enter OTP')
       return
     }
-    if(this.otp.toString() !== this.detail.otp) {
+    if(enteredOtp !== this.detail.otp) {
       this._global.presentNetworkToast('OTP is not valid')
       return
     }
@@ -69,5 +86,25 @@ export class VerifyOtpPage implements OnInit {
 
   async dismissLoading() {
     await this.loading.dismiss()
+  }
+
+  inputChanged(id) {
+    switch(id) {
+      case "1":
+        this.inputTwo.setFocus()
+        break;
+      case "2":
+        this.inputThree.setFocus()
+        break;
+      case "3":
+        this.inputFour.setFocus()
+        break;
+      case "4":
+        this.inputFive.setFocus()
+        break;
+      case "5":
+        this.inputSix.setFocus()
+        break;
+    }
   }
 }

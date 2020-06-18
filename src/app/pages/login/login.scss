@@ -22,3 +22,11 @@
         color: $dark;
     }
 }
+
+.card {
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    background: #B39DDB;
+    margin: unset;
+    --box-shadow: unset;
+}

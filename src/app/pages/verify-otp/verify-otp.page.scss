@@ -71,3 +71,22 @@ ion-item {
         font-size: 15px;
     }
 }
+
+.slider-info {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 14px;
+    color:$gray;
+}
+
+.otp {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    border: $yellow solid 1px;
+    padding-left: 4px;
+    ion-input {
+        font-size: 16px;
+        font-weight: 700;
+    }
+}
