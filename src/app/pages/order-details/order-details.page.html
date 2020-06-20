@@ -1,0 +1,101 @@
+<ion-header class='ion-no-border'>
+  <ion-buttons slot='start'>
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
+  <ion-toolbar>
+    <ion-title size="6" style="font-weight: 700;">Order Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment value="1" mode="md" (ionChange)="segmentChanged($event)">
+    <ion-segment-button style="text-transform: none;" value="1">
+      <ion-label>GENERAL INFO</ion-label>
+    </ion-segment-button>
+    <ion-segment-button style="text-transform: none;" value="2">
+      <ion-label>ITEMS</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div *ngIf="selected === '1'">
+    <ion-card style="border-radius: 5px; padding: 10px;">
+      <ion-row>
+        <ion-col style="padding: 0px;">
+          <font style="font-weight: 700; font-size: 12px;">Order Id:</font>
+        </ion-col>
+        <ion-col style="padding: 0px;"><font style="font-size: 12px;">#{{order.order_id}}</font></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col style="padding: 0px;">
+          <font style="font-weight: 700; font-size: 12px;">Order Status:</font>
+        </ion-col>
+        <ion-col style="padding: 0px;">
+          <font *ngIf="order.status ==='0'" style="color: #0080ff; font-size: 12px;">Pending</font>
+          <font *ngIf="order.status ==='1'" style="color: #0080ff; font-size: 12px;">Confirmed</font>
+          <font *ngIf="order.status ==='2'" style="color: #0080ff; font-size: 12px;">Out for delivery</font>
+          <font *ngIf="order.status ==='3'" style="color: #60b546; font-size: 12px;">Delivered</font>
+          <font *ngIf="order.status ==='4'" style="color: #fb2d18; font-size: 12px;">Cancelled</font>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col style="padding: 0px;">
+          <font style="font-weight: 700; font-size: 12px;">Customer Name:</font>
+        </ion-col>
+        <ion-col style="padding: 0px;">
+          <font style="font-size: 12px;">{{order.name}}</font>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col style="padding: 0px;">
+          <font style="font-weight: 700; font-size: 12px;">Date of Order:</font>
+        </ion-col>
+        <ion-col style="padding: 0px;">
+          <font style="font-size: 12px;">{{order.created_at}}</font>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col style="padding: 0px;">
+          <font style="font-weight: 700;font-size: 12px;">Delivery Address:</font>
+        </ion-col>
+        <ion-col style="padding: 0px;">
+          <font style="font-size: 12px;">{{order.address}}</font></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col style="padding: 0px;">
+          <font style="font-weight: 700;font-size: 12px;">Billed Amount:</font>
+        </ion-col>
+        <ion-col style="padding: 0px;">
+          <font style="font-size: 12px;">&#8377;{{order.billing_amount}}</font>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+
+  <div *ngIf="selected === '2'">
+    <ion-card class="shadow-effect list-card" *ngFor="let item of orderDetails" style="margin-top: 5px;">
+      <ion-grid>
+        <ion-row>
+          <ion-col class="left-info" size="4">
+            <img [src]="_global.BASE_URL_ITEM_IMAGE + item.item_image">
+          </ion-col>
+          <ion-col class="right-info" size="8">
+            <div class="iteminfo">
+              <div style="width:100%">
+                <font class="title" id="wrap-content" style="font-size: 12px; margin-top: 10px;">{{item.item_name}}
+                </font>
+              </div>
+              <div style="width:100%;">
+                <small class="desc" id="wrap-content"><font style="font-size: 12px;"><font style="color: black; font-size: 12px;">Quantity: </font>{{item.qty}}</font></small>
+              </div>
+              <div style="width:100%;">
+                <font class="price">&#8377;{{item.total_amount}}</font>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </ion-card>
+  </div>
+
+</ion-content>

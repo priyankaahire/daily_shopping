@@ -104,8 +104,11 @@ export class ApiService {
   }
 
   getOrderHistory(data) {
-    
     return this._callGetAPI('/get_order_history', data)
+  }
+
+  getOrderItems(data) {
+    return this._callGetAPI('/get_order_items', data)
   }
 
   getDeliveryBoyLocation(data) {

@@ -65,7 +65,11 @@ const routes: Routes = [
   {
     path: 'verify-otp',
     loadChildren: () => import('./pages/verify-otp/verify-otp.module').then( m => m.VerifyOtpPageModule)
+  },  {
+    path: 'order-details',
+    loadChildren: () => import('./pages/order-details/order-details.module').then( m => m.OrderDetailsPageModule)
   }
+
 
 ];
 @NgModule({

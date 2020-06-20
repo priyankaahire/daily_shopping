@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { Storage } from '@ionic/storage';
 import { LoadingController } from '@ionic/angular';
@@ -58,7 +58,12 @@ export class OrderHistoryPage implements OnInit {
   }
 
   viewDetails(order) {
-    this._global.presentNetworkToast('Coming soon...')
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        data: JSON.stringify(order)
+      }
+    }
+    this.router.navigate(['order-details'], navigationExtras)
   }
 
   cancelOrder(order) {

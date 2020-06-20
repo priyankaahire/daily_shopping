@@ -1,25 +1,26 @@
 <ion-content no-padding>
-  <ion-row style="background-color: #FFDF10; padding-left: 10px; padding-top: 10px;">
+  <ion-row style="padding-left: 10px; padding-top: 10px;" class="bg-primary">
     <ion-col size="8">
       <ion-row>
-        <font style="font-size: 12px; color: gray;">Deliver Here</font>
+        <ion-icon src='assets/icon/location.svg' style="height: 15px; width: 15px; color: white;"></ion-icon>
+        <font style="font-size: 12px; color: #FFF; margin-left: 5px">Deliver Here</font>
       </ion-row>
       <ion-row>
-        <font style="font-size: 14px; color: black;">Nsp, New Delhi</font>
+        <font style="font-size: 14px; color: #FFF;">Nsp, New Delhi</font>
       </ion-row>
     </ion-col>
     <ion-col size="4">
       <div style="display: inline-flex;margin-left: 25px;">
         <div style="height: 30px; width: 30px; background-color: white; border-radius: 50%; text-align: center; padding-top: 2px;">
-          <ion-icon style="padding: 5px;color: #000;" name="person-outline"></ion-icon>
+          <ion-icon style="padding: 5px;color: #000;" name="search-outline"></ion-icon>
         </div>
         <div style="margin-left: 10px; height: 30px; width: 30px; background-color: white; border-radius: 50%; text-align: center; padding-top: 2px;">
-          <ion-icon style="padding: 5px;color: #000;" name="search-outline"></ion-icon>
+          <ion-icon style="padding: 5px;color: #000;" name='heart-outline'></ion-icon>
         </div>
       </div>
     </ion-col>
   </ion-row>
-  <div style="height: 170px; background-color: #FFDF10; margin: 0px;"></div>
+  <div style="height: 170px; margin: 0px;" class="bg-primary"></div>
   <div class="container" style="margin: 0px; margin-top: -170px;">
     <div class="scroll" scrollY="true">
       <ion-card class="img-card" *ngFor="let item of imageSlider" style="border-radius: 20px; background: url('../../assets/imgs/Onion.jpg'); background-size: cover">
