@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { Storage } from '@ionic/storage';
 import { LoadingController } from '@ionic/angular';
+import { AppGlobalService } from 'src/app/services/app-global.service';
 
 @Component({
   selector: 'app-order-history',
@@ -15,7 +16,8 @@ export class OrderHistoryPage implements OnInit {
   loading
   constructor(private storage: Storage,private router: Router,
     private apiService: ApiService,
-    private loadingCtrl: LoadingController ) {
+    private loadingCtrl: LoadingController,
+    private _global: AppGlobalService) {
   }
 
   ngOnInit() {
@@ -53,5 +55,13 @@ export class OrderHistoryPage implements OnInit {
   }
   back() {
     this.router.navigate(['/checkout'])
+  }
+
+  viewDetails(order) {
+    this._global.presentNetworkToast('Coming soon...')
+  }
+
+  cancelOrder(order) {
+    this._global.presentNetworkToast('Coming soon...')
   }
 }

@@ -52,12 +52,12 @@
                     <ion-col style="padding: 0px">
                       <ion-row>
                         <ion-col>
-                          <div style="background-color: #60b546; border-radius: 15px; text-align: center;">
+                          <div style="background-color: #60b546; border-radius: 15px; text-align: center;" (click)="viewDetails(item)">
                             <font style="color: white;">View</font>
                           </div>
                         </ion-col>
                         <ion-col>
-                          <div style="background-color: #ec9188; border-radius: 15px; text-align: center;">
+                          <div style="background-color: #ec9188; border-radius: 15px; text-align: center;" *ngIf="item.status ==='0' || item.status ==='1'" (click)="cancelOrder(item)">
                             <font style="color: white;">Cancel</font>
                           </div>
                         </ion-col>
