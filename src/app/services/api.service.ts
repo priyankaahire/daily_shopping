@@ -69,22 +69,11 @@ export class ApiService {
   }
 
   addAddress(data: any) {
-    console.log('data', {
-      'user_id': this._global.user_id,
-      ...data
-    });
-    
-    return this._callGetAPI('/add_address', {
-      'user_id': this._global.user_id,
-      ...data
-    })
+    return this._callPostApi('/add_address', data)
   }
 
   editAddress(data: any) {
-    return this._callGetAPI('/edit_address', {
-      'user_id': this._global.user_id,
-      ...data
-    })
+    return this._callPostApi('/edit_address', data)
   }
 
   deleteAddress(data: any) {
@@ -95,8 +84,8 @@ export class ApiService {
     return this._callGetAPI('/get_states', {})
   }
 
-  getCities() {
-    return this._callGetAPI('/get_city', {})
+  getCities(data) {
+    return this._callPostApi('/get_city', data)
   }
 
   createOrder(data) {

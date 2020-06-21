@@ -46,7 +46,7 @@
   </div>
 
   <ion-row style="margin: 10px;">
-    <ion-col size='4' *ngFor='let category of categories; let i=index' [ngStyle]='getBorder(i)'>
+    <ion-col size='4' *ngFor='let category of categories; let i=index' [ngStyle]='getBorder(i)' (click)="dealOfTheDay(category)">
       <ion-row style="justify-content: center; width: 100%;">
         <img [src]="_global.BASE_URL_CAT_IMG + category.image" style="height: 100px; width: 100px;" />
       </ion-row>
@@ -63,7 +63,7 @@
   </div>
 
   <ion-row>
-    <ion-col size='6' *ngFor="let item of recentOrders">
+    <ion-col size='6' *ngFor="let item of recentOrders" (click)="goToDetails(item)">
       <ion-card style="border-radius: 5px; margin: 5px;">
         <ion-row style="justify-content: center;">
           <img [src]="_global.BASE_URL_ITEM_IMAGE + item.item_image" style="height: 100px; width: 100px;">

@@ -1,0 +1,48 @@
+<ion-header class='ion-no-border'>
+  <ion-toolbar class="toolbar-style">
+    <ion-row>
+      <ion-col class="backtohome" size="2" >
+        <ion-icon (click)="back()" style="padding-top:5px; font-size: 22px;;" name="chevron-back-outline"></ion-icon>
+      </ion-col>
+      <ion-title size="6" style="font-weight: 700">Addresses</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card style="border-radius: 5px; padding: 10px" *ngFor="let item of addresses">
+    <ion-row>
+      <ion-col size='10'>
+        <ion-row>
+          <font style="font-weight: 700; font-size: 12px;">{{item.title}}</font>
+        </ion-row>
+        <ion-row>
+          <font style="font-size: 12px;">{{item.address}}</font>
+        </ion-row>
+        <ion-row>
+          <font style="font-size: 12px;">{{item.locality}}</font>
+        </ion-row>
+        <ion-row>
+          <font style="font-size: 12px;">{{item.city_name}}</font>
+        </ion-row>
+        <ion-row>
+          <font style="font-size: 12px;">{{item.state_name}}, {{item.pincode}}</font>
+        </ion-row>
+      </ion-col>
+      <ion-col size='2'>
+        <ion-row style="justify-content: flex-end;" (click)="edit(item)">
+          <ion-icon name='pencil' style="height: 15px; width: 15px;"></ion-icon>
+        </ion-row>
+        <ion-row style="justify-content: flex-end; margin-top: 10px;">
+          <ion-icon name="trash-outline" style="height: 15px; width: 15px;" (click)="delete(item)"></ion-icon>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>
+
+<ion-fab slot="fixed" style="bottom: 15px; right: 15px;">
+  <ion-fab-button (click)="addAddress()">
+    <ion-icon name='add'></ion-icon>
+  </ion-fab-button>
+</ion-fab>

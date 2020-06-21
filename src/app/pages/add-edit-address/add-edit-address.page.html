@@ -1,9 +1,86 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>add-edit-address</ion-title>
+<ion-header class='ion-no-border'>
+  <ion-toolbar class="toolbar-style">
+    <ion-row>
+      <ion-col class="backtohome" size="2" >
+        <ion-icon (click)="back()" style="padding-top:5px; font-size: 22px;;" name="chevron-back-outline"></ion-icon>
+      </ion-col>
+      <ion-title size="6" style="font-weight: 700">{{title}}</ion-title>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-grid class="ion-padding">
+    <ion-row class="ion-margin-top">
+      <ion-col>
+        <ion-item lines="full" class="input-item">
+          <ion-label position="floating"><b>Title</b></ion-label>
+          <ion-input [(ngModel)]="data.title">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="full" class="input-item">
+          <ion-label position="floating"><b>Locality</b></ion-label>
+          <ion-input [(ngModel)]="data.locality">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="full" class="input-item">
+          <ion-label position="floating"><b>Landmark</b></ion-label>
+          <ion-input [(ngModel)]="data.landmark">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="full" class="input-item">
+          <ion-label position="floating"><b>Pincode</b></ion-label>
+          <ion-input [(ngModel)]="data.pincode" type="number">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>State</ion-label>
+          <ion-select placeholder="Select State" [(ngModel)]='state' interface="popover" (ionChange)='stateChanged()'>
+            <ion-select-option *ngFor="let item of states" [value]="item">{{item.state_name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>City</ion-label>
+          <ion-select placeholder="Select City" [(ngModel)]='city' interface="popover">
+            <ion-select-option *ngFor="let item of cities" [value]="item">{{item.city_name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-item>
+      <ion-label position="floating">Address</ion-label>
+      <ion-input [(ngModel)]="autocomplete.query" (input)="updateSearch($event.target.value)"></ion-input>
+    </ion-item>
+    <ion-list>
+      <ion-item *ngFor="let item of autocompleteItems" tappable (click)="chooseItem(item)">
+        {{ item }}
+      </ion-item>
+    </ion-list>
+    <div #map id="map" style="height: 200px; width: 100%; margin-bottom: 10px;"></div>
+    <ion-row class="ion-margin-top">
+      <ion-col class="ion-text-center">
+        <ion-button (click)="addEditAddress()" class="login-btn" mode="ios" shape="round" fill="outline">{{btn_text}}</ion-button>
+      </ion-col>
+    </ion-row>
+   </ion-grid>
 </ion-content>

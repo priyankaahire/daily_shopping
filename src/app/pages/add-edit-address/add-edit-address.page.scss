@@ -1,0 +1,19 @@
+@import '../../../theme/variables.scss';
+
+.input-item {
+    --background: transparent;
+    color: $yellow;
+    --border-color: $yellow;
+    --padding-start: 8px;
+}
+
+.login-btn {
+    width: 80%;
+    height: 42px;
+    font-size: large;
+    --border-color: $yellow;
+    --background: transparent;
+    --background-activated: $yellow;
+    --color-activated: $yellow;
+    --color: $yellow;
+}

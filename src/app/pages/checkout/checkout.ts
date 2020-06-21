@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { Storage } from '@ionic/storage';
 import { AppGlobalService } from 'src/app/services/app-global.service';
@@ -55,6 +55,19 @@ export class CheckoutPage implements OnInit {
         }
         this.item_data.push(data)
       });
+    })
+    this.apiService.getAddresses({
+      user_id: this.user_id
+    }).then((res1: []) => {
+      console.log('addresses', res1);
+      
+      this.addresses = []
+      res1.forEach((elt: {}) => {
+        elt['checked'] = false
+        this.addresses.push(elt)
+      });
+    }).catch(err => {
+      this._global.presentNetworkToast(err)
     })
   }
 
@@ -118,6 +131,15 @@ export class CheckoutPage implements OnInit {
   }
 
   goToAddresses() {
-    this.router.navigate(['add-edit-address'])
+    this.router.navigate(['addresses'])
+  }
+
+  editAddress(address) {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        item: JSON.stringify(address)
+      }
+    }
+    this.router.navigate(['add-edit-address'], navigationExtras)
   }
 }
