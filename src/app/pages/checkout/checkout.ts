@@ -4,6 +4,8 @@ import { ApiService } from 'src/app/services/api.service';
 import { Storage } from '@ionic/storage';
 import { AppGlobalService } from 'src/app/services/app-global.service';
 
+declare var RazorpayCheckout: any
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.html',
@@ -17,10 +19,19 @@ export class CheckoutPage implements OnInit {
   delivery_type = ''
   item_data
   user_id = ''
+
+  payment_options = ['COD', 'Pay Online']
+  selected_option = ''
+
+  user
+
   constructor(private activeRoute: ActivatedRoute,private router: Router,
     private apiService: ApiService,
     private _global: AppGlobalService,
-    private storage: Storage) { 
+    private storage: Storage) {
+      this.storage.get('user').then(res => {
+        this.user = JSON.parse(res)
+      })
     this.storage.get('user_id').then(res => {
       console.log('user_id', res);
       this.user_id = res
@@ -98,26 +109,96 @@ export class CheckoutPage implements OnInit {
       this._global.presentNetworkToast('Please select delivery method')
       return
     }
-    let data = {
-      user_id: this.user_id,
-      total_items: this.items.length.toString(),
-      address_id: this.selected_address_id,
-      total_price: this.total.toString(),
-      order_type: "1",
-      payment_status: "0",
-      transaction_id: "0",
-      shipping_type: this.delivery_type,
-      item_data: JSON.stringify(this.item_data)
+    if(this.selected_option == '') {
+      this._global.presentNetworkToast('Please select payment option')
+      return
     }
-    console.log('data', data);
-    
-    this.apiService.createOrder(data).then(res => {
-      this._global.presentNetworkToast('Order successful!')
-      this.router.navigate(['tabs', 'history'])
-    }).catch(err => {
-      this._global.presentNetworkToast(err)
-    })
+    if(this.selected_option == 'COD') {
+      let data = {
+        user_id: this.user_id,
+        total_items: this.items.length.toString(),
+        address_id: this.selected_address_id,
+        total_price: this.total.toString(),
+        order_type: "1",
+        payment_status: "0",
+        transaction_id: "0",
+        shipping_type: this.delivery_type,
+        item_data: JSON.stringify(this.item_data)
+      }
+      console.log('data', data);
+      
+      this.apiService.createOrder(data).then(res => {
+        this._global.presentNetworkToast('Order successful!')
+        this.router.navigate(['tabs', 'history'])
+      }).catch(err => {
+        this._global.presentNetworkToast(err)
+      })
+    } else {
+      this.payWithRazor()
+    }
   }
+
+  payWithRazor() {
+    let prefill = {
+      email: this.user['email_id'],
+      contact: this.user['mobile_no'],
+      name: this.user['name']
+    }
+    console.log('prefill', prefill);
+    
+    var options = {
+      description: 'Order payment',
+      image: 'https://i.imgur.com/3g7nmJC.png',
+      currency: 'INR', // your 3 letter currency code
+      key: 'rzp_test_rQGoU08da3is2O', // your Key Id from Razorpay dashboard
+      amount: this.total.toString(), // Payment amount in smallest denomiation e.g. cents for USD
+      name: 'SzeAppStore',
+      prefill: prefill,
+      theme: {
+        color: '#FE4401'
+      },
+      modal: {
+        ondismiss: function () {
+          this._global.presentNetworkToast('Payment cancelled')
+        }
+      }
+    };
+
+    var successCallback = function (success) {
+      alert('payment_id: ' + success);
+      alert('payment_id: ' + success.razorpay_payment_id)
+      let data = {
+        user_id: this.user_id,
+        total_items: this.items.length.toString(),
+        address_id: this.selected_address_id,
+        total_price: this.total.toString(),
+        order_type: "2",
+        payment_status: "1",
+        transaction_id: success.razorpay_payment_id,
+        shipping_type: this.delivery_type,
+        item_data: JSON.stringify(this.item_data)
+      }
+      console.log('data', data);
+      
+      this.apiService.createOrder(data).then(res => {
+        this._global.presentNetworkToast('Order successful!')
+        this.router.navigate(['tabs', 'history'])
+      }).catch(err => {
+        this._global.presentNetworkToast(err)
+      })
+    };
+
+    var cancelCallback = function (error) {
+      this._global.presentNetworkToast('Payment cancelled')
+      alert(error.description + ' (Error '+error.code+')')
+    };
+
+    RazorpayCheckout.on('payment.success', successCallback)
+    RazorpayCheckout.on('payment.cancel', cancelCallback)
+
+    RazorpayCheckout.open(options)
+  }
+
   addToCart() {
     this.router.navigate(['/mycart'])
   }

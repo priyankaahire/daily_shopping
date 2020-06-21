@@ -22,6 +22,7 @@ export class DetailsPage implements OnInit {
     this.activeRoute.queryParams.subscribe(params => {
       if (params && params.item) {
         this.item = JSON.parse(params.item);
+        this.item['count'] = 0
       }
     });
   }

@@ -31,6 +31,7 @@
     "@ionic-native/toast": "^4.20.0",
     "@ionic/angular": "^5.0.0",
     "@ionic/storage": "^2.2.0",
+    "com.razorpay.cordova": "git+https://github.com/razorpay/razorpay-cordova.git",
     "cordova-android": "^8.1.0",
     "cordova-plugin-add-swift-support": "^2.0.2",
     "cordova-plugin-advanced-http": "^2.4.1",
@@ -98,7 +99,8 @@
         "PLAY_SERVICES_LOCATION_VERSION": "16.+"
       },
       "cordova-plugin-geolocation": {},
-      "cordova-plugin-googlemaps": {}
+      "cordova-plugin-googlemaps": {},
+      "com.razorpay.cordova": {}
     },
     "platforms": [
       "android"

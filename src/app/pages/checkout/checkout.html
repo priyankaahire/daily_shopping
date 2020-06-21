@@ -144,7 +144,14 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-font style="color: red; font-size: 12px;">Only Cash On Delivery (COD) is applicable</ion-font>
+      <ion-col>
+        <ion-item>
+          <ion-label>Payment Option</ion-label>
+          <ion-select placeholder="Select One" [(ngModel)]='selected_option' interface="popover">
+            <ion-select-option *ngFor="let item of payment_options" [value]="item">{{item}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
     </ion-row>
   </div>
 </ion-content>
