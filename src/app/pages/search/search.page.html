@@ -1,0 +1,91 @@
+<ion-header class='ion-no-border'>
+  <ion-toolbar class="toolbar-style">
+    <ion-row>
+      <ion-col class="backtohome" size="2" >
+        <ion-icon (click)="back()" style="padding-top:5px; font-size: 22px;;" name="chevron-back-outline"></ion-icon>
+      </ion-col>
+      <ion-title size="6" style="font-weight: 700">Search Products</ion-title>
+      <ion-col class="right-col" size="4" style="padding: 0px">
+        <div class="header-icon">
+          <div class="icon-style">
+            <ion-icon src='assets/icon/bag.svg'></ion-icon>
+          </div>
+          <div class="icon-style">
+            <ion-icon name="heart-outline"></ion-icon>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-item style="margin: 15px; width: 100%">
+      <ion-label position="floating">Search</ion-label>
+      <ion-input [(ngModel)]="q" (ionChange)="search()"></ion-input>
+      <ion-icon style="padding: 5px;color: #000; height: 20px; width: 20px;" name="search-outline" slot='end'></ion-icon>
+    </ion-item>
+  </ion-row>
+
+  <ion-row style="justify-content: center;" *ngIf="items.length == 0">
+    <ion-font>0 items found!</ion-font>
+  </ion-row>
+
+  <div class="list-container" style="margin-top: 10px;" style="margin-top: 10px;">
+    <ion-card *ngFor="let item of items; let i = index" class="shadow-effect list-card">
+      <ion-grid>
+        <ion-row>
+          <ion-col class="left-info" size="4">
+            <img [src]="_global.BASE_URL_ITEM_IMAGE + item.item_image" (click)="gotoDetails(item)">
+          </ion-col>
+          <ion-col class="right-info" size="8">
+            <div class="iteminfo">
+              <div style="width:100%">
+                <font class="title" id="wrap-content" (click)="gotoDetails(item)">{{item.item_name}}
+                </font>
+              </div>
+              <div style="width:100%;">
+                <small class="desc" id="wrap-content" (click)="gotoDetails(item)">{{item.description}}</small>
+              </div>
+              <div style="width:100%;">
+                <font class="price" (click)="gotoDetails(item)">&#8377;{{item.price}}</font>
+              </div>
+            </div>
+            <div class="itemAddDeatils" style="margin-top: 10px;">
+              <div class="details-left">
+                <ion-col>
+                  <div style="display: inline-flex;" id="counter-info">
+                    <div (click)="minus(i, $event)" class="addremove">
+                      <ion-icon style="padding: 5px;color: #000; font-weight: 700; font-size: 14px;" name="remove-outline"></ion-icon>
+                    </div>
+                    <div style="padding-top: 5px;">
+                      <font class="countinfo" style="font-weight: 700; font-size: 14px;">{{item.count}}</font>
+                    </div>
+    
+                    <div (click)="plus(i, $event)" class="addremove">
+                      <ion-icon style="padding: 5px;color: #000; font-weight: 700; font-size: 14px;" name="add-outline"></ion-icon>
+                    </div>
+                  </div>
+                </ion-col>
+              </div>
+              <div class="details-right">
+                <ion-row>
+                  <ion-col (click)="addToCart(item, $event)">
+                    <div id="basket-icon" style="margin-left: 15px;">
+                      <ion-icon name="basket"></ion-icon>
+                    </div>
+                    <div id="basket-title">
+                      <font style="font-size: 10px;">Add to Cart</font>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </ion-card>
+  </div>
+</ion-content>

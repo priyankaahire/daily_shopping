@@ -71,6 +71,7 @@ export class VerifyOtpPage implements OnInit {
     console.log('param', params);
     
     this.apiService.signup(params).then(res=> {
+      this.storage.set('user', JSON.stringify(params))
       this.storage.set('user_id', res['_id']).then(res => {
         this.storage.set('loggedin', 'true').then(res => {
           this.dismissLoading()

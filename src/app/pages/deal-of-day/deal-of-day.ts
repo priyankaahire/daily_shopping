@@ -83,6 +83,10 @@ export class DealOfDayPage implements OnInit {
   }
   onSlideChanged(e) {
   }
+
+  search() {
+    this.router.navigate(['search'])
+  }
   
   getCategories() {
     this.apiService.getCategories().then(res=> {

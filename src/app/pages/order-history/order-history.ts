@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { Storage } from '@ionic/storage';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, AlertController } from '@ionic/angular';
 import { AppGlobalService } from 'src/app/services/app-global.service';
 
 @Component({
@@ -17,6 +17,7 @@ export class OrderHistoryPage implements OnInit {
   constructor(private storage: Storage,private router: Router,
     private apiService: ApiService,
     private loadingCtrl: LoadingController,
+    private alertCtrl: AlertController,
     private _global: AppGlobalService) {
   }
 
@@ -66,7 +67,33 @@ export class OrderHistoryPage implements OnInit {
     this.router.navigate(['order-details'], navigationExtras)
   }
 
-  cancelOrder(order) {
-    this._global.presentNetworkToast('Coming soon...')
+  async cancelOrder(order) {
+    const alert = await this.alertCtrl.create({
+      header: "Cancel order?",
+      message: "Do you really want to cancel the order?",
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel'
+        }, {
+          text: 'Yes',
+          handler: () => {
+            this.cancelOrderApiCall(order['_id'])
+          }
+        }
+      ]
+    })
+    await alert.present();
+  }
+
+  cancelOrderApiCall(order_id) {
+    this.apiService.updateOrderStatus({
+      order_id: order_id,
+      status: "4"
+    }).then(res => {
+      this.getData()
+    }).catch(err => {
+      this._global.presentNetworkToast(err)
+    })
   }
 }

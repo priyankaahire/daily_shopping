@@ -11,6 +11,11 @@ import { AppGlobalService } from './services/app-global.service'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ApiService } from './services/api.service';
+
+import { LocationAccuracy } from '@ionic-native/location-accuracy/ngx';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +29,10 @@ import { ApiService } from './services/api.service';
     ApiService,
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    LocationAccuracy,
+    Geolocation,
+    NativeGeocoder
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,22 @@
+<ion-header class='ion-no-border'>
+  <ion-toolbar class="toolbar-style">
+    <ion-row>
+      <ion-col class="backtohome" size="2" >
+        <ion-icon (click)="back()" style="padding-top:5px; font-size: 22px;;" name="chevron-back-outline"></ion-icon>
+      </ion-col>
+      <ion-title size="6" style="font-weight: 700;">Profile</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row style="justify-content: center; margin-top: 50px;">
+    <font style="font-weight: 700;">{{data.name}}</font>
+  </ion-row>
+  <ion-row style="justify-content: center;">
+    {{data.mobile_no}}
+  </ion-row>
+  <ion-row style="justify-content: center;">
+    {{data.email_id}}
+  </ion-row>
+</ion-content>

@@ -111,6 +111,14 @@ export class ApiService {
     return this._callGetAPI('/get_order_items', data)
   }
 
+  searchProduct(data) {
+    return this._callPostApi('/search_products_by_keyword', data)
+  }
+
+  updateOrderStatus(data) {
+    return this._callPostApi('/update_order_status', data)
+  }
+
   getDeliveryBoyLocation(data) {
     return this._callGetAPI('/get_delivery_boy_location', data)
   }
