@@ -3,7 +3,7 @@ import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { Storage } from '@ionic/storage';
 import { AppGlobalService } from 'src/app/services/app-global.service';
-import { LoadingController, AlertController } from '@ionic/angular';
+import { LoadingController, AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-addresses',
@@ -23,6 +23,7 @@ export class AddressesPage implements OnInit {
     private _global: AppGlobalService,
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
+    private navCtrl: NavController,
     private route: ActivatedRoute
   ) {
     this.storage.get('user_id').then(res => {
@@ -99,6 +100,10 @@ export class AddressesPage implements OnInit {
 
   addAddress() {
     this.router.navigate(['add-edit-address'])
+  }
+
+  back() {
+    this.navCtrl.back()
   }
 
 }

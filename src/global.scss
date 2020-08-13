@@ -93,3 +93,11 @@
         word-wrap: break-word;
         hyphens: auto;
       }
+
+.reviewCss {
+  .modal-wrapper {
+      height: 280px;
+      width: 80%;
+      border-radius: 25px !important;
+  }
+}

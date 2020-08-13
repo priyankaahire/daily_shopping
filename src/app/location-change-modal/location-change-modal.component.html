@@ -1,0 +1,23 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Select Location</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Enter location</ion-label>
+    <ion-input [(ngModel)]="autocomplete.query"
+    (key-enter)="updateSearch()"
+    (ionChange)="updateSearch()"></ion-input>
+  </ion-item>
+  <ion-list>
+    <ion-item *ngFor="let item of autocompleteItems" tappable (click)="chooseItem(item)">
+      {{ item }}
+    </ion-item>
+  </ion-list>
+  <ion-row class="ion-margin-top">
+    <ion-col class="ion-text-center">
+      <ion-button (click)="setLocation()" class="login-btn" mode="ios" shape="round" fill="outline">Set Location</ion-button>
+    </ion-col>
+  </ion-row>  
+</ion-content>

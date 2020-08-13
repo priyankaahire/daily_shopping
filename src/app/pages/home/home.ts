@@ -1,12 +1,13 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonSlides, LoadingController, AlertController } from '@ionic/angular';
+import { IonSlides, LoadingController, AlertController, ModalController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api.service';
 import { AppGlobalService } from 'src/app/services/app-global.service';
 import { LocationAccuracy } from '@ionic-native/location-accuracy/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 import { Storage } from '@ionic/storage';
+import { LocationChangeModalComponent } from 'src/app/location-change-modal/location-change-modal.component';
 
 
 @Component({
@@ -66,6 +67,7 @@ export class HomePage implements OnInit {
     private apiService: ApiService,
     public _global: AppGlobalService,
     private storage: Storage,
+    private modalCtrl: ModalController,
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController) {
       this.requestGPSPermission();
@@ -117,6 +119,24 @@ export class HomePage implements OnInit {
 
   search() {
     this.router.navigate(['search'])
+  }
+
+  async searchLocation() {
+    const modal = await this.modalCtrl.create({
+      component: LocationChangeModalComponent,
+      cssClass: 'reviewCss'
+    });
+    modal.onWillDismiss().then(val=>{
+      if(val) {
+        this.location = val.data['location']
+        this.storage.set('lat-long', JSON.parse(val.data['lat_lng'])).then(() => {
+        });
+        this.storage.set('location', this.location).then(() => {
+        });
+      }
+    });
+    
+    return await modal.present();
   }
 
   async logout() {
@@ -275,7 +295,8 @@ export class HomePage implements OnInit {
     getGeoencoder(latitude, longitude) {
       this.nativeGeocoder.reverseGeocode(latitude, longitude, this.geoencoderOptions)
         .then((result: NativeGeocoderResult[]) => {
-          this.location = result[0]['locality']
+          let myAddress = result[0]
+          this.location = myAddress['subLocality'] + ", " + myAddress['thoroughfare'] + ", " + myAddress['locality']
         })
         .catch((error: any) => {
           alert('Error getting location' + JSON.stringify(error));

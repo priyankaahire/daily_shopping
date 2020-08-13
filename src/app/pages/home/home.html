@@ -6,15 +6,15 @@
         <font style="font-size: 12px; color: #FFF; margin-left: 5px">Deliver Here</font>
       </ion-row>
       <ion-row>
-        <font style="font-size: 14px; color: #FFF; font-weight: 700;">{{location}}</font>
+        <font style="font-size: 14px; color: #FFF; font-weight: 700;" (click)="searchLocation()">{{location}}</font>
       </ion-row>
     </ion-col>
-    <ion-col size="4">
+    <ion-col size="4" style="text-align: end">
       <div style="display: inline-flex;">
         <div style="height: 30px; width: 30px; background-color: white; border-radius: 50%; text-align: center; padding-top: 2px;" (click)="search()">
           <ion-icon style="padding: 5px;color: #000;" name="search-outline"></ion-icon>
         </div>
-        <div style="margin-left: 5px; height: 30px; width: 30px; background-color: white; border-radius: 50%; text-align: center; padding-top: 2px;">
+        <div style="margin-left: 5px; height: 30px; width: 30px; background-color: white; border-radius: 50%; text-align: center; padding-top: 2px;" *ngIf="false">
           <ion-icon style="padding: 5px;color: #000;" name='heart-outline'></ion-icon>
         </div>
         <div style="margin-left: 5px; height: 30px; width: 30px; background-color: white; border-radius: 50%; text-align: center; padding-top: 2px;" (click)='logout()'>

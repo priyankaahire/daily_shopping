@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { Storage } from '@ionic/storage';
 import { AppGlobalService } from 'src/app/services/app-global.service';
+import { NavController } from '@ionic/angular';
 
 declare var RazorpayCheckout: any
 
@@ -28,6 +29,7 @@ export class CheckoutPage implements OnInit {
   constructor(private activeRoute: ActivatedRoute,private router: Router,
     private apiService: ApiService,
     private _global: AppGlobalService,
+    private navCtrl: NavController,
     private storage: Storage) {
       this.storage.get('user').then(res => {
         this.user = JSON.parse(res)
@@ -98,7 +100,7 @@ export class CheckoutPage implements OnInit {
   }
 
   back() {
-    this.router.navigate(['/mycart']);
+    this.navCtrl.back()
   }
   confirm() {
     if(this.selected_address_id == '') {
@@ -151,7 +153,7 @@ export class CheckoutPage implements OnInit {
       image: 'https://i.imgur.com/3g7nmJC.png',
       currency: 'INR', // your 3 letter currency code
       key: 'rzp_test_rQGoU08da3is2O', // your Key Id from Razorpay dashboard
-      amount: this.total.toString(), // Payment amount in smallest denomiation e.g. cents for USD
+      amount: (this.total * 100).toString(), // Payment amount in smallest denomiation e.g. cents for USD
       name: 'SzeAppStore',
       prefill: prefill,
       theme: {

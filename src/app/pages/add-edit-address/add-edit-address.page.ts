@@ -4,7 +4,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { AppGlobalService } from 'src/app/services/app-global.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { GoogleMaps, GoogleMapOptions, Marker } from '@ionic-native/google-maps/ngx';
-import { Platform, LoadingController } from '@ionic/angular';
+import { Platform, LoadingController, NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
 declare var google: any;
@@ -58,6 +58,7 @@ export class AddEditAddressPage implements OnInit {
     private geolocation: Geolocation,
     public zone: NgZone,
     private router: Router,
+    private navCtrl: NavController,
     private loadingCtrl: LoadingController,
     private _global: AppGlobalService,
     private storage: Storage) {
@@ -249,7 +250,7 @@ export class AddEditAddressPage implements OnInit {
       }).then(res => {
         this.dismissLoading()
         this._global.presentNetworkToast('Address added successfully.')
-        this.router.navigate(['addresses'])
+        this.back()
       }).catch(err => {
         this.dismissLoading()
         this._global.presentNetworkToast(err)
@@ -271,7 +272,7 @@ export class AddEditAddressPage implements OnInit {
       this.apiService.editAddress(params).then(res => {
         this.dismissLoading()
         this._global.presentNetworkToast('Address updated successfully.')
-        this.router.navigate(['addresses'])
+        this.back()
       }).catch(err => {
         this.dismissLoading()
         this._global.presentNetworkToast(err)
@@ -285,6 +286,10 @@ export class AddEditAddressPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  back() {
+    this.navCtrl.back()
   }
 
 }

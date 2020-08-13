@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { Storage } from '@ionic/storage';
-import { LoadingController, AlertController } from '@ionic/angular';
+import { LoadingController, AlertController, NavController } from '@ionic/angular';
 import { AppGlobalService } from 'src/app/services/app-global.service';
 
 @Component({
@@ -18,6 +18,7 @@ export class OrderHistoryPage implements OnInit {
     private apiService: ApiService,
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
+    private navCtrl: NavController,
     private _global: AppGlobalService) {
   }
 
@@ -55,7 +56,7 @@ export class OrderHistoryPage implements OnInit {
     this.router.navigate(['/home'])
   }
   back() {
-    this.router.navigate(['/checkout'])
+    this.navCtrl.back()
   }
 
   viewDetails(order) {

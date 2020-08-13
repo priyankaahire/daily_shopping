@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppGlobalService } from 'src/app/services/app-global.service';
 import { ApiService } from 'src/app/services/api.service';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, NavController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 
@@ -21,7 +21,9 @@ export class SearchPage implements OnInit {
     private apiService: ApiService,
     private loadingCtrl: LoadingController,
     private router: Router,
-    private storage: Storage
+    private navCtrl: NavController,
+    private storage: Storage,
+    private toast: ToastController
   ) { }
 
   ngOnInit() {
@@ -57,20 +59,31 @@ export class SearchPage implements OnInit {
   }
 
   back() {
-    
+    this.navCtrl.back()
   }
 
   addToCart(item, event:Event) {
-    event.stopPropagation();
-    console.log('cart item', item);
+    this.showToast()
+    // event.stopPropagation();
+    // console.log('cart item', item);
     
-    let navigationExtras2 = {
-      queryParams: {
-        item: JSON.stringify(item)
-      }
-    };
-      this.router.navigate(['mycart'],navigationExtras2)
+    // let navigationExtras2 = {
+    //   queryParams: {
+    //     item: JSON.stringify(item)
+    //   }
+    // };
+    //   this.router.navigate(['mycart'],navigationExtras2)
   }
+
+  async showToast() {
+    const toastPresent = await this.toast.create({
+      message: "Added to cart",
+      duration: 300,
+      position: 'bottom'
+    })
+    toastPresent.present();
+  }
+
   gotoDetails(item, event) {
    let navigationExtras = {
     queryParams: {

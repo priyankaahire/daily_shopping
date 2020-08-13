@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { AppGlobalService } from 'src/app/services/app-global.service';
 
@@ -21,7 +21,8 @@ export class OrderDetailsPage implements OnInit {
     private route: ActivatedRoute,
     private apiService: ApiService,
     private loadingCtrl: LoadingController,
-    public _global: AppGlobalService
+    public _global: AppGlobalService,
+    private navCtrl: NavController
   ) {
     this.route.queryParams.subscribe(params => {
       if (params && params.data) {
@@ -51,6 +52,10 @@ export class OrderDetailsPage implements OnInit {
   segmentChanged(ev: any) {
     console.log('Segment changed', ev);
     this.selected = ev['detail']['value']
+  }
+
+  back() {
+    this.navCtrl.back()
   }
 
 }

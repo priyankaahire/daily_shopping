@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, NavController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppGlobalService } from 'src/app/services/app-global.service';
 import { ApiService } from 'src/app/services/api.service';
@@ -18,6 +18,7 @@ export class DetailsPage implements OnInit {
   constructor(private activeRoute: ActivatedRoute,private router: Router,
     public _global: AppGlobalService,
     private apiService: ApiService,
+    private navCtrl: NavController,
     private storage: Storage) { 
     this.activeRoute.queryParams.subscribe(params => {
       if (params && params.item) {
@@ -64,6 +65,7 @@ export class DetailsPage implements OnInit {
     });
   }
   back() {
+    this.navCtrl.back()
     // this.router.navigate(['/deal-of-day'])
   }
   plus(event:Event) {

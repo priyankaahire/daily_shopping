@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
 import { AppGlobalService } from 'src/app/services/app-global.service';
+import { NavController, AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-mycart',
   templateUrl: './mycart.html',
@@ -12,6 +13,8 @@ export class MycartPage implements OnInit {
   total = 0
   constructor(private storage: Storage,
     private router: Router,
+    private navCtrl: NavController,
+    private alertCtrl: AlertController,
     private _global: AppGlobalService) { 
   }
 
@@ -37,6 +40,7 @@ export class MycartPage implements OnInit {
     })
   }
   back() {
+    this.navCtrl.back()
     // this.router.navigate(['/deal-of-day'])
   }
   itemsChanged() {
@@ -49,9 +53,24 @@ export class MycartPage implements OnInit {
     })
   }
 
-  deleteFromCart(idx) {
-    this.cart_items.splice(idx, 1)
-    this.itemsChanged();
+  async deleteFromCart(idx) {
+    const alert = await this.alertCtrl.create({
+      header: "Confirm delete",
+      subHeader: "Do you really want to remove this item?",
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel'
+        }, {
+          text: 'Yes',
+          handler: () => {
+            this.cart_items.splice(idx, 1)
+            this.itemsChanged();
+          }
+        }
+      ]
+    })
+    await alert.present();
   }
   plus(idx, event:Event) {
     event.stopPropagation();

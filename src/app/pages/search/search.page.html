@@ -10,7 +10,7 @@
           <div class="icon-style">
             <ion-icon src='assets/icon/bag.svg'></ion-icon>
           </div>
-          <div class="icon-style">
+          <div class="icon-style" *ngIf="false">
             <ion-icon name="heart-outline"></ion-icon>
           </div>
         </div>
@@ -23,8 +23,8 @@
   <ion-row>
     <ion-item style="margin: 15px; width: 100%">
       <ion-label position="floating">Search</ion-label>
-      <ion-input [(ngModel)]="q" (ionChange)="search()"></ion-input>
-      <ion-icon style="padding: 5px;color: #000; height: 20px; width: 20px;" name="search-outline" slot='end'></ion-icon>
+      <ion-input [(ngModel)]="q"></ion-input>
+      <ion-icon style="padding: 5px;color: #000; height: 20px; width: 20px;" name="search-outline" slot='end' (click)="search()"></ion-icon>
     </ion-item>
   </ion-row>
 
