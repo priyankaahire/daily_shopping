@@ -17,7 +17,7 @@ export class SearchPage implements OnInit {
   loading
 
   constructor(
-    private _global: AppGlobalService,
+    public _global: AppGlobalService,
     private apiService: ApiService,
     private loadingCtrl: LoadingController,
     private router: Router,
@@ -84,7 +84,7 @@ export class SearchPage implements OnInit {
     toastPresent.present();
   }
 
-  gotoDetails(item, event) {
+  gotoDetails(item) {
    let navigationExtras = {
     queryParams: {
       item: JSON.stringify(item)

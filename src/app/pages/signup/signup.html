@@ -1,34 +1,8 @@
 <ion-header class='ion-no-border'>
   <ion-toolbar>
-    <ion-icon style="height: 25px; width: 25px;" name="chevron-back-outline" (click)="back()"></ion-icon><ion-font style="font-size: 16px; font-weight: 700;">Signup</ion-font>
+    <ion-icon style="height: 25px; width: 25px;" name="chevron-back-outline" (click)="back()"></ion-icon><font style="font-size: 16px; font-weight: 700;">Signup</font>
   </ion-toolbar>
 </ion-header>
 <ion-content style="background-color: #f8f8f8;">
-  <div style="margin-left: 15px; margin-right: 20px">
-    <ion-item style="margin-top: 20px;">
-      <ion-label position="floating">First Name</ion-label>
-      <ion-input [(ngModel)]="fname"></ion-input>
-    </ion-item>
-    <ion-item style="margin-top: 20px;">
-      <ion-label position="floating">Last Name</ion-label>
-      <ion-input [(ngModel)]="lname"></ion-input>
-    </ion-item>
-    <ion-item style="margin-top: 20px;">
-      <ion-label position="floating">Date of birth</ion-label>
-      <ion-input [(ngModel)]="dob" readonly enabled="false" (click)='selectDate()'></ion-input>
-    </ion-item>
-    <ion-item style="margin-top: 20px;">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input [(ngModel)]="email"></ion-input>
-    </ion-item>
-    <ion-item style="margin-top: 20px;">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" [(ngModel)]="password"></ion-input>
-    </ion-item>
-    <div style="text-align: -webkit-center; margin-top: 20px;">
-      <div class='round-btn' (click)='next()'>
-        <ion-icon src='assets/icon/forward.svg'></ion-icon>
-      </div>
-    </div>
-  </div>
+  
 </ion-content>

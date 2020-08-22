@@ -68,7 +68,7 @@ export class DealOfDayPage implements OnInit {
     };
       this.router.navigate(['mycart'],navigationExtras2)
   }
-  gotoDetails(item, event) {
+  gotoDetails(item) {
    let navigationExtras = {
     queryParams: {
       item: JSON.stringify(item)

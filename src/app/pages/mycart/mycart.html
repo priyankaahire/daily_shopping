@@ -22,15 +22,15 @@
   <div class="list-container" style="margin-top: 10px;" style="margin-top: 10px;">
     <div *ngFor="let item of cart_items; let i = index">
       <div class="btn-delete">
-        <icon-row>
-          <icon-col sie="12">
+        <ion-row>
+          <ion-col sie="12">
             <div style="width:100%; float: right;" >
               <div class="close" style="padding: 2px;" (click)="deleteFromCart(i)">
                  <ion-icon name="close"></ion-icon>
              </div>
            </div>
-          </icon-col>
-        </icon-row>
+          </ion-col>
+        </ion-row>
       </div>
       <ion-card class="shadow-effect list-card">
         <ion-grid>

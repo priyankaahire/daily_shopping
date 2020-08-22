@@ -78,7 +78,7 @@
   
     <div class="container-recent" style="margin: 0px;">
       <div class="scroll" scrollY="true">
-        <ion-container *ngFor="let item of orderAgain">
+        <div *ngFor="let item of orderAgain">
           <ion-row class="img-card" (click)='goToDetails(item)'>
             <ion-col>
               <ion-card style="margin: 0px; height: 80px; border-radius: 10px; width: 120px;">
@@ -97,7 +97,7 @@
               </ion-row>
             </ion-col>
           </ion-row>
-        </ion-container>
+        </div>
       </div>
     </div>
   </div>

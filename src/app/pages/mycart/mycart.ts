@@ -15,7 +15,7 @@ export class MycartPage implements OnInit {
     private router: Router,
     private navCtrl: NavController,
     private alertCtrl: AlertController,
-    private _global: AppGlobalService) { 
+    public _global: AppGlobalService) { 
   }
 
   ionViewDidEnter() {
@@ -43,6 +43,16 @@ export class MycartPage implements OnInit {
     this.navCtrl.back()
     // this.router.navigate(['/deal-of-day'])
   }
+
+  gotoDetails(item) {
+    let navigationExtras = {
+     queryParams: {
+       item: JSON.stringify(item)
+     }
+   };
+     this.router.navigate(['details'],navigationExtras)
+   }
+
   itemsChanged() {
     this.total = 0
     this.cart_items.forEach((elt, index) => {
